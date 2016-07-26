@@ -9,6 +9,10 @@ public class Nozzle : MonoBehaviour {
     public GameObject flamePrefab;
     GameObject flame;
 
+
+    public Sprite f1;
+    public Sprite f2;
+    //public Sprite f3;
     void Awake() {
         Util.nozzle = this;
     }
@@ -28,7 +32,7 @@ public class Nozzle : MonoBehaviour {
         flame.transform.position = transform.position - new Vector3(0, -0.4f);
         flame.transform.SetParent(transform);
         flame.transform.eulerAngles = new Vector3(0, 0, 0);
-        flame.transform.localScale = new Vector3(0.5f, 4f, 1f);
+        flame.transform.localScale = new Vector3(0.5f, 2f, 1f);
         if (Util.wm.gameActive) Invoke("spew", spewDelay);
     }
 }

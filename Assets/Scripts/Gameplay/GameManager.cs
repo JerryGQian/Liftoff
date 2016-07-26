@@ -2,8 +2,12 @@
 using System.Collections;
 
 public class GameManager : MonoBehaviour {
-    public static float distance;
-    public static float scoreSpeed;
+    public float distance;
+    public static float scoreSpeed = 10f;
+
+    public GameObject plumePrefab;
+    GameObject plume;
+
 	// Use this for initialization
 	void Start () {
         Util.gm = this;
@@ -18,6 +22,8 @@ public class GameManager : MonoBehaviour {
             else {
                 Util.wm.rocket.transform.position = Util.wm.rocket.transform.position + new Vector3(0, 5f * Time.deltaTime);
             }
+            distance = distance + scoreSpeed * Time.deltaTime;
+            Util.menuManager.updateScore((int)distance);
         }
     }
 
@@ -30,5 +36,42 @@ public class GameManager : MonoBehaviour {
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
 
         Util.nozzle.spew();
+
+        Destroy(plume);
+        plume = Instantiate(plumePrefab);
+        plume.transform.position = new Vector3(0, 3.62f, 0);
+
+        distance = 0;
+
+        CancelInvoke("showFailScreen");
+
+        //////clean menus
+        Util.menuManager.showPlayScreen();
+    }
+
+
+    public void die(string reason) {
+        Util.wm.gameActive = false;
+        Util.wm.dieScreen = true;
+        Invoke("showFailScreen", 1.5f);
+        Util.cm.cameraTargetSize = 8f;
+    }
+
+    public void die() {
+        die("");
+    }
+
+    void showFailScreen() {
+        Util.wm.dieScreen = false;
+        
+        Camera.main.transform.position = new Vector3(0, 0, -10f);
+
+        Util.wm.rocket.transform.position = new Vector3(0, 0, 0);
+        Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
+
+        Destroy(plume);
+
+        Util.menuManager.showReplayMenu();
+
     }
 }

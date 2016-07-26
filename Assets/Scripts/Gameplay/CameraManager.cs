@@ -16,7 +16,7 @@ public class CameraManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Util.wm.gameActive) {
+        if (Util.wm.gameActive || Util.wm.dieScreen) {
             cameraTarget = new Vector3(0, Util.rocket.bottomPos.y + 10f - Mathf.Sin(Util.wm.gameTime), -10f);
         }
         else {
