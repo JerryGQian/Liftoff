@@ -37,12 +37,13 @@ public class MenuManager : MonoBehaviour {
         menuType = MenuType.main;
         playButton.SetActive(true);
         title.SetActive(true);
+        title.GetComponent<SmoothMotion>().reset();
     }
 
     public void hideMainMenu() {
         menuType = MenuType.none;
         playButton.SetActive(false);
-        title.SetActive(false);
+        title.GetComponent<SmoothMotion>().begin();
     }
 
     public void showPlayScreen() {

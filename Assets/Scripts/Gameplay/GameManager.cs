@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour {
     public GameObject plumePrefab;
     GameObject plume;
 
+    public GameObject debrisPrefab;
+    GameObject debris;
+
 	// Use this for initialization
 	void Start () {
         Util.gm = this;
@@ -55,6 +58,14 @@ public class GameManager : MonoBehaviour {
         Util.wm.dieScreen = true;
         Invoke("showFailScreen", 1.5f);
         Util.cm.cameraTargetSize = 8f;
+
+        Wind.setMaxWind(0);
+        Wind.wind = 0;
+
+        //spawn explosion+debris
+        debris = Instantiate(debrisPrefab);
+        debris.transform.position = Util.rocket.transform.position + new Vector3(0, 0.5f, 0);
+        debris.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     public void die() {
@@ -70,6 +81,7 @@ public class GameManager : MonoBehaviour {
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
 
         Destroy(plume);
+        Destroy(debris);
 
         Util.menuManager.showReplayMenu();
 
