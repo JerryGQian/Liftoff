@@ -23,6 +23,7 @@ public class Rocket : MonoBehaviour {
         bottomPos = transform.position;
         tipPos = transform.position + new Vector3(-Mathf.Sin(Mathf.Deg2Rad * transform.eulerAngles.z), Mathf.Cos(Mathf.Deg2Rad * transform.eulerAngles.z), 0) * 5f;
         rocketAngle = transform.eulerAngles.z;
+        GetComponent<Rigidbody2D>().velocity = new Vector3(0, 2f, 0);
     }
 
     // Update is called once per frame

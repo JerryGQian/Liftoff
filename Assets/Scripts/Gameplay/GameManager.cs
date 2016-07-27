@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour {
 
 
     public void die(string reason) {
+        Util.saveManager.save();
+
         Util.wm.gameActive = false;
         Util.wm.dieScreen = true;
         Invoke("showFailScreen", 1.5f);

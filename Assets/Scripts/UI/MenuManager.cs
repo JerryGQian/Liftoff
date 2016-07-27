@@ -15,6 +15,9 @@ public class MenuManager : MonoBehaviour {
     Text scoreText;
 
     public GameObject playButton;
+    public GameObject settingsButton;
+    public GameObject leaderButton;
+    public GameObject backPanel;
 
 
     bool firstShowing = true;  //if this is the first time score is shown.
@@ -41,14 +44,26 @@ public class MenuManager : MonoBehaviour {
         hideAll();
 
         menuType = MenuType.main;
+
         playButton.SetActive(true);
+        settingsButton.SetActive(true);
+        leaderButton.SetActive(true);
+        backPanel.SetActive(true);
+        playButton.GetComponent<SmoothMotion>().reset();
+        settingsButton.GetComponent<SmoothMotion>().reset();
+        leaderButton.GetComponent<SmoothMotion>().reset();
+        backPanel.GetComponent<SmoothMotion>().reset();
+
         title.SetActive(true);
         title.GetComponent<SmoothMotion>().reset();
     }
 
     public void hideMainMenu() {
         menuType = MenuType.none;
-        playButton.SetActive(false);
+        playButton.GetComponent<SmoothMotion>().begin();
+        settingsButton.GetComponent<SmoothMotion>().begin();
+        leaderButton.GetComponent<SmoothMotion>().begin();
+        backPanel.GetComponent<SmoothMotion>().begin();
         title.GetComponent<SmoothMotion>().begin();
     }
 
@@ -68,6 +83,7 @@ public class MenuManager : MonoBehaviour {
     }
     public void hidePlayScreen() {
         score.SetActive(false);
+
     }
 
     /// <summary>
@@ -78,13 +94,26 @@ public class MenuManager : MonoBehaviour {
         hideAll();
 
         menuType = MenuType.replay;
-        playButton.SetActive(true);
+
         score.SetActive(true);
+        playButton.SetActive(true);
+        settingsButton.SetActive(true);
+        leaderButton.SetActive(true);
+        backPanel.SetActive(true);
+        playButton.GetComponent<SmoothMotion>().reset();
+        settingsButton.GetComponent<SmoothMotion>().reset();
+        leaderButton.GetComponent<SmoothMotion>().reset();
+        backPanel.GetComponent<SmoothMotion>().reset();
+        
     }
 
     public void hideReplayMenu() {
         menuType = MenuType.none;
-        playButton.SetActive(false);
+        playButton.GetComponent<SmoothMotion>().begin();
+        settingsButton.GetComponent<SmoothMotion>().begin();
+        leaderButton.GetComponent<SmoothMotion>().begin();
+        backPanel.GetComponent<SmoothMotion>().begin();
+        title.GetComponent<SmoothMotion>().begin();
     }
 
     public void hideAll() {

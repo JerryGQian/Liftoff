@@ -36,12 +36,14 @@ public class WorldManager : MonoBehaviour {
 	}
 
     public void play() {
-        clickTime = Time.time;
-        gameActive = true;
-        dieScreen = false;
-        gameTime = 0;
-        attempts++;
+        if (!gameActive) {
+            clickTime = Time.time;
+            gameActive = true;
+            dieScreen = false;
+            gameTime = 0;
+            attempts++;
 
-        Util.gm.play();
+            Util.gm.play();
+        }
     }
 }

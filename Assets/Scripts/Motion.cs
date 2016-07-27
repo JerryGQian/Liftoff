@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SmoothMotion : MonoBehaviour {
+public class Motion : MonoBehaviour {
     public Vector3 startPos;
     public Vector3 endPos;
     public float duration = 1f;
@@ -19,17 +19,17 @@ public class SmoothMotion : MonoBehaviour {
         }
     }
     void Start() {
+
+    }
+    public void begin() {
+        startTime = Time.time;
+        began = true;
         if (!isRectTransform) {
             startPos = transform.position;
         }
         else {
             startPos = rect.anchoredPosition;
         }
-    }
-    public void begin() {
-        startTime = Time.time;
-        began = true;
-        
         Invoke("end", duration);
     }
 
@@ -55,10 +55,10 @@ public class SmoothMotion : MonoBehaviour {
         if (began && Time.time < startTime + duration) {
             float t = (Time.time - startTime) / duration;
             if (!isRectTransform) {
-                transform.position = new Vector3(Mathf.SmoothStep(startPos.x, endPos.x, t), Mathf.SmoothStep(startPos.y, endPos.y, t), Mathf.SmoothStep(startPos.z, endPos.z, t));
+                transform.position = new Vector3(Mathf.Lerp(startPos.x, endPos.x, t), Mathf.Lerp(startPos.y, endPos.y, t), Mathf.Lerp(startPos.z, endPos.z, t));
             }
             else {
-                rect.anchoredPosition = new Vector3(Mathf.SmoothStep(startPos.x, endPos.x, t), Mathf.SmoothStep(startPos.y, endPos.y, t), Mathf.SmoothStep(startPos.z, endPos.z, t));
+                rect.anchoredPosition = new Vector3(Mathf.Lerp(startPos.x, endPos.x, t), Mathf.Lerp(startPos.y, endPos.y, t), Mathf.Lerp(startPos.z, endPos.z, t));
             }
         }
     }

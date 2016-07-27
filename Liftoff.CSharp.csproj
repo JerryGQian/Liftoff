@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\Gameplay\SideBoundBox.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Wind.cs" />
     <Compile Include="Assets\Scripts\Gameplay\WorldManager.cs" />
+    <Compile Include="Assets\Scripts\Motion.cs" />
     <Compile Include="Assets\Scripts\SaveManager.cs" />
     <Compile Include="Assets\Scripts\Scaler.cs" />
     <Compile Include="Assets\Scripts\SmoothMotion.cs" />

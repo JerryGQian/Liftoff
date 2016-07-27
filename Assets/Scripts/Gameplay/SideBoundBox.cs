@@ -15,7 +15,7 @@ public class SideBoundBox : MonoBehaviour {
 
 
     void OnTriggerExit2D(Collider2D coll) {
-        if (Util.wm.gameActive) {
+        if (Util.wm.gameActive && coll.gameObject.name.Equals("Rocket")) {
             Util.gm.die();
         }
     }
