@@ -16,6 +16,8 @@ public class MenuManager : MonoBehaviour {
 
     public GameObject playButton;
 
+
+    bool firstShowing = true;  //if this is the first time score is shown.
     void Awake() {
         Util.menuManager = this;
     }
@@ -30,6 +32,10 @@ public class MenuManager : MonoBehaviour {
     public void updateScore(int i) {
         scoreText.text = "" + i;
     }
+
+    /// <summary>
+    /// Main menu
+    /// </summary>
 
     public void showMainMenu() {
         hideAll();
@@ -46,15 +52,27 @@ public class MenuManager : MonoBehaviour {
         title.GetComponent<SmoothMotion>().begin();
     }
 
+    /// <summary>
+    /// PlayScreen
+    /// </summary>
+
     public void showPlayScreen() {
         hideAll();
 
         menuType = MenuType.play;
         score.SetActive(true);
+        if (firstShowing) {
+            score.GetComponent<SmoothMotion>().begin();
+            firstShowing = false;
+        }
     }
     public void hidePlayScreen() {
         score.SetActive(false);
     }
+
+    /// <summary>
+    /// ReplayMenu
+    /// </summary>
 
     public void showReplayMenu() {
         hideAll();

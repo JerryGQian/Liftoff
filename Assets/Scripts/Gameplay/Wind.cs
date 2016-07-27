@@ -8,7 +8,7 @@ public class Wind : MonoBehaviour {
     public static float wind = 0;
     static float maxWind = .03f;
     static float juice = 0.5f;
-    static float windChangeDelay = 10f;
+    static float windChangeDelay = 6f;
     static float targetWind;
 
     void Awake() {
