@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour {
     public string zoneName;
 
     public static float scoreSpeed = 15f;
+    public static float rocketSpeed = 10f;
     public static float zoneSize = 100f;
+    public static float zoneTime;
 
     public GameObject plumePrefab;
     GameObject plume;
@@ -18,19 +20,28 @@ public class GameManager : MonoBehaviour {
     public GameObject explosionPrefab;
     GameObject explosion;
 
+    public GameObject physicsCloudPrefab;
+    public GameObject cloudPrefab;
+    public ArrayList clouds;
+    int physicsCloudCount = 12;
+    int cloudCount = 4;
+    int coverCloudCount = 7;
+
 	// Use this for initialization
 	void Start () {
         Util.gm = this;
+        zoneTime = zoneSize / scoreSpeed;
+        clouds = new ArrayList();
 	}
 	
 	// Update is called once per frame
 	void Update () {
         if (Util.wm.gameActive) {
             if (Util.wm.gameTime < 2f) {
-                Util.wm.rocket.transform.position = Util.wm.rocket.transform.position + new Vector3(0, Util.wm.gameTime / 2f * 5f * Time.deltaTime);
+                Util.wm.rocket.transform.position = Util.wm.rocket.transform.position + new Vector3(0, Util.wm.gameTime / 2f * rocketSpeed * Time.deltaTime);
             }
             else {
-                Util.wm.rocket.transform.position = Util.wm.rocket.transform.position + new Vector3(0, 5f * Time.deltaTime);
+                Util.wm.rocket.transform.position = Util.wm.rocket.transform.position + new Vector3(0, rocketSpeed * Time.deltaTime);
             }
             distance = distance + scoreSpeed * Time.deltaTime;
             Util.menuManager.updateScore((int)distance);
@@ -52,6 +63,8 @@ public class GameManager : MonoBehaviour {
         plume = Instantiate(plumePrefab);
         plume.transform.position = new Vector3(0, 3.62f, 0);
 
+        spawnClouds();
+
         distance = 0;
 
         CancelInvoke("showFailScreen");
@@ -67,6 +80,29 @@ public class GameManager : MonoBehaviour {
     }
     void increaseWind1() {
         Wind.setMaxWind(0.07f);
+    }
+
+    void spawnClouds() {
+        GameObject obj;
+        for (int i = 0; i < physicsCloudCount; i++) {
+            obj = Instantiate(physicsCloudPrefab);
+            obj.transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(zoneTime * rocketSpeed - 0.5f, zoneTime * rocketSpeed + 0.5f));
+            obj.transform.localScale = new Vector3(1f, 1f, 1f);
+            clouds.Add(obj);
+        }
+        for (int i = 0; i < cloudCount; i++) {
+            obj = Instantiate(cloudPrefab);
+            obj.transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(3f * rocketSpeed, zoneTime * rocketSpeed));
+            obj.transform.localScale = new Vector3(1f, 1f, 1f);
+            clouds.Add(obj);
+        }
+        for (int i = 0; i < coverCloudCount; i++) {
+            obj = Instantiate(cloudPrefab);
+            obj.transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(zoneTime * rocketSpeed - 0.5f, zoneTime * rocketSpeed + 0.5f));
+            obj.transform.localScale = new Vector3(1f, 1f, 1f);
+            obj.GetComponent<SpriteRenderer>().sortingOrder = 100;
+            clouds.Add(obj);
+        }
     }
 
 
@@ -101,6 +137,12 @@ public class GameManager : MonoBehaviour {
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
     }
 
+    void removeClouds() {
+        foreach (GameObject obj in clouds) {
+            Destroy(obj);
+        }
+    }
+
     void showFailScreen() {
         Util.wm.dieScreen = false;
         
@@ -110,6 +152,7 @@ public class GameManager : MonoBehaviour {
         Destroy(plume);
         Destroy(debris);
         Destroy(explosion);
+        removeClouds();
 
         Util.menuManager.showReplayMenu();
 

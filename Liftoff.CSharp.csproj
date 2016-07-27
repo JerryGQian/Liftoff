@@ -74,8 +74,10 @@
     <Compile Include="Assets\Scripts\Gameplay\GameManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\InputManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Nozzle.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\PhysicsCloud.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Rocket.cs" />
     <Compile Include="Assets\Scripts\Gameplay\SideBoundBox.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\SpriteRandomizer.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Wind.cs" />
     <Compile Include="Assets\Scripts\Gameplay\WorldManager.cs" />
     <Compile Include="Assets\Scripts\Motion.cs" />

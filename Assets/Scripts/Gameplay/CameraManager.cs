@@ -4,6 +4,7 @@ using System.Collections;
 public class CameraManager : MonoBehaviour {
     public Vector3 cameraTarget;
     public float cameraTargetSize;
+    public static float cameraJuice = 2f;
 
     void Awake() {
         Util.cm = this;
@@ -22,7 +23,7 @@ public class CameraManager : MonoBehaviour {
         else {
             cameraTarget = new Vector3(0, 0, -10f);
         }
-        Camera.main.transform.position += (cameraTarget - Camera.main.transform.position) * Time.deltaTime;
-        Camera.main.orthographicSize += (cameraTargetSize - Camera.main.orthographicSize) * Time.deltaTime;
+        Camera.main.transform.position += (cameraTarget - Camera.main.transform.position) * cameraJuice * Time.deltaTime;
+        Camera.main.orthographicSize += (cameraTargetSize - Camera.main.orthographicSize) * cameraJuice * Time.deltaTime;
     }
 }
