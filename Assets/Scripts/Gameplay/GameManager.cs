@@ -42,6 +42,7 @@ public class GameManager : MonoBehaviour {
         Util.cm.cameraTargetSize = 10f;
         Camera.main.orthographicSize = 8f;
         Camera.main.transform.position = new Vector3(0, 0, -10f);
+        Camera.main.GetComponent<Animator>().SetTrigger("Darken");
         Util.wm.rocket.transform.position = new Vector3(0, 0, 0);
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
 
@@ -102,6 +103,7 @@ public class GameManager : MonoBehaviour {
         Util.wm.dieScreen = false;
         
         Camera.main.transform.position = new Vector3(0, 0, -10f);
+        Camera.main.GetComponent<Animator>().SetTrigger("Blue");
 
         Destroy(plume);
         Destroy(debris);
