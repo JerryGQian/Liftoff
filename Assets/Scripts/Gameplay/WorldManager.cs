@@ -1,8 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class WorldManager : MonoBehaviour {
     public GameObject rocket;
+    public Text coinCounter;
     public float gameTime = 0;
     public GameObject gm;
     public bool gameActive = false;
@@ -26,6 +28,7 @@ public class WorldManager : MonoBehaviour {
         Util.cm.cameraTargetSize = 8f;
 
         Util.saveManager.load();
+        updateCoinCount();
 	}
 	
 	// Update is called once per frame
@@ -45,5 +48,9 @@ public class WorldManager : MonoBehaviour {
 
             Util.gm.play();
         }
+    }
+
+    public static void updateCoinCount() {
+        Util.wm.coinCounter.text = "" + Util.wm.coins;
     }
 }

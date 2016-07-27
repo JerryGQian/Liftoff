@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Gameplay\CameraManager.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Coin.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Flame.cs" />
     <Compile Include="Assets\Scripts\Gameplay\GameManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\InputManager.cs" />

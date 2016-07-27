@@ -13,11 +13,14 @@ public class MenuManager : MonoBehaviour {
     public GameObject title;
     public GameObject score;
     Text scoreText;
+    public GameObject coins;
 
     public GameObject playButton;
     public GameObject settingsButton;
     public GameObject leaderButton;
     public GameObject backPanel;
+
+
 
 
     bool firstShowing = true;  //if this is the first time score is shown.
@@ -65,6 +68,7 @@ public class MenuManager : MonoBehaviour {
         leaderButton.GetComponent<SmoothMotion>().begin();
         backPanel.GetComponent<SmoothMotion>().begin();
         title.GetComponent<SmoothMotion>().begin();
+        
     }
 
     /// <summary>
@@ -78,8 +82,10 @@ public class MenuManager : MonoBehaviour {
         score.SetActive(true);
         if (firstShowing) {
             score.GetComponent<SmoothMotion>().begin();
+            coins.GetComponent<SmoothMotion>().begin();
             firstShowing = false;
         }
+        
     }
     public void hidePlayScreen() {
         score.SetActive(false);

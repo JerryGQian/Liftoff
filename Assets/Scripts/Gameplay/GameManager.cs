@@ -23,15 +23,19 @@ public class GameManager : MonoBehaviour {
     public GameObject physicsCloudPrefab;
     public GameObject cloudPrefab;
     public ArrayList clouds;
-    int physicsCloudCount = 12;
+    int physicsCloudCount = 18;
     int cloudCount = 4;
     int coverCloudCount = 7;
+
+    public GameObject coinPrefab;
+    ArrayList coins;
 
 	// Use this for initialization
 	void Start () {
         Util.gm = this;
         zoneTime = zoneSize / scoreSpeed;
         clouds = new ArrayList();
+        coins = new ArrayList();
 	}
 	
 	// Update is called once per frame
@@ -71,15 +75,16 @@ public class GameManager : MonoBehaviour {
 
         //////clean menus
         Util.menuManager.showPlayScreen();
-        Invoke("increaseWind0", 5f);
-        Invoke("increaseWind1", 15f);
+        Invoke("increaseWind0", 3f);
+        Invoke("increaseWind1", zoneTime);
+        InvokeRepeating("spawnCoins", 2f, 10f);
     }
 
     void increaseWind0() {
         Wind.setMaxWind(0.03f);
     }
     void increaseWind1() {
-        Wind.setMaxWind(0.07f);
+        Wind.setMaxWind(0.08f);
     }
 
     void spawnClouds() {
@@ -105,6 +110,22 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    void spawnCoins() {
+        int num = (int)Random.Range(2f, 5.99f);
+        GameObject obj;
+        for (int i = 0; i < num; i++) {
+            obj = Instantiate(coinPrefab);
+            obj.transform.localScale = new Vector3(.3f, .3f, .3f);
+            obj.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(Util.rocket.transform.position.y + 30f, Util.rocket.transform.position.y + rocketSpeed * 10f + 30f));
+        }
+    }
+
+
+
+
+
+
+    //Death
 
     public void die(string reason) {
         Util.saveManager.save();
@@ -143,6 +164,12 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    void removeCoins() {
+        foreach (GameObject obj in coins) {
+            Destroy(obj);
+        }
+    }
+
     void showFailScreen() {
         Util.wm.dieScreen = false;
         
@@ -153,6 +180,7 @@ public class GameManager : MonoBehaviour {
         Destroy(debris);
         Destroy(explosion);
         removeClouds();
+        removeCoins();
 
         Util.menuManager.showReplayMenu();
 
