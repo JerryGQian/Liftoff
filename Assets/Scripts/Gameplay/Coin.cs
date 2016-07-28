@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Coin : MonoBehaviour {
     public static float spinSpeed = 150f;
+    public GameObject coinCanvasPrefab;
 	// Use this for initialization
 	void Start () {
         transform.eulerAngles = new Vector3(0f, 0f, Random.Range(0, 360f));
@@ -18,6 +19,10 @@ public class Coin : MonoBehaviour {
             Util.wm.coins++;
             WorldManager.updateCoinCount();
             //SPAWN +1 TEXT HERE
+            GameObject obj = Instantiate(coinCanvasPrefab);
+            obj.GetComponent<RectTransform>().anchoredPosition = Camera.main.WorldToScreenPoint(transform.position);
+            obj.GetComponent<RectTransform>().localScale = new Vector3(1.3f, 1.3f, 1.3f);
+            obj.transform.SetParent(Util.canvas.transform);
             Destroy(gameObject);
         }
     }

@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour {
     public GameObject coinPrefab;
     ArrayList coins;
 
+    public GameObject zoneTextPrefab;
+    GameObject zoneText;
+
 	// Use this for initialization
 	void Start () {
         Util.gm = this;
@@ -55,8 +58,9 @@ public class GameManager : MonoBehaviour {
     public void play() {
         Wind.setMaxWind(0);
         Util.cm.cameraTargetSize = 10f;
-        Camera.main.orthographicSize = 8f;
+
         Camera.main.transform.position = new Vector3(0, 0, -10f);
+
         Camera.main.GetComponent<Animator>().SetTrigger("Darken");
         Util.wm.rocket.transform.position = new Vector3(0, 0, 0);
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
@@ -70,14 +74,17 @@ public class GameManager : MonoBehaviour {
         spawnClouds();
 
         distance = 0;
+        zoneID = 0;
 
         CancelInvoke("showFailScreen");
 
         //////clean menus
         Util.menuManager.showPlayScreen();
         Invoke("increaseWind0", 3f);
-        Invoke("increaseWind1", zoneTime);
-        InvokeRepeating("spawnCoins", 2f, 10f);
+        Invoke("increaseWind1", zoneTime * 1.5f);
+        InvokeRepeating("spawnCoins", 1f, 10f);
+
+        InvokeRepeating("updateZone", 0.1f, zoneTime);
     }
 
     void increaseWind0() {
@@ -116,7 +123,8 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < num; i++) {
             obj = Instantiate(coinPrefab);
             obj.transform.localScale = new Vector3(.3f, .3f, .3f);
-            obj.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(Util.rocket.transform.position.y + 30f, Util.rocket.transform.position.y + rocketSpeed * 10f + 30f));
+            obj.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(Util.rocket.transform.position.y + 30f, Util.rocket.transform.position.y + rocketSpeed * 10f));
+            coins.Add(obj);
         }
     }
 
@@ -179,6 +187,7 @@ public class GameManager : MonoBehaviour {
         Destroy(plume);
         Destroy(debris);
         Destroy(explosion);
+        Destroy(zoneText);
         removeClouds();
         removeCoins();
 
@@ -187,6 +196,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void updateZone() {
+        int prevZoneID = zoneID;
         zoneID = 1 + (int)(distance / zoneSize);
         switch (zoneID) {
             case 1: zoneName = "Troposphere"; break;
@@ -241,6 +251,14 @@ public class GameManager : MonoBehaviour {
             case 50: zoneName = ""; break;
             case 51: zoneName = ""; break;
             default: zoneName = "Space"; break;
+        }
+
+        if (prevZoneID < zoneID) {
+            if (zoneText != null) {
+                zoneText.GetComponent<ZoneText>().remove();
+            }
+            zoneText = Instantiate(zoneTextPrefab);
+            zoneText.GetComponent<ZoneText>().setText(zoneName);
         }
     }
 }

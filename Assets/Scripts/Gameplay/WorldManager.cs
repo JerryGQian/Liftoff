@@ -21,6 +21,8 @@ public class WorldManager : MonoBehaviour {
     public bool hasCheated = false;
     void Awake() {
         Util.wm = this;
+        Util.coin = GameObject.Find("Coin").GetComponent<RectTransform>();
+        Util.canvas = GameObject.Find("Canvas");
     }
 	// Use this for initialization
 	void Start () {
@@ -29,6 +31,8 @@ public class WorldManager : MonoBehaviour {
 
         Util.saveManager.load();
         updateCoinCount();
+
+        
 	}
 	
 	// Update is called once per frame

@@ -37,7 +37,7 @@ public class Wind : MonoBehaviour {
         do {
             targetWind = Random.Range(-maxWind, maxWind);
         }
-        while (Mathf.Abs(targetWind) > maxWind * 0.3f);
+        while (Mathf.Abs(targetWind) < maxWind * 0.3f);
         CancelInvoke("newTargetWind");
         Invoke("newTargetWind", Random.Range(windChangeDelay * 0.5f, windChangeDelay));
     }

@@ -11,6 +11,7 @@ public class SmoothMotion : MonoBehaviour {
     bool isRectTransform = false;
 
     public bool deactivateOnFinish;
+    public bool deleteOnFinish;
     RectTransform rect;
     void Awake() {
         if (GetComponent<RectTransform>() != null) {
@@ -37,6 +38,9 @@ public class SmoothMotion : MonoBehaviour {
         began = false;
         if (deactivateOnFinish) {
             gameObject.SetActive(false);
+        }
+        if (deleteOnFinish) {
+            Destroy(gameObject);
         }
     }
 
