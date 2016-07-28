@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour {
         Wind.setMaxWind(0);
         Util.cm.cameraTargetSize = 10f;
 
-        Camera.main.transform.position = new Vector3(0, 0, -10f);
+        
 
         Camera.main.GetComponent<Animator>().SetTrigger("Darken");
         Util.wm.rocket.transform.position = new Vector3(0, 0, 0);
@@ -168,6 +168,7 @@ public class GameManager : MonoBehaviour {
     public void resetRocket() {
         Util.wm.rocket.transform.position = new Vector3(0, 0, 0);
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
+        Util.rocket.bottomPos = Vector3.zero;
     }
 
     void removeClouds() {
