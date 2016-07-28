@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour {
         Wind.setMaxWind(0.03f);
     }
     void increaseWind1() {
-        Wind.setMaxWind(0.08f);
+        Wind.setMaxWind(0.07f);
     }
 
     void spawnClouds() {
@@ -155,6 +155,10 @@ public class GameManager : MonoBehaviour {
         explosion = Instantiate(explosionPrefab);
         explosion.transform.position = Util.rocket.transform.position + new Vector3(0, 2.25f, 0);
         explosion.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        CancelInvoke("increaseWind0");
+        CancelInvoke("increaseWind1");
+        CancelInvoke("spawnCoins");
+
     }
 
     public void die() {
@@ -170,12 +174,14 @@ public class GameManager : MonoBehaviour {
         foreach (GameObject obj in clouds) {
             Destroy(obj);
         }
+        clouds = new ArrayList();
     }
 
     void removeCoins() {
         foreach (GameObject obj in coins) {
             Destroy(obj);
         }
+        coins = new ArrayList();
     }
 
     void showFailScreen() {
@@ -192,6 +198,8 @@ public class GameManager : MonoBehaviour {
         removeCoins();
 
         Util.menuManager.showReplayMenu();
+
+        Util.wind.windPrefix = "WIND ";
 
     }
 
@@ -259,6 +267,12 @@ public class GameManager : MonoBehaviour {
             }
             zoneText = Instantiate(zoneTextPrefab);
             zoneText.GetComponent<ZoneText>().setText(zoneName);
+            if (zoneID < 4) {
+                Util.wind.windPrefix = "WIND ";
+            }
+            else {
+                Util.wind.windPrefix = "GRAVITY ";
+            }
         }
     }
 }
