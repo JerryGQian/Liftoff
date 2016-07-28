@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour {
     //Death
 
     public void die(string reason) {
-        Util.saveManager.save();
+        
 
         Util.wm.gameActive = false;
         Util.wm.dieScreen = true;
@@ -159,10 +159,21 @@ public class GameManager : MonoBehaviour {
         CancelInvoke("increaseWind1");
         CancelInvoke("spawnCoins");
 
+        if (distance > Util.wm.best) {
+            Util.wm.best = distance;
+            newBest();
+        }
+
+        Util.saveManager.save();
+
     }
 
     public void die() {
         die("");
+    }
+
+    void newBest() {
+        //YAY! NEW BEST!
     }
 
     public void resetRocket() {
