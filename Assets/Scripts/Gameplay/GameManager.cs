@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour {
     public void resetRocket() {
         Util.wm.rocket.transform.position = new Vector3(0, 0, 0);
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
-        Util.rocket.bottomPos = Vector3.zero;
+        
     }
 
     void removeClouds() {
@@ -197,7 +197,7 @@ public class GameManager : MonoBehaviour {
         Destroy(zoneText);
         removeClouds();
         removeCoins();
-
+        Util.rocket.bottomPos = Vector3.zero;
         Util.menuManager.showReplayMenu();
 
         Util.wind.windPrefix = "WIND ";

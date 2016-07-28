@@ -31,7 +31,7 @@ public class WorldManager : MonoBehaviour {
 
         Util.saveManager.load();
         updateCoinCount();
-
+        controlScheme = 1;
         
 	}
 	

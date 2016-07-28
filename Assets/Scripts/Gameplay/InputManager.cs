@@ -20,9 +20,17 @@ public class InputManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (Application.platform != RuntimePlatform.WindowsEditor) {
-            if (Input.touchCount >= 1) {
-                processScreenPos(Input.GetTouch(0).position);
+            switch (Util.wm.controlScheme) {
+                case 0:
+                    {
+                        if (Input.touchCount >= 1) {
+                            processScreenPos(Input.GetTouch(0).position);
+                        }
+                        break;
+                    }
+                case 1: processAccelerometer(); break;
             }
+            
         }
         else {
             processScreenPos(Input.mousePosition);
@@ -32,6 +40,13 @@ public class InputManager : MonoBehaviour {
     void processScreenPos(Vector2 pos) {
         pos = pos - new Vector2(middleX, 0);
         angleRatio = pos.x / (middleX * activeScreenPercentage);
+        if (Mathf.Abs(angleRatio) > 1f) {
+            angleRatio = 1f * Mathf.Sign(angleRatio);
+        }
+    }
+
+    void processAccelerometer() {
+        angleRatio = (Input.acceleration.x) / (0.5f);
         if (Mathf.Abs(angleRatio) > 1f) {
             angleRatio = 1f * Mathf.Sign(angleRatio);
         }
