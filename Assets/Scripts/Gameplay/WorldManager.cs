@@ -5,6 +5,8 @@ using UnityEngine.UI;
 public class WorldManager : MonoBehaviour {
     public GameObject rocket;
     public Text coinCounter;
+    public Text bestScore;
+    public GameObject bestBar;
     public float gameTime = 0;
     public GameObject gm;
     public bool gameActive = false;
@@ -31,7 +33,12 @@ public class WorldManager : MonoBehaviour {
 
         Util.saveManager.load();
         updateCoinCount();
+        updateBest();
         controlScheme = 1;
+        //Util.scrollManager.spawnShowcase();
+        Util.scrollManager.setRocket();
+        Util.rocket.transform.position = new Vector3(0, -100f, 0);
+        
         
 	}
 	
@@ -39,6 +46,11 @@ public class WorldManager : MonoBehaviour {
 	void Update () {
         if (gameActive) {
             gameTime += Time.deltaTime;
+        }
+
+        Util.even = !Util.even;
+        if (Util.even) {
+            Util.even2 = !Util.even2;
         }
 	}
 
@@ -49,12 +61,17 @@ public class WorldManager : MonoBehaviour {
             dieScreen = false;
             gameTime = 0;
             attempts++;
-
+            Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);
             Util.gm.play();
         }
     }
 
     public static void updateCoinCount() {
         Util.wm.coinCounter.text = "" + Util.wm.coins;
+    }
+
+    public static void updateBest() {
+        Util.wm.bestScore.text = "" + (int)Util.wm.best;
+        
     }
 }

@@ -9,5 +9,11 @@ public class CoinCanvas : MonoBehaviour {
         GetComponent<SmoothMotion>().endPos = targetPos;
         GetComponent<SmoothMotion>().duration = 0.8f;
         GetComponent<SmoothMotion>().begin();
+        Invoke("incrementCoin", 0.7f);
+    }
+
+    void incrementCoin() {
+        Util.wm.coins++;
+        WorldManager.updateCoinCount();
     }
 }

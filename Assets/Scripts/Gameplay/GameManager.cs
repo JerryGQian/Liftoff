@@ -52,6 +52,10 @@ public class GameManager : MonoBehaviour {
             }
             distance = distance + scoreSpeed * Time.deltaTime;
             Util.menuManager.updateScore((int)distance);
+            if (distance > Util.wm.best) {
+                Util.wm.best = distance;
+                WorldManager.updateBest();
+            }
         }
     }
 
@@ -59,7 +63,7 @@ public class GameManager : MonoBehaviour {
         Wind.setMaxWind(0);
         Util.cm.cameraTargetSize = 10f;
 
-        
+        Util.rocket.setup(Util.rocketHolder.getRocket(ScrollManager.selectedRocket));
 
         Camera.main.GetComponent<Animator>().SetTrigger("Darken");
         Util.wm.rocket.transform.position = new Vector3(0, 0, 0);
@@ -161,6 +165,7 @@ public class GameManager : MonoBehaviour {
 
         if (distance > Util.wm.best) {
             Util.wm.best = distance;
+            WorldManager.updateBest();
             newBest();
         }
 
@@ -177,7 +182,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void resetRocket() {
-        Util.wm.rocket.transform.position = new Vector3(0, 0, 0);
+        Util.wm.rocket.transform.position = new Vector3(0, -100f, 0);
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
         
     }

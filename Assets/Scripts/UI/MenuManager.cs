@@ -85,10 +85,12 @@ public class MenuManager : MonoBehaviour {
             coins.GetComponent<SmoothMotion>().begin();
             firstShowing = false;
         }
+        Util.scrollManager.hidden(true);
         
     }
     public void hidePlayScreen() {
         score.SetActive(false);
+        Util.scrollManager.hidden(false);
 
     }
 

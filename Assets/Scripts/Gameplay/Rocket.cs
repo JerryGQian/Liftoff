@@ -14,6 +14,8 @@ public class Rocket : MonoBehaviour {
     public Vector3 bottomPos;
     public Vector3 tipPos;
 
+    public SpriteRenderer rocketRenderer;
+
     void Awake() {
         Util.rocket = this;
     }
@@ -48,5 +50,9 @@ public class Rocket : MonoBehaviour {
             transform.position = bottomPos + new Vector3(0, Mathf.Cos(Util.wm.gameTime) * Time.deltaTime);
             transform.eulerAngles = new Vector3(0, 0, finalAngle);
         }
+    }
+
+    public void setup(RocketInfo ri) {
+        rocketRenderer.sprite = ri.sprite;
     }
 }

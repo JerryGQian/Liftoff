@@ -120,6 +120,7 @@
     <Compile Include="Assets\Scripts\Gameplay\Nozzle.cs" />
     <Compile Include="Assets\Scripts\Gameplay\PhysicsCloud.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Rocket.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\RocketHolder.cs" />
     <Compile Include="Assets\Scripts\Gameplay\SideBoundBox.cs" />
     <Compile Include="Assets\Scripts\Gameplay\SpriteRandomizer.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Wind.cs" />
@@ -132,6 +133,8 @@
     <Compile Include="Assets\Scripts\UI\CoinCanvas.cs" />
     <Compile Include="Assets\Scripts\UI\FPSDisplay.cs" />
     <Compile Include="Assets\Scripts\UI\MenuManager.cs" />
+    <Compile Include="Assets\Scripts\UI\ScrollManager.cs" />
+    <Compile Include="Assets\Scripts\UI\ShowcaseRocket.cs" />
     <Compile Include="Assets\Scripts\UI\ZoneText.cs" />
     <Compile Include="Assets\Scripts\Util.cs" />
   </ItemGroup>

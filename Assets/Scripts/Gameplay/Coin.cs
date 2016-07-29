@@ -16,8 +16,7 @@ public class Coin : MonoBehaviour {
 
     void OnTriggerEnter2D(Collider2D coll) {
         if (Util.wm.gameActive && coll.gameObject.name.Equals("Rocket")) {
-            Util.wm.coins++;
-            WorldManager.updateCoinCount();
+            
             //SPAWN +1 TEXT HERE
             GameObject obj = Instantiate(coinCanvasPrefab);
             obj.GetComponent<RectTransform>().anchoredPosition = Camera.main.WorldToScreenPoint(transform.position);

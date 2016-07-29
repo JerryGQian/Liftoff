@@ -49,6 +49,7 @@ public class SaveManager : MonoBehaviour {
 
             Util.wm.muted = data.muted;
             Util.wm.controlScheme = data.controlScheme;
+            ScrollManager.selector = data.selector;
             Util.wm.hasCheated = data.hasCheated;
         }
         Debug.Log("Data loaded");
@@ -81,6 +82,7 @@ public class SaveManager : MonoBehaviour {
 
         data2.muted = Util.wm.muted;
         data2.controlScheme = Util.wm.controlScheme;
+        data2.selector = ScrollManager.selector;
         data2.hasCheated = Util.wm.hasCheated;
 
         bf.Serialize(file, data2);
@@ -102,5 +104,6 @@ public class GameData {
 public class Settings {
     public bool muted;
     public int controlScheme;
+    public float selector;
     public bool hasCheated;
 }

@@ -10,9 +10,14 @@ public class Util {
     public static SaveManager saveManager;
     public static MenuManager menuManager;
     public static GameObject canvas;
+    public static ScrollManager scrollManager;
+    public static RocketHolder rocketHolder;
 
     public static Nozzle nozzle;
     public static Wind wind;
     public static Rocket rocket;
     public static RectTransform coin;
+
+    public static bool even;
+    public static bool even2;
 }
