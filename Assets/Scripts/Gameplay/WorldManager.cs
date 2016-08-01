@@ -11,7 +11,7 @@ public class WorldManager : MonoBehaviour {
     public GameObject gm;
     public bool gameActive = false;
     public bool dieScreen = false;
-    public float clickTime;
+    public float cameraSizePlay;
 
     public float best;
     public int coins;
@@ -35,6 +35,9 @@ public class WorldManager : MonoBehaviour {
     }
 	// Use this for initialization
 	void Start () {
+        Application.targetFrameRate = 50;
+
+        cameraSizePlay = 10f * ((Screen.height * 1f / Screen.width) / 1.7777f);
         gameTime = 0;
         Util.cm.cameraTargetSize = 8f;
 
@@ -62,7 +65,6 @@ public class WorldManager : MonoBehaviour {
 
     public void play() {
         if (!gameActive) {
-            clickTime = Time.time;
             gameActive = true;
             dieScreen = false;
             gameTime = 0;

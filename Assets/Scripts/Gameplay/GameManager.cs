@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour {
     public GameObject obstaclePrefab;
     ArrayList obstacles;
 
+    public GameObject planetBGPrefab;
+    GameObject planetBG;
+
 	// Use this for initialization
 	void Start () {
         Util.gm = this;
@@ -65,11 +68,13 @@ public class GameManager : MonoBehaviour {
 
     public void play() {
         Wind.setMaxWind(0);
-        Util.cm.cameraTargetSize = 10f;
+        Util.cm.cameraTargetSize = Util.wm.cameraSizePlay;
 
         Util.rocket.setup(Util.rocketHolder.getRocket(ScrollManager.selectedRocket));
 
         Camera.main.GetComponent<Animator>().SetTrigger("Darken");
+        Camera.main.transform.position = new Vector3(0, 0, -10);
+
         Util.wm.rocket.transform.position = new Vector3(0, 0, 0);
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
 
@@ -91,8 +96,7 @@ public class GameManager : MonoBehaviour {
         Invoke("increaseWind0", 3f);
         Invoke("increaseWind1", zoneTime * 1.5f);
         InvokeRepeating("spawnCoins", 1f, 10f);
-
-        InvokeRepeating("updateZone", 0.1f, zoneTime);
+        InvokeRepeating("updateZone", 0.05f, zoneTime);
         Invoke("spawnObstacle", zoneTime);
     }
 
@@ -235,6 +239,7 @@ public class GameManager : MonoBehaviour {
         Destroy(debris);
         Destroy(explosion);
         Destroy(zoneText);
+        Destroy(planetBG);
         removeClouds();
         removeCoins();
         removeObstacles();
@@ -252,22 +257,22 @@ public class GameManager : MonoBehaviour {
             case 1: zoneName = "Troposphere"; break;
             case 2: zoneName = "Stratosphere"; break;
             case 3: zoneName = "Mesosphere"; break;
-            case 4: zoneName = "Low-Earth Orbit"; break;
-            case 5: zoneName = "Geostationary Orbit"; break;
-            case 6: zoneName = "Lunar Orbit"; break;
-            case 7: zoneName = "Martian Orbit"; break;
-            case 8: zoneName = "Asteroid Belt"; break;
-            case 9: zoneName = "Jupiter Orbit"; break;
-            case 10: zoneName = "Saturn Orbit"; break;
+            case 4: zoneName = "Geostationary Orbit"; break;
+            case 5: zoneName = "Lunar Orbit"; break;
+            case 6: zoneName = "Martian Orbit"; break;
+            case 7: zoneName = "Asteroid Belt"; break;
+            case 8: zoneName = "Jupiter Orbit"; break;
+            case 9: zoneName =  "Saturn Orbit"; break;
+            case 10: zoneName = "Uranus Orbit"; break;
             case 11: zoneName = "Neptune Orbit"; break;
-            case 12: zoneName = "Uranus Orbit"; break;
-            case 13: zoneName = "Kuiper Belt"; break;
-            case 14: zoneName = "Pluto Orbit"; break;
-            case 15: zoneName = "Heliosphere"; break;
-            case 16: zoneName = "Oort Cloud"; break;
-            case 17: zoneName = "Interstellar Space"; break;
-            case 18: zoneName = "Alpha Centauri"; break;
-            case 19: zoneName = "Interstellar Space"; break;
+            case 12: zoneName = "Kuiper Belt"; break;
+            case 13: zoneName = "Pluto Orbit"; break;
+            case 14: zoneName = "Heliosphere"; break;
+            case 15: zoneName = "Oort Cloud"; break;
+            case 16: zoneName = "Interstellar Space"; break;
+            case 17: zoneName = "Alpha Centauri"; break;
+            case 18: zoneName = "Interstellar Space"; break;
+            case 19: zoneName = ""; break;
             case 20: zoneName = ""; break;
             case 21: zoneName = ""; break;
             case 22: zoneName = ""; break;
@@ -315,6 +320,7 @@ public class GameManager : MonoBehaviour {
             else {
                 Util.wind.windPrefix = "GRAVITY ";
             }
+            planetBG = Instantiate(planetBGPrefab);
         }
     }
 }
