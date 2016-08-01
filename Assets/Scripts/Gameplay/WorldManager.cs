@@ -18,9 +18,16 @@ public class WorldManager : MonoBehaviour {
     public float totalDistance;
     public int attempts = 0;
 
-    public bool muted = false;
-    public int controlScheme = 0;
+    public bool musicMuted = false;
+    public bool soundMuted = false;
+    public bool scienceMode = false;
+    public ControlScheme controlScheme = 0;
     public bool hasCheated = false;
+
+    public GameObject settingsPrefab;
+    GameObject settings;
+
+
     void Awake() {
         Util.wm = this;
         Util.coin = GameObject.Find("Coin").GetComponent<RectTransform>();
@@ -34,11 +41,10 @@ public class WorldManager : MonoBehaviour {
         Util.saveManager.load();
         updateCoinCount();
         updateBest();
-        controlScheme = 1;
         //Util.scrollManager.spawnShowcase();
         Util.scrollManager.setRocket();
         Util.rocket.transform.position = new Vector3(0, -100f, 0);
-        
+        Util.width = Camera.main.GetComponent<BoxCollider2D>().size.x / 2f;
         
 	}
 	
@@ -63,6 +69,16 @@ public class WorldManager : MonoBehaviour {
             attempts++;
             Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);
             Util.gm.play();
+            Destroy(settings);
+        }
+    }
+
+    public void showSettings() {
+        if (settings == null) {
+            settings = Instantiate(settingsPrefab);
+        }
+        else {
+            Destroy(settings);
         }
     }
 

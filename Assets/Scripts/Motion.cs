@@ -11,6 +11,7 @@ public class Motion : MonoBehaviour {
     bool isRectTransform = false;
 
     public bool deactivateOnFinish;
+    public bool destroyOnFinish;
     RectTransform rect;
     void Awake() {
         if (GetComponent<RectTransform>() != null) {
@@ -35,7 +36,10 @@ public class Motion : MonoBehaviour {
 
     public void end() {
         began = false;
-        if (deactivateOnFinish) {
+        if (destroyOnFinish) {
+            Destroy(gameObject);
+        }
+        else if (deactivateOnFinish) {
             gameObject.SetActive(false);
         }
     }

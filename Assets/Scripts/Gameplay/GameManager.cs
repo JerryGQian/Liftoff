@@ -33,13 +33,17 @@ public class GameManager : MonoBehaviour {
     public GameObject zoneTextPrefab;
     GameObject zoneText;
 
+    public GameObject obstaclePrefab;
+    ArrayList obstacles;
+
 	// Use this for initialization
 	void Start () {
         Util.gm = this;
         zoneTime = zoneSize / scoreSpeed;
         clouds = new ArrayList();
         coins = new ArrayList();
-	}
+        obstacles = new ArrayList();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -89,6 +93,7 @@ public class GameManager : MonoBehaviour {
         InvokeRepeating("spawnCoins", 1f, 10f);
 
         InvokeRepeating("updateZone", 0.1f, zoneTime);
+        Invoke("spawnObstacle", zoneTime);
     }
 
     void increaseWind0() {
@@ -132,6 +137,11 @@ public class GameManager : MonoBehaviour {
         }
     }
 
+    void spawnObstacle() {
+        obstacles.Add(Instantiate(obstaclePrefab));
+        Invoke("spawnObstacle", Random.Range(2f / zoneID, 5f / zoneID));
+    }
+
 
 
 
@@ -145,7 +155,7 @@ public class GameManager : MonoBehaviour {
         Util.wm.gameActive = false;
         Util.wm.dieScreen = true;
         Invoke("showFailScreen", 1.5f);
-        Invoke("resetRocket", 0.5f);
+        Invoke("resetRocket", 1.5f);
         Util.cm.cameraTargetSize = 8f;
 
         Wind.setMaxWind(0);
@@ -155,13 +165,20 @@ public class GameManager : MonoBehaviour {
         debris = Instantiate(debrisPrefab);
         debris.transform.position = Util.rocket.transform.position + new Vector3(0, 1f, 0);
         debris.transform.localScale = new Vector3(1.3f, 1.3f, 1.3f);
+        debris.transform.SetParent(Util.wm.rocket.transform);
 
         explosion = Instantiate(explosionPrefab);
         explosion.transform.position = Util.rocket.transform.position + new Vector3(0, 2.25f, 0);
         explosion.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        explosion.transform.SetParent(Util.wm.rocket.transform);
+
+        Util.wm.rocket.GetComponent<Motion>().endPos = Util.rocket.transform.position + new Vector3(0, rocketSpeed * 0.75f);
+        Util.wm.rocket.GetComponent<Motion>().begin();
+
         CancelInvoke("increaseWind0");
         CancelInvoke("increaseWind1");
         CancelInvoke("spawnCoins");
+        CancelInvoke("spawnObstacle");
 
         if (distance > Util.wm.best) {
             Util.wm.best = distance;
@@ -201,6 +218,13 @@ public class GameManager : MonoBehaviour {
         coins = new ArrayList();
     }
 
+    void removeObstacles() {
+        foreach (GameObject obj in obstacles) {
+            Destroy(obj);
+        }
+        obstacles = new ArrayList();
+    }
+
     void showFailScreen() {
         Util.wm.dieScreen = false;
         
@@ -213,6 +237,7 @@ public class GameManager : MonoBehaviour {
         Destroy(zoneText);
         removeClouds();
         removeCoins();
+        removeObstacles();
         Util.rocket.bottomPos = Vector3.zero;
         Util.menuManager.showReplayMenu();
 

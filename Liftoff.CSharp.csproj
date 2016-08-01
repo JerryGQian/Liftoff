@@ -118,6 +118,8 @@
     <Compile Include="Assets\Scripts\Gameplay\GameManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\InputManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Nozzle.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Obstacle.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\ObstacleHolder.cs" />
     <Compile Include="Assets\Scripts\Gameplay\PhysicsCloud.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Rocket.cs" />
     <Compile Include="Assets\Scripts\Gameplay\RocketHolder.cs" />
@@ -129,11 +131,14 @@
     <Compile Include="Assets\Scripts\SaveManager.cs" />
     <Compile Include="Assets\Scripts\Scaler.cs" />
     <Compile Include="Assets\Scripts\SmoothMotion.cs" />
+    <Compile Include="Assets\Scripts\Spinner.cs" />
     <Compile Include="Assets\Scripts\Suicider.cs" />
+    <Compile Include="Assets\Scripts\UI\Alert.cs" />
     <Compile Include="Assets\Scripts\UI\CoinCanvas.cs" />
     <Compile Include="Assets\Scripts\UI\FPSDisplay.cs" />
     <Compile Include="Assets\Scripts\UI\MenuManager.cs" />
     <Compile Include="Assets\Scripts\UI\ScrollManager.cs" />
+    <Compile Include="Assets\Scripts\UI\SettingsManager.cs" />
     <Compile Include="Assets\Scripts\UI\ShowcaseRocket.cs" />
     <Compile Include="Assets\Scripts\UI\ZoneText.cs" />
     <Compile Include="Assets\Scripts\Util.cs" />

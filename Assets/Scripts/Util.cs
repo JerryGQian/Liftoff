@@ -12,11 +12,14 @@ public class Util {
     public static GameObject canvas;
     public static ScrollManager scrollManager;
     public static RocketHolder rocketHolder;
+    public static ObstacleHolder obstacleHolder;
 
     public static Nozzle nozzle;
     public static Wind wind;
     public static Rocket rocket;
     public static RectTransform coin;
+
+    public static float width;
 
     public static bool even;
     public static bool even2;

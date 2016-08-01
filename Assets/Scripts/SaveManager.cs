@@ -47,7 +47,9 @@ public class SaveManager : MonoBehaviour {
             }
             file.Close();
 
-            Util.wm.muted = data.muted;
+            Util.wm.musicMuted = data.musicMuted;
+            Util.wm.soundMuted = data.soundMuted;
+            Util.wm.scienceMode = data.scienceMode;
             Util.wm.controlScheme = data.controlScheme;
             ScrollManager.selector = data.selector;
             Util.wm.hasCheated = data.hasCheated;
@@ -80,7 +82,9 @@ public class SaveManager : MonoBehaviour {
 
         Settings data2 = new Settings();
 
-        data2.muted = Util.wm.muted;
+        data2.musicMuted = Util.wm.musicMuted;
+        data2.soundMuted = Util.wm.soundMuted;
+        data2.scienceMode = Util.wm.scienceMode;
         data2.controlScheme = Util.wm.controlScheme;
         data2.selector = ScrollManager.selector;
         data2.hasCheated = Util.wm.hasCheated;
@@ -102,8 +106,10 @@ public class GameData {
 
 [Serializable]
 public class Settings {
-    public bool muted;
-    public int controlScheme;
+    public bool musicMuted;
+    public bool soundMuted;
+    public bool scienceMode;
+    public ControlScheme controlScheme;
     public float selector;
     public bool hasCheated;
 }

@@ -1,5 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
+
+[Serializable]
+public enum ControlScheme { tilt, touch, touchInvert, tilt2, other };
 
 public class InputManager : MonoBehaviour {
     public float angleRatio = 0;
@@ -21,14 +25,14 @@ public class InputManager : MonoBehaviour {
 	void Update () {
         if (Application.platform != RuntimePlatform.WindowsEditor) {
             switch (Util.wm.controlScheme) {
-                case 0:
+                case ControlScheme.touch:
                     {
                         if (Input.touchCount >= 1) {
                             processScreenPos(Input.GetTouch(0).position);
                         }
                         break;
                     }
-                case 1: processAccelerometer(); break;
+                case ControlScheme.tilt: processAccelerometer(); break;
             }
             
         }
