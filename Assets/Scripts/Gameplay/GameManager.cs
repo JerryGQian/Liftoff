@@ -88,6 +88,7 @@ public class GameManager : MonoBehaviour {
 
         distance = 0;
         zoneID = 0;
+        zoneName = "";
 
         CancelInvoke("showFailScreen");
 
@@ -143,7 +144,7 @@ public class GameManager : MonoBehaviour {
 
     void spawnObstacle() {
         obstacles.Add(Instantiate(obstaclePrefab));
-        Invoke("spawnObstacle", Random.Range(2f / zoneID, 5f / zoneID));
+        Invoke("spawnObstacle", Random.Range(3f / zoneID, 6f / zoneID));
     }
 
 
@@ -251,64 +252,11 @@ public class GameManager : MonoBehaviour {
     }
 
     void updateZone() {
-        int prevZoneID = zoneID;
+        string prevZoneName = zoneName;
         zoneID = 1 + (int)(distance / zoneSize);
-        switch (zoneID) {
-            case 1: zoneName = "Troposphere"; break;
-            case 2: zoneName = "Stratosphere"; break;
-            case 3: zoneName = "Mesosphere"; break;
-            case 4: zoneName = "Geostationary Orbit"; break;
-            case 5: zoneName = "Lunar Orbit"; break;
-            case 6: zoneName = "Martian Orbit"; break;
-            case 7: zoneName = "Asteroid Belt"; break;
-            case 8: zoneName = "Jupiter Orbit"; break;
-            case 9: zoneName =  "Saturn Orbit"; break;
-            case 10: zoneName = "Uranus Orbit"; break;
-            case 11: zoneName = "Neptune Orbit"; break;
-            case 12: zoneName = "Kuiper Belt"; break;
-            case 13: zoneName = "Pluto Orbit"; break;
-            case 14: zoneName = "Heliosphere"; break;
-            case 15: zoneName = "Oort Cloud"; break;
-            case 16: zoneName = "Interstellar Space"; break;
-            case 17: zoneName = "Alpha Centauri"; break;
-            case 18: zoneName = "Interstellar Space"; break;
-            case 19: zoneName = ""; break;
-            case 20: zoneName = ""; break;
-            case 21: zoneName = ""; break;
-            case 22: zoneName = ""; break;
-            case 23: zoneName = ""; break;
-            case 24: zoneName = ""; break;
-            case 25: zoneName = ""; break;
-            case 26: zoneName = ""; break;
-            case 27: zoneName = ""; break;
-            case 28: zoneName = ""; break;
-            case 29: zoneName = ""; break;
-            case 30: zoneName = ""; break;
-            case 31: zoneName = ""; break;
-            case 32: zoneName = ""; break;
-            case 33: zoneName = ""; break;
-            case 34: zoneName = ""; break;
-            case 35: zoneName = ""; break;
-            case 36: zoneName = ""; break;
-            case 37: zoneName = ""; break;
-            case 38: zoneName = ""; break;
-            case 39: zoneName = ""; break;
-            case 40: zoneName = ""; break;
-            case 41: zoneName = ""; break;
-            case 42: zoneName = ""; break;
-            case 43: zoneName = ""; break;
-            case 44: zoneName = ""; break;
-            case 45: zoneName = ""; break;
-            case 46: zoneName = ""; break;
-            case 47: zoneName = ""; break;
-            case 48: zoneName = ""; break;
-            case 49: zoneName = ""; break;
-            case 50: zoneName = ""; break;
-            case 51: zoneName = ""; break;
-            default: zoneName = "Space"; break;
-        }
+        zoneName = getZoneName();
 
-        if (prevZoneID < zoneID) {
+        if (!prevZoneName.Equals(zoneName)) {
             if (zoneText != null) {
                 zoneText.GetComponent<ZoneText>().remove();
             }
@@ -322,5 +270,121 @@ public class GameManager : MonoBehaviour {
             }
             planetBG = Instantiate(planetBGPrefab);
         }
+    }
+
+    string getZoneName() {
+        if (Util.wm.scienceMode) {
+            switch (zoneID) {
+                case 1: return "Troposphere";
+                case 2: return "Stratosphere";
+                case 3: return "Mesosphere";
+                case 4: return "Orbit";
+                case 5: return "Lunar Orbit";
+                case 6: return "Martian Orbit";
+                case 7: return "Asteroid Belt";
+                case 8: return "Jupiter Orbit";
+                case 9: return "Saturn Orbit";
+                case 10: return "Uranus Orbit";
+                case 11: return "Neptune Orbit";
+                case 12: return "Kuiper Belt";
+                case 13: return "Pluto Orbit";
+                case 14: return "Heliosphere";
+                case 15: return "Oort Cloud";
+                case 16: return "Interstellar Space";
+                case 17: return "Alpha Centauri";
+                case 18: return "Interstellar Space";
+                case 19: return "";
+                case 20: return "";
+                case 21: return "";
+                case 22: return "";
+                case 23: return "";
+                case 24: return "";
+                case 25: return "";
+                case 26: return "";
+                case 27: return "";
+                case 28: return "";
+                case 29: return "";
+                case 30: return "";
+                case 31: return "";
+                case 32: return "";
+                case 33: return "";
+                case 34: return "";
+                case 35: return "";
+                case 36: return "";
+                case 37: return "";
+                case 38: return "";
+                case 39: return "";
+                case 40: return "";
+                case 41: return "";
+                case 42: return "";
+                case 43: return "";
+                case 44: return "";
+                case 45: return "";
+                case 46: return "";
+                case 47: return "";
+                case 48: return "";
+                case 49: return "";
+                case 50: return "";
+                case 51: return "";
+                default: return "Space";
+            }
+        }
+        else {
+            switch (zoneID) {
+                case 1: return "Atmosphere";
+                case 2: return "Atmosphere";
+                case 3: return "Atmosphere";
+                case 4: return "Orbit";
+                case 5: return "Moon";
+                case 6: return "Mars";
+                case 7: return "Asteroid Belt";
+                case 8: return "Jupiter";
+                case 9: return "Saturn";
+                case 10: return "Uranus";
+                case 11: return "Neptune";
+                case 12: return "Kuiper Belt";
+                case 13: return "Pluto";
+                case 14: return "Heliosphere";
+                case 15: return "Oort Cloud";
+                case 16: return "Interstellar Space";
+                case 17: return "Alpha Centauri";
+                case 18: return "Interstellar Space";
+                case 19: return "";
+                case 20: return "";
+                case 21: return "";
+                case 22: return "";
+                case 23: return "";
+                case 24: return "";
+                case 25: return "";
+                case 26: return "";
+                case 27: return "";
+                case 28: return "";
+                case 29: return "";
+                case 30: return "";
+                case 31: return "";
+                case 32: return "";
+                case 33: return "";
+                case 34: return "";
+                case 35: return "";
+                case 36: return "";
+                case 37: return "";
+                case 38: return "";
+                case 39: return "";
+                case 40: return "";
+                case 41: return "";
+                case 42: return "";
+                case 43: return "";
+                case 44: return "";
+                case 45: return "";
+                case 46: return "";
+                case 47: return "";
+                case 48: return "";
+                case 49: return "";
+                case 50: return "";
+                case 51: return "";
+                default: return "Space";
+            }
+        }
+        return "";
     }
 }

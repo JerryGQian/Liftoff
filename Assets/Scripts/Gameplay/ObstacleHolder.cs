@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class ObstacleHolder : MonoBehaviour {
-    int meteorCount = 3;
+    int meteorCount = 11;
     int satelliteCount = 7;
     public Sprite m1;
     public Sprite m2;
@@ -14,6 +14,7 @@ public class ObstacleHolder : MonoBehaviour {
     public Sprite m8;
     public Sprite m9;
     public Sprite m10;
+    public Sprite m11;
 
     public Sprite s1;
     public Sprite s2;
@@ -70,8 +71,8 @@ public class ObstacleHolder : MonoBehaviour {
             case 8: return m8;
             case 9: return m9;
             case 10: return m10;
-            /*case 11: return new RocketInfo(r11, "");
-            case 12: return new RocketInfo(r12, "");
+            case 11: return m11;
+            /*case 12: return new RocketInfo(r12, "");
             case 13: return new RocketInfo(r13, "");
             case 14: return new RocketInfo(r14, "");
             case 15: return new RocketInfo(r15, "");

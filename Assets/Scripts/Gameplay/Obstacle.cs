@@ -9,6 +9,7 @@ public class Obstacle : MonoBehaviour {
     GameObject alert;
 	// Use this for initialization
 	void Start () {
+        if (Util.even) type = ObstacleType.meteor;
         switch (type) {
             case ObstacleType.meteor: GetComponent<SpriteRenderer>().sprite = Util.obstacleHolder.getMeteor(0); break;
             case ObstacleType.satellite: GetComponent<SpriteRenderer>().sprite = Util.obstacleHolder.getSatellite(0); break;

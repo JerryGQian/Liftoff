@@ -6,11 +6,6 @@ public class ZoneText : MonoBehaviour {
     public SmoothMotion sm1;
     public SmoothMotion sm2;
 
-    void Awake() {
-        
-        
-    }
-
 	// Use this for initialization
 	void Start () {
         
