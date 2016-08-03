@@ -4,6 +4,7 @@ using System.Collections;
 public class ObstacleHolder : MonoBehaviour {
     int meteorCount = 11;
     int satelliteCount = 7;
+    int asteroidCount = 8;
     public Sprite m1;
     public Sprite m2;
     public Sprite m3;
@@ -15,6 +16,7 @@ public class ObstacleHolder : MonoBehaviour {
     public Sprite m9;
     public Sprite m10;
     public Sprite m11;
+    public Sprite m12;
 
     public Sprite s1;
     public Sprite s2;
@@ -26,6 +28,18 @@ public class ObstacleHolder : MonoBehaviour {
     public Sprite s8;
     public Sprite s9;
     public Sprite s10;
+
+    public Sprite a1;
+    public Sprite a2;
+    public Sprite a3;
+    public Sprite a4;
+    public Sprite a5;
+    public Sprite a6;
+    public Sprite a7;
+    public Sprite a8;
+    public Sprite a9;
+    public Sprite a10;
+    public Sprite a11;
 
     /*public Sprite r1;
     public Sprite r2;
@@ -72,8 +86,8 @@ public class ObstacleHolder : MonoBehaviour {
             case 9: return m9;
             case 10: return m10;
             case 11: return m11;
-            /*case 12: return new RocketInfo(r12, "");
-            case 13: return new RocketInfo(r13, "");
+            case 12: return m12;
+            /*case 13: return new RocketInfo(r13, "");
             case 14: return new RocketInfo(r14, "");
             case 15: return new RocketInfo(r15, "");
             case 16: return new RocketInfo(r16, "");
@@ -108,6 +122,33 @@ public class ObstacleHolder : MonoBehaviour {
             case 18: return new RocketInfo(r18, "");
             case 19: return new RocketInfo(r19, "");
             case 20: return new RocketInfo(r20, "");*/
+        }
+        return null;
+    }
+
+    public Sprite getAsteroid(int i) {
+        switch (i) {
+            case 0: return getAsteroid((int)Random.Range(1f, asteroidCount + 0.99f));
+            case 1: return a1;
+            case 2: return a2;
+            case 3: return a3;
+            case 4: return a4;
+            case 5: return a5;
+            case 6: return a6;
+            case 7: return a7;
+            case 8: return a8;
+            case 9: return a9;
+            case 10: return a10;
+            case 11: return a11;
+                /*case 12: return new RocketInfo(r12, "");
+                case 13: return new RocketInfo(r13, "");
+                case 14: return new RocketInfo(r14, "");
+                case 15: return new RocketInfo(r15, "");
+                case 16: return new RocketInfo(r16, "");
+                case 17: return new RocketInfo(r17, "");
+                case 18: return new RocketInfo(r18, "");
+                case 19: return new RocketInfo(r19, "");
+                case 20: return new RocketInfo(r20, "");*/
         }
         return null;
     }

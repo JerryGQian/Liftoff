@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour {
     GameObject zoneText;
 
     public GameObject obstaclePrefab;
+    public GameObject asteroidPrefab;
     ArrayList obstacles;
 
     public GameObject planetBGPrefab;
@@ -143,10 +144,19 @@ public class GameManager : MonoBehaviour {
     }
 
     void spawnObstacle() {
-        obstacles.Add(Instantiate(obstaclePrefab));
-        Invoke("spawnObstacle", Random.Range(3f / zoneID, 6f / zoneID));
+        if (Random.Range(0, 100f) < zoneID * 1.5f + 10f) {
+            spawnAsteroid();
+        }
+        else {
+            obstacles.Add(Instantiate(obstaclePrefab));
+            Invoke("spawnObstacle", Random.Range(3f / zoneID, 6f / zoneID));
+        }
     }
 
+    void spawnAsteroid() {
+        obstacles.Add(Instantiate(asteroidPrefab));
+        Invoke("spawnObstacle", Random.Range(4f / zoneID, 9f / zoneID));
+    }
 
 
 
