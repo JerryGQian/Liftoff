@@ -45,21 +45,22 @@ public class RocketHolder : MonoBehaviour {
         switch (i) {
             case 0: if (Util.even2) {
                     ri = getRocket((int)Random.Range(1f, ScrollManager.rocketCount + 0.99f));
+                    ri.name = "RANDOM";
                     return ri;
                 }
                 else {
                     return ri;
                 }
-            case 1:  return new RocketInfo(r1, "");
-            case 2:  return new RocketInfo(r2, "");
-            case 3:  return new RocketInfo(r3, "");
-            case 4:  return new RocketInfo(r4, "");
-            case 5:  return new RocketInfo(r5, "");
-            case 6:  return new RocketInfo(r6, "");
-            case 7:  return new RocketInfo(r7, "");
-            case 8:  return new RocketInfo(r8, "");
-            case 9:  return new RocketInfo(r9, "");
-            case 10: return new RocketInfo(r10,"");
+            case 1:  return new RocketInfo(r1, "ROCKET");
+            case 2:  return new RocketInfo(r2, "FALGON 9");
+            case 3:  return new RocketInfo(r3, "SOYUZ");
+            case 4:  return new RocketInfo(r4, "PROTON");
+            case 5:  return new RocketInfo(r5, "ATLAS");
+            case 6:  return new RocketInfo(r6, "ARIANE");
+            case 7:  return new RocketInfo(r7, "SPACE SHUTTLE");
+            case 8:  return new RocketInfo(r8, "V2");
+            case 9:  return new RocketInfo(r9, "SATURN V");
+            case 10: return new RocketInfo(r10,"N1");
             case 11: return new RocketInfo(r11,"");
             case 12: return new RocketInfo(r12,"");
             case 13: return new RocketInfo(r13,"");

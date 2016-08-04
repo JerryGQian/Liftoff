@@ -2,13 +2,13 @@
 using System.Collections;
 using UnityEngine.UI;
 public class ScrollManager : MonoBehaviour {
-    ScrollRect sr;
+    public ScrollRect sr;
     public static float selector = 1;
     public float selectorVis;
     public static int selectedRocket = 1;
     public static float selectedRocketTarget;
     float selectorInitial = 0;
-    bool dragging;
+    public bool dragging;
     public static float scrollSpeed = 10f;
     public static float juice = 7f;
     public static float rocketSep = 4.5f;
@@ -20,6 +20,7 @@ public class ScrollManager : MonoBehaviour {
     public GameObject rocket3;
 
     public GameObject scrollParent;
+    public Text rocketName;
 
     void Awake() {
         Util.scrollManager = this;
@@ -41,6 +42,7 @@ public class ScrollManager : MonoBehaviour {
         if (Util.even) {
             setRocket();
         }
+        selectorVis = selector;
 	}
 
     public void OnBeginDrag() {
@@ -77,10 +79,10 @@ public class ScrollManager : MonoBehaviour {
         return (sr.horizontalNormalizedPosition - 0.5f);
     }
 
-    void setClosestRocket() {
+    public void setClosestRocket() {
         
         for (int i = 0; i <= rocketCount; i++) {
-            if (Mathf.Abs(i - selector) < 0.5f) {
+            if (Mathf.Abs(i - selector) <= 0.5f) {
                 selectedRocket = i;
                 break;
             }
@@ -107,6 +109,7 @@ public class ScrollManager : MonoBehaviour {
 
         rocket2.transform.localPosition = new Vector3((selectedRocket - 1) * rocketSep, 0, 0);
         rocket2.GetComponent<ShowcaseRocket>().setup(Util.rocketHolder.getRocket(selectedRocket));
+        rocketName.text = Util.rocketHolder.getRocket(selectedRocket).name;
 
         if (selectedRocket < rocketCount) {
             rocket3.SetActive(true);

@@ -48,7 +48,7 @@ public class WorldManager : MonoBehaviour {
         updateBest();
         //Util.scrollManager.spawnShowcase();
         Util.scrollManager.setRocket();
-        Util.rocket.transform.position = new Vector3(0, -100f, 0);
+        //Util.rocket.transform.position = new Vector3(0, -100f, 0);
         Util.width = Camera.main.GetComponent<BoxCollider2D>().size.x / 2f;
         
 	}
@@ -88,18 +88,33 @@ public class WorldManager : MonoBehaviour {
     }
 
     public void showIAP() {
-        if (settings == null) {
-            settings = Instantiate(settingsPrefab);
+        Debug.Log("Showing IAP");
+        if (!gameActive) {
+            if (settings == null) {
+                settings = Instantiate(settingsPrefab);
+            }
+            else {
+                Destroy(settings);
+            }
         }
-        else {
-            Destroy(settings);
-        }
+    }
+
+    public void leftArrow() {
+        ScrollManager.selector--;
+        Util.scrollManager.setClosestRocket();
+        ScrollManager.selector = ScrollManager.selectedRocket;
+    }
+
+    public void rightArrow() {
+        ScrollManager.selector++;
+        Util.scrollManager.setClosestRocket();
+        ScrollManager.selector = ScrollManager.selectedRocket;
     }
 
     public static void updateCoinCount() {
         Util.wm.coinCounter.text = "" + Util.wm.coins;
         int length = Util.wm.coinCounter.text.Length;
-        Util.wm.plusIcon.GetComponent<RectTransform>().localPosition = new Vector3(-135f - (length - 1) * 37.5f, 0, 0);
+        Util.wm.plusIcon.GetComponent<RectTransform>().localPosition = new Vector3(-135f - (length - 1) * 39f, 0, 0);
     }
 
     public static void updateBest() {
