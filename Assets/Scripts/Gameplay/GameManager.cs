@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject planetBGPrefab;
     GameObject planetBG;
+    public int asteroidBGCount = 0;
 
 	// Use this for initialization
 	void Start () {
@@ -194,6 +195,7 @@ public class GameManager : MonoBehaviour {
         CancelInvoke("increaseWind1");
         CancelInvoke("spawnCoins");
         CancelInvoke("spawnObstacle");
+        CancelInvoke("spawnAsteroidBG");
 
         if (distance > Util.wm.best) {
             Util.wm.best = distance;
@@ -216,7 +218,7 @@ public class GameManager : MonoBehaviour {
     public void resetRocket() {
         Util.wm.rocket.transform.position = new Vector3(0, -100f, 0);
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
-        
+        Util.wm.rocket.SetActive(false);
     }
 
     void removeClouds() {
@@ -278,8 +280,22 @@ public class GameManager : MonoBehaviour {
             else {
                 Util.wind.windPrefix = "GRAVITY ";
             }
-            planetBG = Instantiate(planetBGPrefab);
+            
+            asteroidBGCount = 0;
+            spawnAsteroidBG();
+            
+            if (zoneID == 7 || zoneID == 12) {
+                int max = (int)Random.Range(10f, 15f);
+                while (asteroidBGCount < max) {
+                    Invoke("spawnAsteroidBG", Random.Range(0, zoneTime * 0.8f));
+                    asteroidBGCount++;
+                }
+            }
         }
+    }
+
+    void spawnAsteroidBG() {
+        obstacles.Add(Instantiate(planetBGPrefab));
     }
 
     string getZoneName() {

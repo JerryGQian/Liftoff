@@ -50,7 +50,7 @@ public class InputManager : MonoBehaviour {
     }
 
     void processAccelerometer() {
-        angleRatio = (Input.acceleration.x) / (0.5f);
+        angleRatio = (Input.acceleration.x) / (0.7f);
         if (Mathf.Abs(angleRatio) > 1f) {
             angleRatio = 1f * Mathf.Sign(angleRatio);
         }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class WorldManager : MonoBehaviour {
     public GameObject rocket;
     public Text coinCounter;
+    public GameObject plusIcon;
     public Text bestScore;
     public GameObject bestBar;
     public float gameTime = 0;
@@ -23,6 +24,7 @@ public class WorldManager : MonoBehaviour {
     public bool scienceMode = false;
     public ControlScheme controlScheme = 0;
     public bool hasCheated = false;
+    public bool godmode = false;
 
     public GameObject settingsPrefab;
     GameObject settings;
@@ -65,6 +67,7 @@ public class WorldManager : MonoBehaviour {
 
     public void play() {
         if (!gameActive) {
+            Util.wm.rocket.SetActive(true);
             gameActive = true;
             dieScreen = false;
             gameTime = 0;
@@ -84,12 +87,32 @@ public class WorldManager : MonoBehaviour {
         }
     }
 
+    public void showIAP() {
+        if (settings == null) {
+            settings = Instantiate(settingsPrefab);
+        }
+        else {
+            Destroy(settings);
+        }
+    }
+
     public static void updateCoinCount() {
         Util.wm.coinCounter.text = "" + Util.wm.coins;
+        int length = Util.wm.coinCounter.text.Length;
+        Util.wm.plusIcon.GetComponent<RectTransform>().localPosition = new Vector3(-135f - (length - 1) * 37.5f, 0, 0);
     }
 
     public static void updateBest() {
         Util.wm.bestScore.text = "" + (int)Util.wm.best;
         
     }
+
+    public void toggleGodmode() {
+        if (true || Application.platform == RuntimePlatform.WindowsEditor) {
+            godmode = !godmode;
+            hasCheated = true;
+            Util.saveManager.save();
+        }
+    }
+
 }

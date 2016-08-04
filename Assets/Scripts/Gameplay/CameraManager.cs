@@ -12,7 +12,9 @@ public class CameraManager : MonoBehaviour {
 
     // Use this for initialization
     void Start() {
-
+        cameraTarget = new Vector3(0, 0, -10f);
+        Camera.main.transform.position = cameraTarget;
+        Camera.main.orthographicSize = 8f;
     }
 
     // Update is called once per frame

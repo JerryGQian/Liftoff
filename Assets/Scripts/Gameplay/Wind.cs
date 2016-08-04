@@ -28,6 +28,7 @@ public class Wind : MonoBehaviour {
 	void Update () {
         wind += (targetWind - wind) * Time.deltaTime * juice;
         windText.text = windPrefix + " " + (int)(wind * 500f);
+        if (Util.wm.godmode) wind = 0;
 	}
 
     public static void setMaxWind(float m) {
