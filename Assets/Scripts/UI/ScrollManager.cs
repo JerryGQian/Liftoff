@@ -12,12 +12,16 @@ public class ScrollManager : MonoBehaviour {
     public static float scrollSpeed = 10f;
     public static float juice = 7f;
     public static float rocketSep = 4.5f;
-    public static int rocketCount = 10;
+    public static int rocketCount = 13;
 
     public GameObject showcaseRocketPrefab;
     public GameObject rocket1;
     public GameObject rocket2;
     public GameObject rocket3;
+
+    public GameObject bg1;
+    public GameObject bg2;
+    public GameObject bg3;
 
     public GameObject scrollParent;
     public Text rocketName;
@@ -38,6 +42,7 @@ public class ScrollManager : MonoBehaviour {
 	void Update () {
         if (!dragging && !Util.wm.gameActive) {
             scrollParent.transform.position = scrollParent.transform.position + new Vector3((selectedRocketTarget - scrollParent.transform.position.x) * Time.deltaTime * juice, 0, 0);
+            moveBG();
         }
         if (Util.even) {
             setRocket();
@@ -62,6 +67,7 @@ public class ScrollManager : MonoBehaviour {
                 selector = -0.5f;
             }
             scrollParent.transform.position = new Vector3((selector - 1f) * -rocketSep, 0);
+            moveBG();
         }
     }
 
@@ -134,5 +140,12 @@ public class ScrollManager : MonoBehaviour {
         else {
             rocket2.SetActive(true);
         }
+    }
+
+    void moveBG() {
+        float offset = scrollParent.transform.position.x / (rocketCount * rocketSep) * 2f;
+        bg1.transform.localPosition = new Vector3(offset, 2.28f, 0);
+        bg2.transform.localPosition = new Vector3(-offset, 0.951f, 0);
+        bg3.transform.localPosition = new Vector3(3.59f + offset, -31.2f, 0);
     }
 }

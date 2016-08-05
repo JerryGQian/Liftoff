@@ -62,9 +62,9 @@ public class RocketHolder : MonoBehaviour {
             case 8:  return new RocketInfo(r8, "V2");
             case 9:  return new RocketInfo(r9, "SATURN V");
             case 10: return new RocketInfo(r10,"N1");
-            case 11: return new RocketInfo(r11,"");
-            case 12: return new RocketInfo(r12,"");
-            case 13: return new RocketInfo(r13,"");
+            case 11: return new RocketInfo(r11,"BOTTLE ROCKET");
+            case 12: return new RocketInfo(r12,"PAPER AIRPLANE");
+            case 13: return new RocketInfo(r13,"MACHINE GUN");
             case 14: return new RocketInfo(r14,"");
             case 15: return new RocketInfo(r15,"");
             case 16: return new RocketInfo(r16,"");
