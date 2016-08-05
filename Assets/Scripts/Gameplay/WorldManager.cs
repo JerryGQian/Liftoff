@@ -29,6 +29,7 @@ public class WorldManager : MonoBehaviour {
     public GameObject settingsPrefab;
     GameObject settings;
 
+    public bool alternate = true;
 
     void Awake() {
         Util.wm = this;
@@ -50,6 +51,8 @@ public class WorldManager : MonoBehaviour {
         Util.scrollManager.setRocket();
         //Util.rocket.transform.position = new Vector3(0, -100f, 0);
         Util.width = Camera.main.GetComponent<BoxCollider2D>().size.x / 2f;
+        Util.even10 = true;
+        InvokeRepeating("toggleEven", 0.25f, 0.25f);
         
 	}
 	
@@ -62,8 +65,16 @@ public class WorldManager : MonoBehaviour {
         Util.even = !Util.even;
         if (Util.even) {
             Util.even2 = !Util.even2;
+            if (Util.even2) {
+                Util.even3 = !Util.even3;
+            }
         }
 	}
+
+    void toggleEven() {
+        Util.even10 = !Util.even10;
+        alternate = !alternate;
+    }
 
     public void play() {
         if (!gameActive) {

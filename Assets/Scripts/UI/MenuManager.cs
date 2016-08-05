@@ -103,7 +103,8 @@ public class MenuManager : MonoBehaviour {
             firstShowing = false;
         }
         Util.scrollManager.hidden(true);
-        
+        Util.wm.plusIcon.SetActive(false);
+
     }
     public void hidePlayScreen() {
         score.SetActive(false);
@@ -132,6 +133,7 @@ public class MenuManager : MonoBehaviour {
         backPanel.GetComponent<SmoothMotion>().reset();
         rocketSelectorPanel.GetComponent<SmoothMotion>().reset();
 
+        Util.wm.plusIcon.SetActive(true);
     }
 
     public void hideReplayMenu() {

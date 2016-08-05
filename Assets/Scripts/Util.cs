@@ -23,4 +23,6 @@ public class Util {
 
     public static bool even;
     public static bool even2;
+    public static bool even3;
+    public static bool even10 = true;
 }
