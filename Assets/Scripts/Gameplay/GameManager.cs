@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject obstaclePrefab;
     public GameObject asteroidPrefab;
+    public GameObject planePrefab;
     ArrayList obstacles;
 
     public GameObject planetBGPrefab;
@@ -100,7 +101,11 @@ public class GameManager : MonoBehaviour {
         Invoke("increaseWind1", zoneTime * 1.5f);
         InvokeRepeating("spawnCoins", 1f, 10f);
         InvokeRepeating("updateZone", 0.05f, zoneTime);
-        Invoke("spawnObstacle", zoneTime);
+        Invoke("spawnObstacle", zoneTime * 1.5f);
+
+        Invoke("spawnPlane", Random.Range(zoneTime + 0.5f, zoneTime + 1.3f));
+        Invoke("spawnPlane", Random.Range(zoneTime + 1.5f, zoneTime + 4f));
+        Invoke("spawnPlane", Random.Range(zoneTime + 3.5f, zoneTime + 8f));
     }
 
     void increaseWind0() {
@@ -159,6 +164,11 @@ public class GameManager : MonoBehaviour {
         Invoke("spawnObstacle", Random.Range(4f / zoneID, 9f / zoneID));
     }
 
+    void spawnPlane() {
+        Debug.Log("Spawning Plane");
+        obstacles.Add(Instantiate(planePrefab));
+    }
+
 
 
 
@@ -196,6 +206,7 @@ public class GameManager : MonoBehaviour {
         CancelInvoke("spawnCoins");
         CancelInvoke("spawnObstacle");
         CancelInvoke("spawnAsteroidBG");
+        CancelInvoke("spawnPlane");
 
         if (distance > Util.wm.best) {
             Util.wm.best = distance;

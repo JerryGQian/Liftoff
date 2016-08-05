@@ -9,7 +9,7 @@ public class ScrollManager : MonoBehaviour {
     public static float selectedRocketTarget;
     float selectorInitial = 0;
     public bool dragging;
-    public static float scrollSpeed = 10f;
+    public static float scrollSpeed = 12f;
     public static float juice = 7f;
     public static float rocketSep = 4.5f;
     public static int rocketCount = 13;

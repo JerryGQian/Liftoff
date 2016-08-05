@@ -112,6 +112,7 @@
     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\RewardBasedVideoAdClient.cs" />
     <Compile Include="Assets\GoogleMobileAds\Platforms\iOS\Utils.cs" />
     <Compile Include="Assets\Scripts\AdManager.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\Airplane.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Asteroid.cs" />
     <Compile Include="Assets\Scripts\Gameplay\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Coin.cs" />
