@@ -62,10 +62,10 @@ public class RocketHolder : MonoBehaviour {
             case 8:  return new RocketInfo(r8, "V2");
             case 9:  return new RocketInfo(r9, "SATURN V");
             case 10: return new RocketInfo(r10,"N1");
-            case 11: return new RocketInfo(r11,"BOTTLE ROCKET");
-            case 12: return new RocketInfo(r12,"PAPER AIRPLANE");
-            case 13: return new RocketInfo(r13,"MACHINE GUN");
-            case 14: return new RocketInfo(r14,"");
+            case 11: return new RocketInfo(r11,"BOTTLE ROCKET", false, true);
+            case 12: return new RocketInfo(r12,"PAPER AIRPLANE", false, false);
+            case 13: return new RocketInfo(r13,"MACHINE GUN", false, true);
+            case 14: return new RocketInfo(r14,"STEEL MAN", false, true);
             case 15: return new RocketInfo(r15,"");
             case 16: return new RocketInfo(r16,"");
             case 17: return new RocketInfo(r17,"");
@@ -85,9 +85,23 @@ public class RocketHolder : MonoBehaviour {
 public class RocketInfo {
     public Sprite sprite;
     public string name;
+    public bool nozzle;
+    public bool fire;
 
     public RocketInfo(Sprite spr, string n) {
+        setup(spr, n, true, true);
+    }
+
+    public RocketInfo(Sprite spr, string n, bool noz, bool f) {
+        setup(spr, n, noz, f);
+    }
+
+
+
+    public void setup(Sprite spr, string n, bool noz, bool f) {
         sprite = spr;
         name = n;
+        nozzle = noz;
+        fire = f;
     }
 }

@@ -12,7 +12,7 @@ public class ScrollManager : MonoBehaviour {
     public static float scrollSpeed = 12f;
     public static float juice = 7f;
     public static float rocketSep = 4.5f;
-    public static int rocketCount = 13;
+    public static int rocketCount = 14;
 
     public GameObject showcaseRocketPrefab;
     public GameObject rocket1;

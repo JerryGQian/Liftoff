@@ -15,7 +15,9 @@ public class Flame : MonoBehaviour {
             case 1: GetComponent<SpriteRenderer>().sprite = Util.nozzle.f2; break;
             //case 2: GetComponent<SpriteRenderer>().sprite = Util.nozzle.f3; break;
         }
-	}
+        //transform.localScale = new Vector3(1f, 1f, 1f) * Random.Range(0.8f, 1.2f);
+        //transform.eulerAngles = new Vector3(0, 1f, 0) * Random.Range(-20f, 20f);
+    }
 	
 	// Update is called once per frame
 	void Update () {

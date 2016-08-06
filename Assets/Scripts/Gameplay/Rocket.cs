@@ -15,6 +15,9 @@ public class Rocket : MonoBehaviour {
     public Vector3 tipPos;
 
     public SpriteRenderer rocketRenderer;
+    public SpriteRenderer nozzleRenderer;
+
+    public RocketInfo ri;
 
     void Awake() {
         Util.rocket = this;
@@ -53,6 +56,13 @@ public class Rocket : MonoBehaviour {
     }
 
     public void setup(RocketInfo ri) {
+        this.ri = ri;
         rocketRenderer.sprite = ri.sprite;
+        if (ri.nozzle) {
+            nozzleRenderer.color = new Color(1f, 1f, 1f);
+        }
+        else {
+            nozzleRenderer.color = new Color(1f, 1f, 1f, 0);
+        }
     }
 }

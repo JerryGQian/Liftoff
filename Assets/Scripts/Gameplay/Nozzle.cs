@@ -28,11 +28,13 @@ public class Nozzle : MonoBehaviour {
     }
 
     public void spew() {
-        flame = Instantiate(flamePrefab);
-        flame.transform.position = transform.position - new Vector3(0, -0.4f);
-        flame.transform.SetParent(transform);
-        flame.transform.eulerAngles = new Vector3(0, 0, 0);
-        flame.transform.localScale = new Vector3(0.5f, 2f, 1f);
-        if (Util.wm.gameActive) Invoke("spew", spewDelay);
+        if (Util.rocket.ri.fire) {
+            flame = Instantiate(flamePrefab);
+            flame.transform.position = transform.position - new Vector3(0, -0.4f);
+            flame.transform.SetParent(transform);
+            flame.transform.eulerAngles = new Vector3(0, 0, 0);
+            flame.transform.localScale = new Vector3(0.5f, 2f, 1f);
+            if (Util.wm.gameActive) Invoke("spew", spewDelay);
+        }
     }
 }
