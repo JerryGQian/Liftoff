@@ -11,13 +11,32 @@ public class Airplane : MonoBehaviour {
     public Sprite p2;
     public Sprite p3;
 
+    public Sprite ufo1;
+    public Sprite ufo2;
+    public Sprite ufo3;
+    public Sprite ufo4;
+    public Sprite ufo5;
+    public Sprite ufo6;
+
     Motion motion;
 	// Use this for initialization
 	void Start () {
-        switch ((int)Random.Range(0, 2.99f)) {
-            case 0: GetComponent<SpriteRenderer>().sprite = p1; break;
-            case 1: GetComponent<SpriteRenderer>().sprite = p2; break;
-            case 2: GetComponent<SpriteRenderer>().sprite = p3; break;
+        if (Util.gm.zoneID > 3) {
+            switch ((int)Random.Range(0, 5.99f)) {
+                case 0: GetComponent<SpriteRenderer>().sprite = ufo1; break;
+                case 1: GetComponent<SpriteRenderer>().sprite = ufo2; break;
+                case 2: GetComponent<SpriteRenderer>().sprite = ufo3; break;
+                case 3: GetComponent<SpriteRenderer>().sprite = ufo4; break;
+                case 4: GetComponent<SpriteRenderer>().sprite = ufo5; break;
+                case 5: GetComponent<SpriteRenderer>().sprite = ufo6; break;
+            }
+        }
+        else {
+            switch ((int)Random.Range(0, 2.99f)) {
+                case 0: GetComponent<SpriteRenderer>().sprite = p1; break;
+                case 1: GetComponent<SpriteRenderer>().sprite = p2; break;
+                case 2: GetComponent<SpriteRenderer>().sprite = p3; break;
+            }
         }
 
 

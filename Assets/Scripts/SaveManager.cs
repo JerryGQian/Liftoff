@@ -54,6 +54,21 @@ public class SaveManager : MonoBehaviour {
             ScrollManager.selector = data.selector;
             Util.wm.hasCheated = data.hasCheated;
         }
+
+        if (File.Exists(Application.persistentDataPath + "/purchases.dat")) {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(Application.persistentDataPath + "/purchases.dat", FileMode.Open);
+            Purchases data = null;
+            try {
+                data = (Purchases)bf.Deserialize(file);
+            }
+            catch (Exception e) {
+                Debug.LogError("Failed to load purchases: " + e.Message);
+            }
+            file.Close();
+
+            Util.rocketHolder.purchased = data.purchased;
+        }
         Debug.Log("Data loaded");
     }
 
@@ -92,6 +107,22 @@ public class SaveManager : MonoBehaviour {
         bf.Serialize(file, data2);
         file.Close();
 
+
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+        ////////////////////////////////////////////////////////
+
+
+        bf = new BinaryFormatter();
+        file = File.Create(Application.persistentDataPath + "/purchases.dat");
+
+        Purchases data3 = new Purchases();
+
+        data3.purchased = Util.rocketHolder.purchased;
+
+        bf.Serialize(file, data3);
+        file.Close();
+
         Debug.Log("Saved all data successfully");
     }
 }
@@ -112,4 +143,9 @@ public class Settings {
     public ControlScheme controlScheme;
     public float selector;
     public bool hasCheated;
+}
+
+[Serializable]
+public class Purchases {
+    public bool[] purchased;
 }

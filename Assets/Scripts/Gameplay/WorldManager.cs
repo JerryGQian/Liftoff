@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
+
 public class WorldManager : MonoBehaviour {
     public GameObject rocket;
     public Text coinCounter;
@@ -13,6 +14,8 @@ public class WorldManager : MonoBehaviour {
     public bool gameActive = false;
     public bool dieScreen = false;
     public float cameraSizePlay;
+    public float cameraSizeMenu;
+    public Vector3 cameraMenuPosition;
 
     public float best;
     public int coins;
@@ -35,15 +38,18 @@ public class WorldManager : MonoBehaviour {
         Util.wm = this;
         Util.coin = GameObject.Find("Coin").GetComponent<RectTransform>();
         Util.canvas = GameObject.Find("Canvas");
+        cameraSizePlay = 10f * ((Screen.height * 1f / Screen.width) / 1.7777f);
+        cameraSizeMenu = 8.5f;
+        cameraMenuPosition = new Vector3(0, -1f, -10f);
     }
 	// Use this for initialization
 	void Start () {
         Application.targetFrameRate = 50;
 
-        cameraSizePlay = 10f * ((Screen.height * 1f / Screen.width) / 1.7777f);
+        
         gameTime = 0;
-        Util.cm.cameraTargetSize = 8f;
-
+        Util.cm.cameraTargetSize = cameraSizeMenu;
+        Camera.main.transform.position = cameraMenuPosition;
         Util.saveManager.load();
         updateCoinCount();
         updateBest();
@@ -141,4 +147,17 @@ public class WorldManager : MonoBehaviour {
         }
     }
 
+    public void buy() {
+        if (!gameActive && !dieScreen && !Util.scrollManager.ri.purchased) {
+            if (coins >= Util.scrollManager.ri.cost) {
+                coins -= Util.scrollManager.ri.cost;
+                Util.rocketHolder.purchased[ScrollManager.selectedRocket] = true;
+                Util.saveManager.save();
+                WorldManager.updateCoinCount();
+            }
+            else {
+
+            }
+        }
+    }
 }

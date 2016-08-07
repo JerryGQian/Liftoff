@@ -25,6 +25,11 @@ public class ScrollManager : MonoBehaviour {
 
     public GameObject scrollParent;
     public Text rocketName;
+    public GameObject buyInfo;
+    public GameObject owned;
+    public Text cost;
+
+    public RocketInfo ri;
 
     void Awake() {
         Util.scrollManager = this;
@@ -113,9 +118,21 @@ public class ScrollManager : MonoBehaviour {
             rocket1.SetActive(false);
         }
 
+        ri = Util.rocketHolder.getRocket(selectedRocket);
         rocket2.transform.localPosition = new Vector3((selectedRocket - 1) * rocketSep, 0, 0);
-        rocket2.GetComponent<ShowcaseRocket>().setup(Util.rocketHolder.getRocket(selectedRocket));
-        rocketName.text = Util.rocketHolder.getRocket(selectedRocket).name;
+        rocket2.GetComponent<ShowcaseRocket>().setup(ri);
+        rocketName.text = ri.name;
+        if (ri.purchased) {
+            owned.SetActive(true);
+            buyInfo.SetActive(false);
+        }
+        else {
+            owned.SetActive(false);
+            buyInfo.SetActive(true);
+            cost.text = "" + ri.cost;
+        }
+
+
 
         if (selectedRocket < rocketCount) {
             rocket3.SetActive(true);

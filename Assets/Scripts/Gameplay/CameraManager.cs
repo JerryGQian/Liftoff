@@ -14,7 +14,7 @@ public class CameraManager : MonoBehaviour {
     void Start() {
         cameraTarget = new Vector3(0, 0, -10f);
         Camera.main.transform.position = cameraTarget;
-        Camera.main.orthographicSize = 8f;
+        Camera.main.orthographicSize = Util.wm.cameraSizeMenu;
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class CameraManager : MonoBehaviour {
             cameraTarget = new Vector3(0, Util.rocket.bottomPos.y + 15f - Mathf.Sin(Util.wm.gameTime), -10f);
         }
         else {
-            cameraTarget = new Vector3(0, 0, -10f);
+            cameraTarget = Util.wm.cameraMenuPosition;
         }
         Camera.main.transform.position += (cameraTarget - Camera.main.transform.position) * cameraJuice * Time.deltaTime;
         Camera.main.orthographicSize += (cameraTargetSize - Camera.main.orthographicSize) * cameraJuice * Time.deltaTime;

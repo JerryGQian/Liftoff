@@ -101,7 +101,7 @@ public class GameManager : MonoBehaviour {
         Invoke("increaseWind1", zoneTime * 1.5f);
         InvokeRepeating("spawnCoins", 1f, 10f);
         InvokeRepeating("updateZone", 0.05f, zoneTime);
-        Invoke("spawnObstacle", zoneTime * 1.5f);
+        Invoke("spawnObstacle", zoneTime * 1.7f);
 
         Invoke("spawnPlane", Random.Range(4f, 5f));
         Invoke("spawnPlane", Random.Range(zoneTime + 0.5f, zoneTime + 1.3f));
@@ -153,6 +153,11 @@ public class GameManager : MonoBehaviour {
     void spawnObstacle() {
         if (Random.Range(0, 100f) < zoneID * 1.5f + 10f) {
             spawnAsteroid();
+            Invoke("spawnObstacle", Random.Range(4f / zoneID, 9f / zoneID));
+        }
+        else if (Random.Range(0, 100f) < zoneID * 0.6f + 2f) {
+            spawnPlane();
+            Invoke("spawnObstacle", Random.Range(4f / zoneID, 9f / zoneID));
         }
         else {
             obstacles.Add(Instantiate(obstaclePrefab));
@@ -162,11 +167,9 @@ public class GameManager : MonoBehaviour {
 
     void spawnAsteroid() {
         obstacles.Add(Instantiate(asteroidPrefab));
-        Invoke("spawnObstacle", Random.Range(4f / zoneID, 9f / zoneID));
     }
 
     void spawnPlane() {
-        Debug.Log("Spawning Plane");
         obstacles.Add(Instantiate(planePrefab));
     }
 
@@ -183,7 +186,7 @@ public class GameManager : MonoBehaviour {
         Util.wm.dieScreen = true;
         Invoke("showFailScreen", 1.5f);
         Invoke("resetRocket", 1.5f);
-        Util.cm.cameraTargetSize = 8f;
+        Util.cm.cameraTargetSize = Util.wm.cameraSizeMenu;
 
         Wind.setMaxWind(0);
         Wind.wind = 0;
@@ -217,6 +220,7 @@ public class GameManager : MonoBehaviour {
 
         Util.saveManager.save();
 
+        //Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Explodable>().explode();
     }
 
     public void die() {
