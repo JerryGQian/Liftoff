@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+using UnityEngine.Advertisements;
 
 public class WorldManager : MonoBehaviour {
     public GameObject rocket;
@@ -17,10 +17,15 @@ public class WorldManager : MonoBehaviour {
     public float cameraSizeMenu;
     public Vector3 cameraMenuPosition;
 
+    public string zoneID;
+
+
     public float best;
     public int coins;
     public float totalDistance;
     public int attempts = 0;
+    public float adWatchTimeCoins = 0;
+    public float adWatchTimeLife = 0;
 
     public bool musicMuted = false;
     public bool soundMuted = false;
@@ -45,9 +50,16 @@ public class WorldManager : MonoBehaviour {
         cameraSizePlay = 10f * ((Screen.height * 1f / Screen.width) / 1.7777f);
         cameraSizeMenu = 8.5f;
         cameraMenuPosition = new Vector3(0, -1f, -10f);
+
+#if UNITY_ANDROID
+        zoneID = "1109077";
+#elif UNITY_IOS
+        zoneID = "1109078";
+#endif
+        zoneID = "rewardedVideo";
     }
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         Application.targetFrameRate = 50;
 
         
@@ -62,9 +74,13 @@ public class WorldManager : MonoBehaviour {
         //Util.rocket.transform.position = new Vector3(0, -100f, 0);
         Util.width = Camera.main.GetComponent<BoxCollider2D>().size.x / 2f;
         Util.even10 = true;
+
+        //Advertisement.Initialize();
+
         InvokeRepeating("toggleEven", 0.25f, 0.25f);
-        
-	}
+        InvokeRepeating("everySecond", 1f, 1f);
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -84,6 +100,15 @@ public class WorldManager : MonoBehaviour {
     void toggleEven() {
         Util.even10 = !Util.even10;
         alternate = !alternate;
+    }
+
+    void everySecond() {
+        adWatchTimeCoins--;
+        adWatchTimeLife--;
+
+        if (adWatchTimeCoins < 0) {
+            adWatchTimeCoins = 0;
+        }
     }
 
     public void play() {
@@ -174,5 +199,9 @@ public class WorldManager : MonoBehaviour {
 
             }
         }
+    }
+
+    void OnApplicationQuit() {
+        Util.saveManager.save();
     }
 }

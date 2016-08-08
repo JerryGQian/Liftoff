@@ -33,6 +33,7 @@ public class SaveManager : MonoBehaviour {
             Util.wm.coins = data.coins;
             Util.wm.totalDistance = data.totalDistance;
             Util.wm.attempts = data.attempts;
+            Util.wm.lastLaunched = data.lastLaunched;
         }
 
         if (File.Exists(Application.persistentDataPath + "/settings.dat")) {
@@ -53,7 +54,7 @@ public class SaveManager : MonoBehaviour {
             Util.wm.controlScheme = data.controlScheme;
             ScrollManager.selector = data.selector;
             Util.wm.hasCheated = data.hasCheated;
-            Util.wm.lastLaunched = data.lastLaunched;
+            
         }
 
         if (File.Exists(Application.persistentDataPath + "/purchases.dat")) {
@@ -83,6 +84,7 @@ public class SaveManager : MonoBehaviour {
         data.coins = Util.wm.coins;
         data.totalDistance = Util.wm.totalDistance;
         data.attempts = Util.wm.attempts;
+        data.lastLaunched = Util.wm.lastLaunched;
 
         bf.Serialize(file, data);
         file.Close();
@@ -104,7 +106,7 @@ public class SaveManager : MonoBehaviour {
         data2.controlScheme = Util.wm.controlScheme;
         data2.selector = ScrollManager.selector;
         data2.hasCheated = Util.wm.hasCheated;
-        data2.lastLaunched = Util.wm.lastLaunched;
+        
 
         bf.Serialize(file, data2);
         file.Close();
@@ -135,6 +137,8 @@ public class GameData {
     public int attempts;
     public int coins;
     public float totalDistance;
+    public int lastLaunched;
+    public float adWatchTime;
 }
 
 [Serializable]
@@ -145,7 +149,7 @@ public class Settings {
     public ControlScheme controlScheme;
     public float selector;
     public bool hasCheated;
-    public int lastLaunched;
+    
 }
 
 [Serializable]
