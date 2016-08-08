@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour {
         Util.menuManager.showPlayScreen();
         Invoke("increaseWind0", 3f);
         Invoke("increaseWind1", zoneTime * 1.5f);
-        InvokeRepeating("spawnCoins", 1f, 10f);
+        InvokeRepeating("spawnCoins", 1f, zoneTime);
         InvokeRepeating("updateZone", 0.05f, zoneTime);
         Invoke("spawnObstacle", zoneTime * 1.7f);
 
@@ -140,12 +140,12 @@ public class GameManager : MonoBehaviour {
     }
 
     void spawnCoins() {
-        int num = (int)Random.Range(2f, 5.99f);
+        int num = (int)Random.Range(4f, 8.99f);
         GameObject obj;
         for (int i = 0; i < num; i++) {
             obj = Instantiate(coinPrefab);
             obj.transform.localScale = new Vector3(.3f, .3f, .3f);
-            obj.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(Util.rocket.transform.position.y + 30f, Util.rocket.transform.position.y + rocketSpeed * 10f));
+            obj.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(Util.rocket.transform.position.y + 20f, Util.rocket.transform.position.y + rocketSpeed * zoneTime));
             coins.Add(obj);
         }
     }

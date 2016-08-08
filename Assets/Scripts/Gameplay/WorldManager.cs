@@ -113,7 +113,7 @@ public class WorldManager : MonoBehaviour {
 
     public void play() {
         if (!gameActive) {
-            if (Util.rocketHolder.purchased[ScrollManager.selectedRocket]) {
+            if (Util.rocketHolder.purchased[ScrollManager.selectedRocket] || ScrollManager.selectedRocket == 0) {
                 Util.wm.rocket.SetActive(true);
                 gameActive = true;
                 dieScreen = false;
@@ -184,6 +184,14 @@ public class WorldManager : MonoBehaviour {
             godmode = !godmode;
             hasCheated = true;
             Util.saveManager.save();
+        }
+    }
+
+    public void freeMoney() {
+        if (true || Application.platform == RuntimePlatform.WindowsEditor) {
+            coins += 100;
+            WorldManager.updateCoinCount();
+            //Util.saveManager.save();
         }
     }
 
