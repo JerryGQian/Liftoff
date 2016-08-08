@@ -261,7 +261,7 @@ public class GameManager : MonoBehaviour {
     void showFailScreen() {
         Util.wm.dieScreen = false;
         
-        Camera.main.transform.position = new Vector3(0, 0, -10f);
+        Camera.main.transform.position = new Vector3(0, -0.75f, -10f);
         Camera.main.GetComponent<Animator>().SetTrigger("Blue");
 
         Destroy(plume);

@@ -138,6 +138,7 @@
     <Compile Include="Assets\Scripts\UI\Alert.cs" />
     <Compile Include="Assets\Scripts\UI\CoinCanvas.cs" />
     <Compile Include="Assets\Scripts\UI\FPSDisplay.cs" />
+    <Compile Include="Assets\Scripts\UI\IAP.cs" />
     <Compile Include="Assets\Scripts\UI\MenuManager.cs" />
     <Compile Include="Assets\Scripts\UI\PlanetBG.cs" />
     <Compile Include="Assets\Scripts\UI\ScrollManager.cs" />

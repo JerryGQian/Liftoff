@@ -33,6 +33,9 @@ public class WorldManager : MonoBehaviour {
     public GameObject settingsPrefab;
     GameObject settings;
 
+    public GameObject IAPPrefab;
+    GameObject IAP;
+
     public bool alternate = true;
 
     void Awake() {
@@ -108,6 +111,7 @@ public class WorldManager : MonoBehaviour {
     public void showSettings() {
         if (settings == null) {
             settings = Instantiate(settingsPrefab);
+            Destroy(IAP);
         }
         else {
             Destroy(settings);
@@ -117,11 +121,12 @@ public class WorldManager : MonoBehaviour {
     public void showIAP() {
         Debug.Log("Showing IAP");
         if (!gameActive) {
-            if (settings == null) {
-                settings = Instantiate(settingsPrefab);
+            if (IAP == null) {
+                IAP = Instantiate(IAPPrefab);
+                Destroy(settings);
             }
             else {
-                Destroy(settings);
+                Destroy(IAP);
             }
         }
     }
@@ -141,7 +146,7 @@ public class WorldManager : MonoBehaviour {
     public static void updateCoinCount() {
         Util.wm.coinCounter.text = "" + Util.wm.coins;
         int length = Util.wm.coinCounter.text.Length;
-        Util.wm.plusIcon.GetComponent<RectTransform>().localPosition = new Vector3(-135f - (length - 1) * 39f, 0, 0);
+        Util.wm.plusIcon.GetComponent<RectTransform>().localPosition = new Vector3(-140f - (length - 1) * 40f, 0, 0);
     }
 
     public static void updateBest() {
