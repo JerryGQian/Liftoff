@@ -140,7 +140,7 @@ public class GameManager : MonoBehaviour {
     }
 
     void spawnCoins() {
-        int num = (int)Random.Range(4f, 8.99f);
+        int num = (int)Random.Range(0f, 4.99f);
         GameObject obj;
         for (int i = 0; i < num; i++) {
             obj = Instantiate(coinPrefab);
@@ -148,6 +148,11 @@ public class GameManager : MonoBehaviour {
             obj.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(Util.rocket.transform.position.y + 20f, Util.rocket.transform.position.y + rocketSpeed * zoneTime));
             coins.Add(obj);
         }
+        //spawn pattern
+        obj = Instantiate(Util.coinPatternHolder.getCoinPattern());
+        //obj.transform.localScale = new Vector3(.3f, .3f, .3f);
+        obj.transform.position = new Vector3(Random.Range(-4f, 4f), Random.Range(Util.rocket.transform.position.y + 20f, Util.rocket.transform.position.y + rocketSpeed * zoneTime));
+        coins.Add(obj);
     }
 
     void spawnObstacle() {
