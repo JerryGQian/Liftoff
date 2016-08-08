@@ -44,6 +44,7 @@ public class IAP : MonoBehaviour {
                 int num = Util.coinReward;
                 Util.wm.coins += num;
                 Util.wm.adWatchTimeCoins = Util.adCoinsCooldown;
+                WorldManager.updateCoinCount();
                 Util.saveManager.save();
                 //}
                 break;

@@ -16,6 +16,7 @@ public class WorldManager : MonoBehaviour {
     public float cameraSizePlay;
     public float cameraSizeMenu;
     public Vector3 cameraMenuPosition;
+    public RectTransform coinIcon;
 
     public string zoneID;
 
@@ -51,11 +52,6 @@ public class WorldManager : MonoBehaviour {
         cameraSizeMenu = 8.5f;
         cameraMenuPosition = new Vector3(0, -1f, -10f);
 
-#if UNITY_ANDROID
-        zoneID = "1109077";
-#elif UNITY_IOS
-        zoneID = "1109078";
-#endif
         zoneID = "rewardedVideo";
     }
     // Use this for initialization
