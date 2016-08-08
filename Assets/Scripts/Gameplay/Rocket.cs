@@ -16,6 +16,7 @@ public class Rocket : MonoBehaviour {
 
     public SpriteRenderer rocketRenderer;
     public SpriteRenderer nozzleRenderer;
+    public SpriteRenderer shockDiamondRenderer;
 
     public RocketInfo ri;
 
@@ -63,6 +64,13 @@ public class Rocket : MonoBehaviour {
         }
         else {
             nozzleRenderer.color = new Color(1f, 1f, 1f, 0);
+        }
+
+        if (ri.fire) {
+            shockDiamondRenderer.color = new Color(1f, 1f, 1f, 0.4f);
+        }
+        else {
+            shockDiamondRenderer.color = new Color(1f, 1f, 1f, 0);
         }
     }
 }

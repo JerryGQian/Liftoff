@@ -109,7 +109,7 @@ public class WorldManager : MonoBehaviour {
 
     public void play() {
         if (!gameActive) {
-            if (Util.rocketHolder.purchased[ScrollManager.selectedRocket] || ScrollManager.selectedRocket == 0) {
+            if (Util.rocketHolder.purchased[ScrollManager.selectedRocket] || ScrollManager.selectedRocket == 0 || godmode) {
                 Util.wm.rocket.SetActive(true);
                 gameActive = true;
                 dieScreen = false;

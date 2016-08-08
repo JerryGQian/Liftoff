@@ -126,7 +126,7 @@ public class GameManager : MonoBehaviour {
         }
         for (int i = 0; i < cloudCount; i++) {
             obj = Instantiate(cloudPrefab);
-            obj.transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(3f * rocketSpeed, zoneTime * rocketSpeed));
+            obj.transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(2f * rocketSpeed, zoneTime * rocketSpeed));
             obj.transform.localScale = new Vector3(1f, 1f, 1f);
             clouds.Add(obj);
         }
@@ -145,13 +145,13 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < num; i++) {
             obj = Instantiate(coinPrefab);
             obj.transform.localScale = new Vector3(.3f, .3f, .3f);
-            obj.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(Util.rocket.transform.position.y + 20f, Util.rocket.transform.position.y + rocketSpeed * zoneTime));
+            obj.transform.position = new Vector3(Random.Range(-4.5f, 4.5f), Random.Range(Util.rocket.transform.position.y + 15f, Util.rocket.transform.position.y + rocketSpeed * zoneTime + 15f));
             coins.Add(obj);
         }
         //spawn pattern
         obj = Instantiate(Util.coinPatternHolder.getCoinPattern());
         //obj.transform.localScale = new Vector3(.3f, .3f, .3f);
-        obj.transform.position = new Vector3(Random.Range(-4f, 4f), Random.Range(Util.rocket.transform.position.y + 20f, Util.rocket.transform.position.y + rocketSpeed * zoneTime));
+        obj.transform.position = new Vector3(Random.Range(-3.5f, 3.5f), Random.Range(Util.rocket.transform.position.y + 20f, Util.rocket.transform.position.y + rocketSpeed * zoneTime));
         coins.Add(obj);
     }
 

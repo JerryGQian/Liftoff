@@ -33,10 +33,12 @@ public class ScrollManager : MonoBehaviour {
 
     void Awake() {
         Util.scrollManager = this;
+        //rocketCount = Util.rocketHolder.rocketCount;
     }
 
 	// Use this for initialization
 	void Start () {
+        rocketCount = Util.rocketHolder.rocketCount;
         sr = GetComponent<ScrollRect>();
         if (Application.platform != RuntimePlatform.WindowsEditor) {
             Destroy(sr.horizontalScrollbar);
