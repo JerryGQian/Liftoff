@@ -29,6 +29,12 @@ public class RocketHolder : MonoBehaviour {
     public Sprite r23;
     public Sprite r24;
     public Sprite r25;
+    public Sprite r26;
+    public Sprite r27;
+    public Sprite r28;
+    public Sprite r29;
+    public Sprite r30;
+    public Sprite r31;
 
     public RocketInfo ri;
     void Awake() {
@@ -48,10 +54,11 @@ public class RocketHolder : MonoBehaviour {
     public RocketInfo getRocket(int i) {
         switch (i) {
             case 0: if (Util.wm.alternate) {
+                    string oldName = ri.name;
                     do {
                         ri = getRocket((int)Random.Range(1f, ScrollManager.rocketCount + 0.99f));
                     }
-                    while (!ri.purchased);
+                    while (!ri.purchased || oldName.Equals(ri.name));
                     ri.name = "RANDOM";
                     Util.wm.alternate = !Util.wm.alternate;
                     return ri;
@@ -59,15 +66,15 @@ public class RocketHolder : MonoBehaviour {
                 else {
                     return ri;
                 }
-            case 1:  return new RocketInfo(r1, purchased[i], "ROCKET", 0);
-            case 2:  return new RocketInfo(r2, purchased[i], "FALCON 9", 50);
-            case 3:  return new RocketInfo(r3, purchased[i], "SOYUZ", 50);
-            case 4:  return new RocketInfo(r4, purchased[i], "PROTON", 100);
-            case 5:  return new RocketInfo(r5, purchased[i], "ATLAS 5", 100);
-            case 6:  return new RocketInfo(r6, purchased[i], "ARIANE 5", 100);
-            case 7:  return new RocketInfo(r7, purchased[i], "SPACE SHUTTLE", 150);
-            case 8:  return new RocketInfo(r8, purchased[i], "V2", 175);
-            case 9:  return new RocketInfo(r9, purchased[i], "SATURN V", 200);
+            case 1:  return new RocketInfo(r1,  purchased[i], "ROCKET", 0);
+            case 2:  return new RocketInfo(r2,  purchased[i], "FALCON 9", 50);
+            case 3:  return new RocketInfo(r3,  purchased[i], "SOYUZ", 50);
+            case 4:  return new RocketInfo(r4,  purchased[i], "PROTON", 100);
+            case 5:  return new RocketInfo(r5,  purchased[i], "ATLAS 5", 100);
+            case 6:  return new RocketInfo(r6,  purchased[i], "ARIANE 5", 100);
+            case 7:  return new RocketInfo(r7,  purchased[i], "SPACE SHUTTLE", 150);
+            case 8:  return new RocketInfo(r8,  purchased[i], "V2", 175);
+            case 9:  return new RocketInfo(r9,  purchased[i], "SATURN V", 200);
             case 10: return new RocketInfo(r10, purchased[i], "N1", 200);
             case 11: return new RocketInfo(r11, purchased[i], "BOTTLE ROCKET", 150, false, true);
             case 12: return new RocketInfo(r12, purchased[i], "PAPER AIRPLANE", 200, false, false);
@@ -84,6 +91,12 @@ public class RocketHolder : MonoBehaviour {
             case 23: return new RocketInfo(r23, purchased[i], "", 0);
             case 24: return new RocketInfo(r24, purchased[i], "", 0);
             case 25: return new RocketInfo(r25, purchased[i], "", 0);
+            case 26: return new RocketInfo(r26, purchased[i], "", 0);
+            case 27: return new RocketInfo(r27, purchased[i], "", 0);
+            case 28: return new RocketInfo(r28, purchased[i], "", 0);
+            case 29: return new RocketInfo(r29, purchased[i], "", 0);
+            case 30: return new RocketInfo(r30, purchased[i], "", 0);
+            case 31: return new RocketInfo(r31, purchased[i], "", 0);
         }
         return null;
     }

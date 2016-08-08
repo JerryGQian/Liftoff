@@ -53,6 +53,7 @@ public class SaveManager : MonoBehaviour {
             Util.wm.controlScheme = data.controlScheme;
             ScrollManager.selector = data.selector;
             Util.wm.hasCheated = data.hasCheated;
+            Util.wm.lastLaunched = data.lastLaunched;
         }
 
         if (File.Exists(Application.persistentDataPath + "/purchases.dat")) {
@@ -103,6 +104,7 @@ public class SaveManager : MonoBehaviour {
         data2.controlScheme = Util.wm.controlScheme;
         data2.selector = ScrollManager.selector;
         data2.hasCheated = Util.wm.hasCheated;
+        data2.lastLaunched = Util.wm.lastLaunched;
 
         bf.Serialize(file, data2);
         file.Close();
@@ -143,6 +145,7 @@ public class Settings {
     public ControlScheme controlScheme;
     public float selector;
     public bool hasCheated;
+    public int lastLaunched;
 }
 
 [Serializable]

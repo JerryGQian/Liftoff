@@ -28,6 +28,7 @@ public class WorldManager : MonoBehaviour {
     public ControlScheme controlScheme = 0;
     public bool hasCheated = false;
     public bool godmode = false;
+    public int lastLaunched = 1;
 
     public GameObject settingsPrefab;
     GameObject settings;
@@ -84,14 +85,23 @@ public class WorldManager : MonoBehaviour {
 
     public void play() {
         if (!gameActive) {
-            Util.wm.rocket.SetActive(true);
-            gameActive = true;
-            dieScreen = false;
-            gameTime = 0;
-            attempts++;
-            Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);
-            Util.gm.play();
-            Destroy(settings);
+            if (Util.rocketHolder.purchased[ScrollManager.selectedRocket]) {
+                Util.wm.rocket.SetActive(true);
+                gameActive = true;
+                dieScreen = false;
+                gameTime = 0;
+                attempts++;
+                Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);
+                lastLaunched = ScrollManager.selectedRocket;
+                Util.gm.play();
+                Destroy(settings);
+            }
+            else {
+                CancelInvoke("play");
+                ScrollManager.selector = lastLaunched;
+                Util.scrollManager.setClosestRocket();
+                Invoke("play", 0.75f);
+            }
         }
     }
 

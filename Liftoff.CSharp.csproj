@@ -69,33 +69,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\2D_Destruction\Demo\Demo Scripts\ExplodeOnClick.cs" />
-    <Compile Include="Assets\2D_Destruction\Demo\Demo Scripts\ExplosionForce.cs" />
-    <Compile Include="Assets\2D_Destruction\Demo\Demo Scripts\Reset.cs" />
-    <Compile Include="Assets\2D_Destruction\Scripts\ClipperHelper.cs" />
-    <Compile Include="Assets\2D_Destruction\Scripts\Explodable.cs" />
-    <Compile Include="Assets\2D_Destruction\Scripts\ExplodableAddon.cs" />
-    <Compile Include="Assets\2D_Destruction\Scripts\ExplodableFragments.cs" />
-    <Compile Include="Assets\2D_Destruction\Scripts\SpriteExploder.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\DelaunayHelpers.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\Edge.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\EdgeList.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\EdgeReorderer.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\Halfedge.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\HalfedgePriorityQueue.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\ICoord.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\LR.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\Site.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\SiteList.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\Triangle.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\Vertex.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\Delaunay\Voronoi.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\geom\Circle.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\geom\LineSegment.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\geom\Polygon.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\geom\Winding.cs" />
-    <Compile Include="Assets\2D_Destruction\Unity-delaunay\utils\IDisposable.cs" />
-    <Compile Include="Assets\2D_Destruction\clipper_library\clipper.cs" />
     <Compile Include="Assets\GoogleMobileAds\Api\AdFailedToLoadEventArgs.cs" />
     <Compile Include="Assets\GoogleMobileAds\Api\AdLoader.cs" />
     <Compile Include="Assets\GoogleMobileAds\Api\AdPosition.cs" />

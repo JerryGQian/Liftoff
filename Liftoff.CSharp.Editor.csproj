@@ -111,7 +111,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\2D_Destruction\Scripts\Editor\ExplodableEditor.cs" />
     <Compile Include="Assets\GoogleMobileAds\Editor\CocoaPodHelper.cs" />
     <Compile Include="Assets\GoogleMobileAds\Editor\PostProcessor.cs" />
     <Compile Include="Assets\PlayServicesResolver\Editor\AdMobDependencies.cs" />
