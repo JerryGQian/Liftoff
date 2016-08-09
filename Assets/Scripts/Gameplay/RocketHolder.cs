@@ -95,10 +95,10 @@ public class RocketHolder : MonoBehaviour {
             case 19: return new RocketInfo(r19, purchased[i], r19.name, 0, false, false); //paper
             case 20: return new RocketInfo(r20, purchased[i], r20.name, 0, false, true); ///machine gun
             case 21: return new RocketInfo(r21, purchased[i], r21.name, 0, false, true);  //steel man
-            case 22: return new RocketInfo(r22, purchased[i], r22.name, 0);
-            case 23: return new RocketInfo(r23, purchased[i], r23.name, 0);
-            case 24: return new RocketInfo(r24, purchased[i], r24.name, 0);
-            case 25: return new RocketInfo(r25, purchased[i], r25.name, 0);
+            case 22: return new RocketInfo(r22, purchased[i], r22.name, 0); //SLS
+            case 23: return new RocketInfo(r23, purchased[i], r23.name, 0); //delta IV heavy
+            case 24: return new RocketInfo(r24, purchased[i], r24.name, 0); //Eiffel rocket
+            case 25: return new RocketInfo(r25, purchased[i], r25.name, 0, false, false); //myphone
             case 26: return new RocketInfo(r26, purchased[i], r26.name, 0);
             case 27: return new RocketInfo(r27, purchased[i], r27.name, 0);
             case 28: return new RocketInfo(r28, purchased[i], r28.name, 0);
