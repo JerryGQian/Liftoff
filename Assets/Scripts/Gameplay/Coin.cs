@@ -20,7 +20,7 @@ public class Coin : MonoBehaviour {
             //SPAWN +1 TEXT HERE
             GameObject obj = Instantiate(coinCanvasPrefab);
             obj.GetComponent<RectTransform>().anchoredPosition = Camera.main.WorldToScreenPoint(transform.position);
-            float scale = 1.15f * (Screen.height / 1920f);
+            float scale = 1.125f * (Screen.height / 1920f);
             obj.GetComponent<RectTransform>().localScale = new Vector3(scale, scale, scale);
             obj.transform.SetParent(Util.canvas.transform);
             Destroy(gameObject);

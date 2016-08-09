@@ -23,9 +23,9 @@ public class GameManager : MonoBehaviour {
     public GameObject physicsCloudPrefab;
     public GameObject cloudPrefab;
     public ArrayList clouds;
-    int physicsCloudCount = 18;
+    int physicsCloudCount = 30;
     int cloudCount = 4;
-    int coverCloudCount = 7;
+    int coverCloudCount = 10;
 
     public GameObject coinPrefab;
     ArrayList coins;
@@ -121,7 +121,8 @@ public class GameManager : MonoBehaviour {
         for (int i = 0; i < physicsCloudCount; i++) {
             obj = Instantiate(physicsCloudPrefab);
             obj.transform.position = new Vector3(Random.Range(-6f, 6f), Random.Range(zoneTime * rocketSpeed - 0.5f, zoneTime * rocketSpeed + 0.5f));
-            obj.transform.localScale = new Vector3(1f, 1f, 1f);
+            float scale = Random.Range(0.35f, 0.65f);
+            obj.transform.localScale = new Vector3(scale, scale, 1f);
             clouds.Add(obj);
         }
         for (int i = 0; i < cloudCount; i++) {
