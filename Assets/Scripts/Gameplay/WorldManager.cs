@@ -119,7 +119,8 @@ public class WorldManager : MonoBehaviour {
                 Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);
                 lastLaunched = ScrollManager.selectedRocket;
                 Util.gm.play();
-                Destroy(settings);
+                settings.GetComponent<SettingsManager>().close();
+                IAP.GetComponent<SettingsManager>().close();
             }
             else {
                 CancelInvoke("play");
