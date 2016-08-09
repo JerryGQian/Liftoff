@@ -185,7 +185,9 @@ public class GameManager : MonoBehaviour {
     //Death
 
     public void die(string reason) {
-        
+        if (Util.wm.adWatchTimeLife <= 0 || Util.wm.gamesSinceAdWatch > Util.adLifeMinGames) {
+
+        }
 
         Util.wm.gameActive = false;
         Util.wm.dieScreen = true;

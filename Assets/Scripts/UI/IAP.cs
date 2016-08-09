@@ -7,11 +7,16 @@ public class IAP : MonoBehaviour {
 
     public Text timer;
 
-	// Use this for initialization
-	void Start () {
+    public SmoothMotion sm1;
+    public SmoothMotion sm2;
+
+    // Use this for initialization
+    void Start () {
         transform.SetParent(Util.canvas.transform);
         transform.localScale = new Vector3(1f, 1f, 1f);
-        GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 0, 0);
+        GetComponent<RectTransform>().anchoredPosition = new Vector3(1500f, 0, 0);
+
+        sm1.begin();
     }
 
     void Update() {
@@ -19,7 +24,8 @@ public class IAP : MonoBehaviour {
     }
 
     public void close() {
-        Destroy(gameObject);
+        sm2.startPos = GetComponent<RectTransform>().anchoredPosition;
+        sm2.begin();
     }
 
     public void watchAd() {

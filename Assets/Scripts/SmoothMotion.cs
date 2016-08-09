@@ -36,12 +36,19 @@ public class SmoothMotion : MonoBehaviour {
 
     public void end() {
         began = false;
+        if (!isRectTransform) {
+            transform.position = endPos;
+        }
+        else {
+            rect.anchoredPosition = endPos;
+        }
         if (deactivateOnFinish) {
             gameObject.SetActive(false);
         }
         if (deleteOnFinish) {
             Destroy(gameObject);
         }
+
     }
 
     public void reset() {

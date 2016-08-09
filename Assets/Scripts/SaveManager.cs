@@ -34,6 +34,9 @@ public class SaveManager : MonoBehaviour {
             Util.wm.totalDistance = data.totalDistance;
             Util.wm.attempts = data.attempts;
             Util.wm.lastLaunched = data.lastLaunched;
+            Util.wm.adWatchTimeCoins = data.adWatchTimeCoins;
+            Util.wm.adWatchTimeLife = data.adWatchTimeLife;
+            Util.wm.gamesSinceAdWatch = data.gamesSinceAdWatch;
         }
 
         if (File.Exists(Application.persistentDataPath + "/settings.dat")) {
@@ -85,6 +88,9 @@ public class SaveManager : MonoBehaviour {
         data.totalDistance = Util.wm.totalDistance;
         data.attempts = Util.wm.attempts;
         data.lastLaunched = Util.wm.lastLaunched;
+        data.adWatchTimeCoins = Util.wm.adWatchTimeCoins;
+        data.adWatchTimeLife = Util.wm.adWatchTimeLife;
+        data.gamesSinceAdWatch = Util.wm.gamesSinceAdWatch;
 
         bf.Serialize(file, data);
         file.Close();
@@ -138,7 +144,9 @@ public class GameData {
     public int coins;
     public float totalDistance;
     public int lastLaunched;
-    public float adWatchTime;
+    public float adWatchTimeCoins;
+    public float adWatchTimeLife;
+    public int gamesSinceAdWatch;
 }
 
 [Serializable]

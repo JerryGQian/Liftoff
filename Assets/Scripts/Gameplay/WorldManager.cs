@@ -27,6 +27,7 @@ public class WorldManager : MonoBehaviour {
     public int attempts = 0;
     public float adWatchTimeCoins = 0;
     public float adWatchTimeLife = 0;
+    public int gamesSinceAdWatch = 0;
 
     public bool musicMuted = false;
     public bool soundMuted = false;
@@ -132,10 +133,10 @@ public class WorldManager : MonoBehaviour {
     public void showSettings() {
         if (settings == null) {
             settings = Instantiate(settingsPrefab);
-            Destroy(IAP);
+            IAP.GetComponent<IAP>().close();
         }
         else {
-            Destroy(settings);
+            settings.GetComponent<SettingsManager>().close();
         }
     }
 
@@ -144,10 +145,10 @@ public class WorldManager : MonoBehaviour {
         if (!gameActive) {
             if (IAP == null) {
                 IAP = Instantiate(IAPPrefab);
-                Destroy(settings);
+                settings.GetComponent<SettingsManager>().close();
             }
             else {
-                Destroy(IAP);
+                IAP.GetComponent<IAP>().close();
             }
         }
     }

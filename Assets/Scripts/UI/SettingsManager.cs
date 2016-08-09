@@ -19,12 +19,17 @@ public class SettingsManager : MonoBehaviour {
 
     Color onColor;
     Color offColor;
+
+    public SmoothMotion sm1;
+    public SmoothMotion sm2;
     
 	// Use this for initialization
 	void Start () {
         transform.SetParent(Util.canvas.transform);
         transform.localScale = new Vector3(1f, 1f, 1f);
-        GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 222f, 0f);
+        GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 1500f, 0f);
+
+        sm1.begin();
 
         onColor = closeButton.color;
         offColor = smButton.color;
@@ -135,6 +140,7 @@ public class SettingsManager : MonoBehaviour {
     
 
     public void close() {
-        Destroy(gameObject);
+        sm2.startPos = GetComponent<RectTransform>().anchoredPosition;
+        sm2.begin();
     }
 }

@@ -24,7 +24,9 @@ public class Util {
     public static float width;
 
     public static float adCoinsCooldown = 1200f;
-    public static int coinReward = 50;
+    public static float adLifeCooldown = 300f;
+    public static int adLifeMinGames = 5;
+    public static int coinReward = 200;
 
     public static bool even;
     public static bool even2;
