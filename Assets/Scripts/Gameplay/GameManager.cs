@@ -103,10 +103,14 @@ public class GameManager : MonoBehaviour {
         InvokeRepeating("updateZone", 0.05f, zoneTime);
         Invoke("spawnObstacle", zoneTime * 1.7f);
 
-        Invoke("spawnPlane", Random.Range(2f, 4f));
+        Invoke("spawnPlane", Random.Range(1.5f, 3f));
         Invoke("spawnPlane", Random.Range(zoneTime + 0.5f, zoneTime + 1.3f));
         Invoke("spawnPlane", Random.Range(zoneTime + 1.5f, zoneTime + 4f));
         Invoke("spawnPlane", Random.Range(zoneTime + 3.5f, zoneTime + 8f));
+    }
+
+    public void restart() {
+
     }
 
     void increaseWind0() {
@@ -187,7 +191,7 @@ public class GameManager : MonoBehaviour {
 
     public void die(string reason) {
         if (distance > 300f && (Util.wm.adWatchTimeLife <= 0 || Util.wm.gamesSinceAdWatch > Util.adLifeMinGames)) {
-
+            Util.wm.showSecondChance();
         }
 
         Util.wm.gameActive = false;

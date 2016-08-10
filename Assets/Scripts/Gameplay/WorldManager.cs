@@ -43,6 +43,9 @@ public class WorldManager : MonoBehaviour {
     public GameObject IAPPrefab;
     GameObject IAP;
 
+    public GameObject secondChancePrefab;
+    GameObject secondChance;
+
     public bool alternate = true;
 
     void Awake() {
@@ -111,16 +114,17 @@ public class WorldManager : MonoBehaviour {
     public void play() {
         if (!gameActive) {
             if (Util.rocketHolder.purchased[ScrollManager.selectedRocket] || ScrollManager.selectedRocket == 0 || godmode) {
+                if (secondChance != null) secondChance.GetComponent<SecondChance>().close();
                 Util.wm.rocket.SetActive(true);
                 gameActive = true;
                 dieScreen = false;
                 gameTime = 0;
                 attempts++;
-                Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);
+                if (best > 25f) Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);
                 lastLaunched = ScrollManager.selectedRocket;
                 Util.gm.play();
-                settings.GetComponent<SettingsManager>().close();
-                IAP.GetComponent<SettingsManager>().close();
+                if (settings != null) settings.GetComponent<SettingsManager>().close();
+                if (IAP != null) IAP.GetComponent<SettingsManager>().close();
             }
             else {
                 CancelInvoke("play");
@@ -134,7 +138,8 @@ public class WorldManager : MonoBehaviour {
     public void showSettings() {
         if (settings == null) {
             settings = Instantiate(settingsPrefab);
-            IAP.GetComponent<IAP>().close();
+            if (IAP != null) IAP.GetComponent<IAP>().close();
+            if (secondChance != null) secondChance.GetComponent<SecondChance>().close();
         }
         else {
             settings.GetComponent<SettingsManager>().close();
@@ -146,7 +151,8 @@ public class WorldManager : MonoBehaviour {
         if (!gameActive) {
             if (IAP == null) {
                 IAP = Instantiate(IAPPrefab);
-                settings.GetComponent<SettingsManager>().close();
+                if (settings != null) settings.GetComponent<SettingsManager>().close();
+                if (secondChance != null) secondChance.GetComponent<SecondChance>().close();
             }
             else {
                 IAP.GetComponent<IAP>().close();
@@ -154,16 +160,25 @@ public class WorldManager : MonoBehaviour {
         }
     }
 
+    public void showSecondChance() {
+        secondChance = Instantiate(secondChancePrefab);
+        if (IAP != null) IAP.GetComponent<IAP>().close();
+        if (settings != null) settings.GetComponent<SettingsManager>().close();
+    }
+
+
     public void leftArrow() {
         ScrollManager.selector--;
         Util.scrollManager.setClosestRocket();
         ScrollManager.selector = ScrollManager.selectedRocket;
+        Util.scrollManager.moveBG();
     }
 
     public void rightArrow() {
         ScrollManager.selector++;
         Util.scrollManager.setClosestRocket();
         ScrollManager.selector = ScrollManager.selectedRocket;
+        Util.scrollManager.moveBG();
     }
 
     public static void updateCoinCount() {

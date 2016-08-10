@@ -5,7 +5,7 @@ public class SmoothMotion : MonoBehaviour {
     public Vector3 startPos;
     public Vector3 endPos;
     public float duration = 1f;
-    bool began = false;
+    public bool began = false;
     private float startTime;
 
     bool isRectTransform = false;

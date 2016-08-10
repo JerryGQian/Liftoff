@@ -129,6 +129,7 @@
     <Compile Include="Assets\Scripts\Gameplay\PhysicsCloud.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Rocket.cs" />
     <Compile Include="Assets\Scripts\Gameplay\RocketHolder.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\SecondChance.cs" />
     <Compile Include="Assets\Scripts\Gameplay\SideBoundBox.cs" />
     <Compile Include="Assets\Scripts\Gameplay\SpriteRandomizer.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Wind.cs" />

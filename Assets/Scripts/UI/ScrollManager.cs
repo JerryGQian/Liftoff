@@ -9,7 +9,7 @@ public class ScrollManager : MonoBehaviour {
     public static float selectedRocketTarget;
     float selectorInitial = 0;
     public bool dragging;
-    public static float scrollSpeed = 15f;
+    public static float scrollSpeed = 18f;
     public static float juice = 7f;
     public static float rocketSep = 4.5f;
     public static int rocketCount = 14;
@@ -161,7 +161,7 @@ public class ScrollManager : MonoBehaviour {
         }
     }
 
-    void moveBG() {
+    public void moveBG() {
         float offset = scrollParent.transform.position.x / (rocketCount * rocketSep) * 2f;
         bg1.transform.localPosition = new Vector3(offset, 2.28f, 0);
         bg2.transform.localPosition = new Vector3(-offset, 0.951f, 0);
