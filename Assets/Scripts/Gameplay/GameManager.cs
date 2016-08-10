@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     public float distance;
@@ -7,6 +8,9 @@ public class GameManager : MonoBehaviour {
     public string zoneName;
     public Vector3 diePos;
     public bool invincible = false;
+    public static float invincibleTime = 4f;
+    int invincibleCountdown = 0;
+    bool firstTry;
 
     public static float scoreSpeed = 15f;
     public static float rocketSpeed = 10f;
@@ -44,6 +48,9 @@ public class GameManager : MonoBehaviour {
     GameObject planetBG;
     public int asteroidBGCount = 0;
 
+    public GameObject countdownPrefab;
+    GameObject countdown;
+
 	// Use this for initialization
 	void Start () {
         Util.gm = this;
@@ -77,6 +84,7 @@ public class GameManager : MonoBehaviour {
         Util.wm.dieScreen = false;
         Util.wm.gameTime = 0;
         invincible = false;
+        firstTry = true;
 
         Util.rocket.tipRateActual = Util.rocket.tipRate;
         Util.rocket.engineForceActual = Util.rocket.engineForce;
@@ -126,32 +134,53 @@ public class GameManager : MonoBehaviour {
         Util.wm.gameActive = true;
         Util.wm.dieScreen = false;
         invincible = true;
+        firstTry = false;
+
+        invincibleCountdown = (int)(invincibleTime + 0.0001f) + 1;
+        setCountdown();
 
         Util.nozzle.spew();
 
-        Util.rocket.tipRateActual = Util.rocket.tipRate * 0.05f;
-        Util.rocket.engineForceActual = Util.rocket.engineForce * 0.05f;
+        Util.rocket.tipRateActual = Util.rocket.tipRate * 0.0f;
+        Util.rocket.engineForceActual = Util.rocket.engineForce * 0.0f;
 
-        Util.wm.rocket.transform.position = diePos - new Vector3(0, rocketSpeed * 3f, 0);
+        Util.wm.rocket.transform.position = diePos - new Vector3(0, rocketSpeed * invincibleTime, 0);
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
 
         Camera.main.GetComponent<Animator>().SetTrigger("Black");
-        Camera.main.transform.position = Util.wm.rocket.transform.position + new Vector3(0, 10f, -10f);
+        Camera.main.transform.position = Util.wm.rocket.transform.position + new Vector3(0, 8f, -10f);
 
         Util.menuManager.showPlayScreen();
 
         increaseWind1();
-        InvokeRepeating("spawnCoins", 2f, zoneTime);
+        InvokeRepeating("spawnCoins", invincibleTime, zoneTime);
         float delay = (zoneTime - Util.wm.gameTime % zoneTime) + 0.05f;
         InvokeRepeating("updateZone", delay, zoneTime);
-        Invoke("spawnObstacle", 2.7f);
-        Invoke("uninvincible", 3f);
+        Invoke("spawnObstacle", invincibleTime - 0.3f);
+        Invoke("uninvincible", invincibleTime);
 
         CancelInvoke("showFailScreen");
         CancelInvoke("showFailScreen");
         CancelInvoke("resetRocket");
 
         Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Animator>().SetTrigger("pulse");
+    }
+
+    void setCountdown() {
+        invincibleCountdown--;
+        if (countdown == null) {
+            countdown = Instantiate(countdownPrefab);
+            countdown.transform.SetParent(Util.canvas.transform);
+            countdown.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 459f);
+            countdown.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
+        }
+        countdown.GetComponent<Text>().text = "" + invincibleCountdown;
+        if (invincibleCountdown <= 0) {
+            Destroy(countdown);
+        }
+        else {
+            Invoke("setCountdown", 1f);
+        }
     }
 
     void uninvincible() {
@@ -238,7 +267,7 @@ public class GameManager : MonoBehaviour {
     //Death
 
     public void die(string reason) {
-        if (distance > 300f && (Util.wm.adWatchTimeLife <= 0 && Util.wm.gamesSinceAdWatch > Util.adLifeMinGames)) {
+        if (Util.wm.godmode || (distance > 300f && (Util.wm.adWatchTimeLife <= 0 && Util.wm.gamesSinceAdWatch > Util.adLifeMinGames) && Random.Range(0, 100f) < 50f && firstTry)) {
             Util.wm.showSecondChance();
         }
 

@@ -4,7 +4,7 @@ using UnityEngine.Advertisements;
 
 public class SecondChance : MonoBehaviour {
     float time;
-    float life = 2.5f;
+    float life = 3.5f;
 
     public GameObject bar;
 
@@ -35,7 +35,7 @@ public class SecondChance : MonoBehaviour {
             ShowOptions options = new ShowOptions();
             options.resultCallback = HandleShowResultCoins;
             Debug.Log("Showing Video");
-            close();
+            CancelInvoke("close");
             Advertisement.Show(Util.wm.zoneID, options);
         }
     }
@@ -44,10 +44,11 @@ public class SecondChance : MonoBehaviour {
         switch (result) {
             case ShowResult.Finished:
                 Debug.Log("Video completed. Restarting!");
-                Util.gm.distance -= GameManager.scoreSpeed * 2f;
+                Util.gm.distance -= GameManager.scoreSpeed * GameManager.invincibleTime;
                 Util.wm.adWatchTimeLife = Util.adLifeCooldown;
                 Util.wm.gamesSinceAdWatch = 0;
                 Util.gm.restart();
+                close();
                 break;
             case ShowResult.Skipped:
                 Debug.LogWarning("Video was skipped.");
