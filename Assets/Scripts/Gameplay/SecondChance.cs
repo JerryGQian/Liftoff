@@ -48,8 +48,6 @@ public class SecondChance : MonoBehaviour {
                 Util.wm.adWatchTimeLife = Util.adLifeCooldown;
                 Util.wm.gamesSinceAdWatch = 0;
                 Util.gm.restart();
-                //CancelInvoke("close");
-                //close();
                 break;
             case ShowResult.Skipped:
                 Debug.LogWarning("Video was skipped.");

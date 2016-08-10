@@ -72,6 +72,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Liftoff.CSharp.Plugins.csproj">
+      <Project>{812A3694-A42C-4411-7F91-20677BC514D3}</Project>
+      <Name>Liftoff.CSharp.Plugins</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Assets\GoogleMobileAds\Api\AdFailedToLoadEventArgs.cs" />
     <Compile Include="Assets\GoogleMobileAds\Api\AdLoader.cs" />
     <Compile Include="Assets\GoogleMobileAds\Api\AdPosition.cs" />
@@ -154,6 +160,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Plugins\Android\GoogleMobileAdsPlugin\AndroidManifest.xml" />
+    <None Include="Assets\Plugins\UnbiasedTime\UnbiasedTime_Unitypro.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

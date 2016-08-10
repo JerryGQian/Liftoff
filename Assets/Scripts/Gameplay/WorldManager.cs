@@ -119,6 +119,7 @@ public class WorldManager : MonoBehaviour {
                 gameActive = true;
                 dieScreen = false;
                 gameTime = 0;
+                gamesSinceAdWatch++;
                 attempts++;
                 if (best > 25f) Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);
                 lastLaunched = ScrollManager.selectedRocket;
