@@ -5,6 +5,7 @@ using UnityEngine.Advertisements;
 public class SecondChance : MonoBehaviour {
     float time;
     float life = 3.5f;
+    bool adwatch = false;
 
     public GameObject bar;
 
@@ -25,13 +26,14 @@ public class SecondChance : MonoBehaviour {
 	void Update () {
         time -= Time.deltaTime;
         bar.transform.localScale = new Vector3(time / life, 1f, 1f);
-        if (time < 0 && !s2.began) {
+        if (time < 0 && !s2.began && !adwatch) {
             close();
         }
 	}
 
     public void watchAd() {
         if (Advertisement.IsReady()) {
+            adwatch = true;
             ShowOptions options = new ShowOptions();
             options.resultCallback = HandleShowResultCoins;
             Debug.Log("Showing Video");
@@ -47,8 +49,9 @@ public class SecondChance : MonoBehaviour {
                 Util.gm.distance -= GameManager.scoreSpeed * GameManager.invincibleTime;
                 Util.wm.adWatchTimeLife = Util.adLifeCooldown;
                 Util.wm.gamesSinceAdWatch = 0;
+                if (s2 != null) close();
                 Util.gm.restart();
-                close();
+                
                 break;
             case ShowResult.Skipped:
                 Debug.LogWarning("Video was skipped.");

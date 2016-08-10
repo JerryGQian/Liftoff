@@ -144,12 +144,15 @@ public class GameManager : MonoBehaviour {
 
         Util.rocket.tipRateActual = Util.rocket.tipRate * 0.0f;
         Util.rocket.engineForceActual = Util.rocket.engineForce * 0.0f;
+        Util.rocket.tipAmount = 0;
+        Util.rocket.enginePush = 0;
+        Util.rocket.finalAngle = 0;
 
         Util.wm.rocket.transform.position = diePos - new Vector3(0, rocketSpeed * invincibleTime, 0);
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
 
         Camera.main.GetComponent<Animator>().SetTrigger("Black");
-        Camera.main.transform.position = Util.wm.rocket.transform.position + new Vector3(0, 8f, -10f);
+        Camera.main.transform.position = diePos + new Vector3(0, rocketSpeed * -0.5f * invincibleTime, -10f);
 
         Util.menuManager.showPlayScreen();
 
@@ -161,7 +164,6 @@ public class GameManager : MonoBehaviour {
         Invoke("spawnObstacle", invincibleTime - 0.3f);
         Invoke("uninvincible", invincibleTime);
 
-        CancelInvoke("showFailScreen");
         CancelInvoke("showFailScreen");
         CancelInvoke("resetRocket");
 
@@ -190,6 +192,9 @@ public class GameManager : MonoBehaviour {
         invincible = false;
         Util.rocket.tipRateActual = Util.rocket.tipRate;
         Util.rocket.engineForceActual = Util.rocket.engineForce;
+
+        //Util.wm.rocket.transform.position = diePos;
+        //Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
     }
 
     void increaseWind0() {
@@ -269,7 +274,7 @@ public class GameManager : MonoBehaviour {
     //Death
 
     public void die(string reason) {
-        if (Util.wm.godmode || (distance > 300f && (Util.wm.adWatchTimeLife <= 0 && Util.wm.gamesSinceAdWatch > Util.adLifeMinGames) && Random.Range(0, 100f) < 50f && firstTry)) {
+        if (Util.wm.godmode || (distance > 300f && (Util.wm.adWatchTimeLife <= 0 && Util.wm.gamesSinceAdWatch > Util.adLifeMinGames) && Random.Range(0, 100f) < 35f && firstTry)) {
             Util.wm.showSecondChance();
         }
 

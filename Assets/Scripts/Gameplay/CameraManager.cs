@@ -20,7 +20,7 @@ public class CameraManager : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if (Util.wm.gameActive || Util.wm.dieScreen) {
-            cameraTarget = new Vector3(0, Util.rocket.bottomPos.y + 16f - Mathf.Sin(Util.wm.gameTime), -10f);
+            cameraTarget = new Vector3(0, Util.rocket.transform.position.y + 16f - Mathf.Sin(Util.wm.gameTime), -10f);
         }
         else {
             cameraTarget = Util.wm.cameraMenuPosition;

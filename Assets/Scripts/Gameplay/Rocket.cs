@@ -9,9 +9,9 @@ public class Rocket : MonoBehaviour {
     public float tipRateActual;
     public float engineForceActual;
 
-    float tipAmount = 0;
-    float enginePush = 0;
-    float finalAngle = 0;
+    public float tipAmount = 0;
+    public float enginePush = 0;
+    public float finalAngle = 0;
     public Vector3 finalVector;
 
     public Vector3 bottomPos;
@@ -37,7 +37,7 @@ public class Rocket : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Util.wm.gameActive) {
+        if (Util.wm.gameActive && !Util.gm.invincible) {
             bottomPos = transform.position;
             rocketAngle = transform.eulerAngles.z - 90f;
             tipPos = transform.position + new Vector3(-Mathf.Sin(Mathf.Deg2Rad * rocketAngle), Mathf.Cos(Mathf.Deg2Rad * rocketAngle), 0) * 5f;
