@@ -4,7 +4,7 @@ using UnityEngine.Advertisements;
 
 public class SecondChance : MonoBehaviour {
     float time;
-    float life = 3f;
+    float life = 2.5f;
 
     public GameObject bar;
 
@@ -16,7 +16,7 @@ public class SecondChance : MonoBehaviour {
 
         transform.SetParent(Util.canvas.transform);
         transform.localScale = new Vector3(1f, 1f, 1f);
-        GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 888f, 0);
+        GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 1000f, 0);
 
         s1.begin();
 	}
