@@ -5,6 +5,8 @@ public class GameManager : MonoBehaviour {
     public float distance;
     public int zoneID;
     public string zoneName;
+    public Vector3 diePos;
+    public bool invincible = false;
 
     public static float scoreSpeed = 15f;
     public static float rocketSpeed = 10f;
@@ -70,10 +72,20 @@ public class GameManager : MonoBehaviour {
     }
 
     public void play() {
+        Util.wm.rocket.SetActive(true);
+        Util.wm.gameActive = true;
+        Util.wm.dieScreen = false;
+        Util.wm.gameTime = 0;
+        invincible = false;
+
+        Util.rocket.tipRateActual = Util.rocket.tipRate;
+        Util.rocket.engineForceActual = Util.rocket.engineForce;
+
         Wind.setMaxWind(0);
         Util.cm.cameraTargetSize = Util.wm.cameraSizePlay;
 
         Util.rocket.setup(Util.rocketHolder.getRocket(ScrollManager.selectedRocket));
+        Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Animator>().SetTrigger("stop");
 
         Camera.main.GetComponent<Animator>().SetTrigger("Darken");
         Camera.main.transform.position = new Vector3(0, 0, -10);
@@ -103,14 +115,50 @@ public class GameManager : MonoBehaviour {
         InvokeRepeating("updateZone", 0.05f, zoneTime);
         Invoke("spawnObstacle", zoneTime * 1.7f);
 
-        Invoke("spawnPlane", Random.Range(1.5f, 3f));
+        Invoke("spawnPlane", Random.Range(1f, 2.5f));
         Invoke("spawnPlane", Random.Range(zoneTime + 0.5f, zoneTime + 1.3f));
         Invoke("spawnPlane", Random.Range(zoneTime + 1.5f, zoneTime + 4f));
         Invoke("spawnPlane", Random.Range(zoneTime + 3.5f, zoneTime + 8f));
     }
 
     public void restart() {
+        Util.wm.rocket.SetActive(true);
+        Util.wm.gameActive = true;
+        Util.wm.dieScreen = false;
+        invincible = true;
 
+        Util.nozzle.spew();
+
+        Util.rocket.tipRateActual = Util.rocket.tipRate * 0.2f;
+        Util.rocket.engineForceActual = Util.rocket.engineForce * 0.2f;
+
+        Util.wm.rocket.transform.position = diePos - new Vector3(0, rocketSpeed * 2f, 0);
+        Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
+
+        Camera.main.GetComponent<Animator>().SetTrigger("Black");
+        Camera.main.transform.position = Util.wm.rocket.transform.position + new Vector3(0, 10f, -10f);
+
+        Util.menuManager.showPlayScreen();
+
+        increaseWind1();
+        InvokeRepeating("spawnCoins", 1f, zoneTime);
+        float delay = (zoneTime - Util.wm.gameTime % zoneTime) + 0.05f;
+        InvokeRepeating("updateZone", delay, zoneTime);
+        Invoke("spawnObstacle", 0.5f);
+        Invoke("uninvincible", 2f);
+
+        CancelInvoke("showFailScreen");
+        CancelInvoke("showFailScreen");
+        CancelInvoke("resetRocket");
+
+        Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Animator>().SetTrigger("pulse");
+    }
+
+    void uninvincible() {
+        Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Animator>().SetTrigger("stop");
+        invincible = false;
+        Util.rocket.tipRateActual = Util.rocket.tipRate;
+        Util.rocket.engineForceActual = Util.rocket.engineForce;
     }
 
     void increaseWind0() {
@@ -194,6 +242,8 @@ public class GameManager : MonoBehaviour {
             Util.wm.showSecondChance();
         }
 
+        Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Animator>().SetTrigger("stop");
+
         Util.wm.gameActive = false;
         Util.wm.dieScreen = true;
         Invoke("showFailScreen", 1.5f);
@@ -223,6 +273,8 @@ public class GameManager : MonoBehaviour {
         CancelInvoke("spawnObstacle");
         CancelInvoke("spawnAsteroidBG");
         CancelInvoke("spawnPlane");
+
+        diePos = new Vector3(0, Util.wm.rocket.transform.position.y, 0);
 
         if (distance > Util.wm.best) {
             Util.wm.best = distance;

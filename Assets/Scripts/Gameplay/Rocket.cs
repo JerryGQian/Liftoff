@@ -6,6 +6,9 @@ public class Rocket : MonoBehaviour {
     public float tipRate;
     public float engineForce;
 
+    public float tipRateActual;
+    public float engineForceActual;
+
     float tipAmount = 0;
     float enginePush = 0;
     float finalAngle = 0;
@@ -38,10 +41,10 @@ public class Rocket : MonoBehaviour {
             bottomPos = transform.position;
             rocketAngle = transform.eulerAngles.z - 90f;
             tipPos = transform.position + new Vector3(-Mathf.Sin(Mathf.Deg2Rad * rocketAngle), Mathf.Cos(Mathf.Deg2Rad * rocketAngle), 0) * 5f;
-            tipAmount = -rocketAngle / 90f * tipRate * Time.deltaTime + Wind.wind;
+            tipAmount = -rocketAngle / 90f * tipRateActual * Time.deltaTime + Wind.wind;
             tipPos += new Vector3(tipAmount + Random.Range(-0.0001f, 0.0001f), 0);
             bottomPos += new Vector3(tipAmount, 0);
-            enginePush = (-Util.nozzle.nozzleAngle) / 90f * engineForce * Time.deltaTime;
+            enginePush = (-Util.nozzle.nozzleAngle) / 90f * engineForceActual * Time.deltaTime;
             bottomPos += new Vector3(enginePush, 0);
             finalVector = (tipPos - bottomPos);
             if (finalVector.x >= 0) {

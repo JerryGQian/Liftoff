@@ -27,7 +27,7 @@ public class WorldManager : MonoBehaviour {
     public int attempts = 0;
     public float adWatchTimeCoins = 0;
     public float adWatchTimeLife = 0;
-    public int gamesSinceAdWatch = 0;
+    public int gamesSinceAdWatch = 6;
 
     public bool musicMuted = false;
     public bool soundMuted = false;
@@ -115,10 +115,6 @@ public class WorldManager : MonoBehaviour {
         if (!gameActive) {
             if (Util.rocketHolder.purchased[ScrollManager.selectedRocket] || ScrollManager.selectedRocket == 0 || godmode) {
                 if (secondChance != null) secondChance.GetComponent<SecondChance>().close();
-                Util.wm.rocket.SetActive(true);
-                gameActive = true;
-                dieScreen = false;
-                gameTime = 0;
                 gamesSinceAdWatch++;
                 attempts++;
                 if (best > 25f) Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);

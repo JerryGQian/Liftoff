@@ -25,7 +25,7 @@ public class Asteroid : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D coll) {
-        if (Util.wm.gameActive && coll.gameObject.name.Equals("Rocket") && !Util.wm.godmode) {
+        if (Util.wm.gameActive && coll.gameObject.name.Equals("Rocket") && !Util.wm.godmode && !Util.gm.invincible) {
             Util.gm.die();
             //GetComponent<Motion>().end();
         }
