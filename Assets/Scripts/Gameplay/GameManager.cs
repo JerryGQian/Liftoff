@@ -135,6 +135,7 @@ public class GameManager : MonoBehaviour {
         Util.wm.dieScreen = false;
         invincible = true;
         firstTry = false;
+        Wind.setMaxWind(0);
 
         invincibleCountdown = (int)(invincibleTime + 0.0001f) + 1;
         setCountdown();
@@ -152,7 +153,8 @@ public class GameManager : MonoBehaviour {
 
         Util.menuManager.showPlayScreen();
 
-        increaseWind1();
+
+        Invoke("increaseWind1", invincibleTime);
         InvokeRepeating("spawnCoins", invincibleTime, zoneTime);
         float delay = (zoneTime - Util.wm.gameTime % zoneTime) + 0.05f;
         InvokeRepeating("updateZone", delay, zoneTime);
