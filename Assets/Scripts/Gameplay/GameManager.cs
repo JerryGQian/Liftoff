@@ -129,10 +129,10 @@ public class GameManager : MonoBehaviour {
 
         Util.nozzle.spew();
 
-        Util.rocket.tipRateActual = Util.rocket.tipRate * 0.2f;
-        Util.rocket.engineForceActual = Util.rocket.engineForce * 0.2f;
+        Util.rocket.tipRateActual = Util.rocket.tipRate * 0.05f;
+        Util.rocket.engineForceActual = Util.rocket.engineForce * 0.05f;
 
-        Util.wm.rocket.transform.position = diePos - new Vector3(0, rocketSpeed * 2f, 0);
+        Util.wm.rocket.transform.position = diePos - new Vector3(0, rocketSpeed * 3f, 0);
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
 
         Camera.main.GetComponent<Animator>().SetTrigger("Black");
@@ -141,11 +141,11 @@ public class GameManager : MonoBehaviour {
         Util.menuManager.showPlayScreen();
 
         increaseWind1();
-        InvokeRepeating("spawnCoins", 1f, zoneTime);
+        InvokeRepeating("spawnCoins", 2f, zoneTime);
         float delay = (zoneTime - Util.wm.gameTime % zoneTime) + 0.05f;
         InvokeRepeating("updateZone", delay, zoneTime);
-        Invoke("spawnObstacle", 0.5f);
-        Invoke("uninvincible", 2f);
+        Invoke("spawnObstacle", 2.7f);
+        Invoke("uninvincible", 3f);
 
         CancelInvoke("showFailScreen");
         CancelInvoke("showFailScreen");
