@@ -130,12 +130,17 @@ public class GameManager : MonoBehaviour {
     }
 
     public void restart() {
+        Util.wm.rocket.GetComponent<Motion>().end();
         Util.wm.rocket.SetActive(true);
+
         Util.wm.gameActive = true;
         Util.wm.dieScreen = false;
         invincible = true;
         firstTry = false;
         Wind.setMaxWind(0);
+
+        Util.wm.rocket.transform.position = diePos - new Vector3(0, rocketSpeed * invincibleTime, 0);
+        Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
 
         invincibleCountdown = (int)(invincibleTime + 0.0001f) + 1;
         setCountdown();
@@ -148,11 +153,11 @@ public class GameManager : MonoBehaviour {
         Util.rocket.enginePush = 0;
         Util.rocket.finalAngle = 0;
 
-        Util.wm.rocket.transform.position = diePos - new Vector3(0, rocketSpeed * invincibleTime, 0);
-        Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
+        
 
         Camera.main.GetComponent<Animator>().SetTrigger("Black");
         Camera.main.transform.position = diePos + new Vector3(0, rocketSpeed * -0.5f * invincibleTime, -10f);
+        Util.cm.cameraTargetSize = Util.wm.cameraSizePlay;
 
         Util.menuManager.showPlayScreen();
 
