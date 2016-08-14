@@ -143,6 +143,10 @@ public class WorldManager : MonoBehaviour {
         }
     }
 
+    public void showLeaderboards() {
+        Social.ShowLeaderboardUI();
+    }
+
     public void showIAP() {
         Debug.Log("Showing IAP");
         if (!gameActive) {
