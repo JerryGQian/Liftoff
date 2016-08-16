@@ -421,8 +421,8 @@ public class GameManager : MonoBehaviour {
             }
         }
         if (zoneID == 3) {
-            Invoke("spawnAsteroidBG", Random.Range(0.35f, 0.4f));
-            if (Random.Range(-1f, 1f) < 0) Invoke("spawnAsteroidBG", Random.Range(0.55f, 0.75f));
+            Invoke("spawnAsteroidBG", Random.Range(0.35f, 0.7f));
+            if (Random.Range(-1f, 1f) < 0) Invoke("spawnAsteroidBG", Random.Range(0.4f, 1.4f));
         }
     }
 
