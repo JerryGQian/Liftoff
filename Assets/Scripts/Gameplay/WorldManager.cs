@@ -91,9 +91,9 @@ public class WorldManager : MonoBehaviour {
         Util.even = !Util.even;
         if (Util.even) {
             Util.even2 = !Util.even2;
-            if (Util.even2) {
+            /*if (Util.even2) {
                 Util.even3 = !Util.even3;
-            }
+            }*/
         }
 	}
 

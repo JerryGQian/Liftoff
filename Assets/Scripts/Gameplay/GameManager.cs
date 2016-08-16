@@ -250,17 +250,24 @@ public class GameManager : MonoBehaviour {
     }
 
     void spawnObstacle() {
+        float difficulty = 1f;
+        if (zoneID <= 12) {
+            difficulty = 4f / zoneID;
+        }
+        else {
+            difficulty = 4f / 12f;
+        }
         if (Random.Range(0, 100f) < zoneID * 1.5f + 10f) {
             spawnAsteroid();
-            Invoke("spawnObstacle", Random.Range(4f / zoneID, 9f / zoneID));
+            Invoke("spawnObstacle", Random.Range(difficulty, difficulty * 2f));
         }
         else if (Random.Range(0, 100f) < zoneID * 0.6f + 2f) {
             spawnPlane();
-            Invoke("spawnObstacle", Random.Range(4f / zoneID, 9f / zoneID));
+            Invoke("spawnObstacle", Random.Range(difficulty, difficulty * 2f));
         }
         else {
             obstacles.Add(Instantiate(obstaclePrefab));
-            Invoke("spawnObstacle", Random.Range(3f / zoneID, 6f / zoneID));
+            Invoke("spawnObstacle", Random.Range(difficulty * 0.9f, difficulty * 1.8f));
         }
     }
 
@@ -314,6 +321,7 @@ public class GameManager : MonoBehaviour {
         CancelInvoke("spawnObstacle");
         CancelInvoke("spawnAsteroidBG");
         CancelInvoke("spawnPlane");
+        CancelInvoke("updateZone");
 
         diePos = new Vector3(0, Util.wm.rocket.transform.position.y, 0);
 
@@ -370,7 +378,7 @@ public class GameManager : MonoBehaviour {
         Camera.main.GetComponent<Animator>().SetTrigger("Blue");
 
         Destroy(plume);
-        Destroy(debris);
+        Destroy(debris); 
         Destroy(explosion);
         Destroy(zoneText);
         Destroy(planetBG);
@@ -401,17 +409,20 @@ public class GameManager : MonoBehaviour {
             else {
                 Util.wind.windPrefix = "GRAVITY ";
             }
-            
-            asteroidBGCount = 0;
-            spawnAsteroidBG();
-            
-            if (zoneID == 7 || zoneID == 12) {
-                int max = (int)Random.Range(10f, 15f);
-                while (asteroidBGCount < max) {
-                    Invoke("spawnAsteroidBG", Random.Range(0, zoneTime * 0.8f));
-                    asteroidBGCount++;
-                }
+        }
+        asteroidBGCount = 0;
+        spawnAsteroidBG();
+
+        if (zoneID == 7 || zoneID == 12) {
+            int max = (int)Random.Range(10f, 15f);
+            while (asteroidBGCount < max) {
+                Invoke("spawnAsteroidBG", Random.Range(0, zoneTime * 0.8f));
+                asteroidBGCount++;
             }
+        }
+        if (zoneID == 3) {
+            Invoke("spawnAsteroidBG", Random.Range(0.35f, 0.4f));
+            if (Random.Range(-1f, 1f) < 0) Invoke("spawnAsteroidBG", Random.Range(0.55f, 0.75f));
         }
     }
 

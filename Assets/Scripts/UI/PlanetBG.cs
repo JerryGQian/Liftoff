@@ -16,6 +16,11 @@ public class PlanetBG : MonoBehaviour {
     public Sprite a2;
     public Sprite a3;
 
+    public Sprite au0;
+    public Sprite au1;
+    public Sprite au2;
+    public Sprite au3;
+
 
     Sprite sp;
     float size;
@@ -24,6 +29,7 @@ public class PlanetBG : MonoBehaviour {
         sp = null;
         size = 1f;
         switch (Util.gm.zoneID) {
+            case 3: pickAurora(); break;
             case 5: sp = moon; size = 1.5f; break;
             case 6: sp = mars; size = 2f; break;
             case 7: pickAsteroid(); break;
@@ -37,7 +43,7 @@ public class PlanetBG : MonoBehaviour {
         GetComponent<SpriteRenderer>().sprite = sp;
         transform.position = new Vector3(Random.Range(-Util.width, Util.width), Camera.main.transform.position.y + 15f * size, 0);
         transform.localScale = new Vector3(size, size, size);
-        transform.eulerAngles = new Vector3(0, 0, Random.Range(0, 360f));
+        if (Util.gm.zoneID != 3) transform.eulerAngles = new Vector3(0, 0, Random.Range(0, 360f));
 
 
         GetComponent<Motion>().endPos = new Vector3(transform.position.x, Camera.main.transform.position.y + GameManager.rocketSpeed * GameManager.zoneTime * 0.75f, 0);
@@ -53,5 +59,16 @@ public class PlanetBG : MonoBehaviour {
             case 3: sp = a3; break;
         }
         size = Random.Range(1f, 1.9f);
+    }
+
+    void pickAurora() {
+        switch ((int)Random.Range(0, 3.99f)) {
+            case 0: sp = au0; break;
+            case 1: sp = au1; break;
+            case 2: sp = au2; break;
+            case 3: sp = au3; break;
+        }
+        size = Random.Range(1.5f, 2.5f);
+        GetComponent<SpriteRenderer>().color = new Color(Random.Range(0, 1f), 1f, Random.Range(0, 1f));
     }
 }
