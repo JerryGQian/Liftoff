@@ -24,8 +24,13 @@
 
 public static class GPGSConstants
 {
-        public const string leaderboard_launches = "CgkI-bbVjLkNEAIQAQ"; // <GPGSID>
+        public const string achievement_martian = "CgkI-bbVjLkNEAIQBg"; // <GPGSID>
+        public const string achievement_first_launch = "CgkI-bbVjLkNEAIQAw"; // <GPGSID>
+        public const string achievement_fluffy_clouds = "CgkI-bbVjLkNEAIQBA"; // <GPGSID>
         public const string leaderboard_best_distance = "CgkI-bbVjLkNEAIQAA"; // <GPGSID>
+        public const string leaderboard_launches = "CgkI-bbVjLkNEAIQAQ"; // <GPGSID>
+        public const string achievement_new_rocket_smell = "CgkI-bbVjLkNEAIQBw"; // <GPGSID>
+        public const string achievement_lunar_explorer = "CgkI-bbVjLkNEAIQBQ"; // <GPGSID>
 
 }
 
