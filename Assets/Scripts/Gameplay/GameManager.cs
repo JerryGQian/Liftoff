@@ -324,11 +324,13 @@ public class GameManager : MonoBehaviour {
         CancelInvoke("updateZone");
 
         diePos = new Vector3(0, Util.wm.rocket.transform.position.y, 0);
-
-        if (distance > Util.wm.best) {
+        Debug.Log("Checking if new best" + distance + " " + Util.wm.best);
+        if (distance >= Util.wm.best) {
+            
             Util.wm.best = distance;
             WorldManager.updateBest();
             newBest();
+
         }
 
         Util.saveManager.save();
@@ -342,6 +344,12 @@ public class GameManager : MonoBehaviour {
 
     void newBest() {
         //YAY! NEW BEST!
+        Debug.Log("NEW BEST");
+        Util.menuManager.score.GetComponent<Animator>().SetTrigger("flash");
+        Social.ReportScore((long)distance, "CgkI-bbVjLkNEAIQAA", success => {
+            Debug.Log(success ? "Reported score successfully" : "Failed to report score");
+        });
+        
     }
 
     public void resetRocket() {

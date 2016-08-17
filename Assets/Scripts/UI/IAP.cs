@@ -18,9 +18,9 @@ public class IAP : MonoBehaviour, IStoreListener {
     private static IStoreController m_StoreController;          // The Unity Purchasing system.
     private static IExtensionProvider m_StoreExtensionProvider; // The store-specific Purchasing subsystems.
 
-    public static string buy1ID = "LiftoffBuyCoins1";
-    public static string buy2ID = "LiftoffBuyCoins2";
-    public static string buy3ID = "LiftoffBuyCoins3";
+    public static string buy1ID = "liftoffbuycoins1";
+    public static string buy2ID = "liftoffbuycoins2";
+    public static string buy3ID = "liftoffbuycoins3";
 
     // Use this for initialization
     void Start () {
