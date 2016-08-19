@@ -186,12 +186,11 @@ public class WorldManager : MonoBehaviour {
     public static void updateCoinCount() {
         Util.wm.coinCounter.text = "" + Util.wm.coins;
         int length = Util.wm.coinCounter.text.Length;
-        Util.wm.plusIcon.GetComponent<RectTransform>().localPosition = new Vector3(-140f - (length - 1) * 44f, 0, 0);
+        Util.wm.plusIcon.GetComponent<RectTransform>().localPosition = new Vector3(-136f - (length - 1) * 46f, 0, 0);
     }
 
     public static void updateBest() {
         Util.wm.bestScore.text = "" + (int)Util.wm.best;
-        
     }
 
     public void toggleGodmode() {
