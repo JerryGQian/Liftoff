@@ -122,6 +122,7 @@ public class GameManager : MonoBehaviour {
         InvokeRepeating("spawnCoins", 1f, zoneTime);
         InvokeRepeating("updateZone", 0.05f, zoneTime);
         Invoke("spawnObstacle", zoneTime * 1.7f);
+        if (Util.wm.best > 25f) Invoke("beatBest", Util.wm.best / scoreSpeed);
 
         Invoke("spawnPlane", Random.Range(1f, 2.5f));
         Invoke("spawnPlane", Random.Range(zoneTime + 0.5f, zoneTime + 1.3f));
@@ -168,6 +169,7 @@ public class GameManager : MonoBehaviour {
         InvokeRepeating("updateZone", delay, zoneTime);
         Invoke("spawnObstacle", invincibleTime - 0.3f);
         Invoke("uninvincible", invincibleTime);
+        Invoke("beatBest", Util.wm.best / scoreSpeed - distance / scoreSpeed + invincibleTime);
 
         CancelInvoke("showFailScreen");
         CancelInvoke("resetRocket");
@@ -207,6 +209,11 @@ public class GameManager : MonoBehaviour {
     }
     void increaseWind1() {
         Wind.setMaxWind(0.07f);
+    }
+
+    void beatBest() {
+        Debug.Log("BEAT BEST");
+        Util.menuManager.score.GetComponent<Animator>().SetTrigger("flash");
     }
 
     void spawnClouds() {
@@ -322,16 +329,18 @@ public class GameManager : MonoBehaviour {
         CancelInvoke("spawnAsteroidBG");
         CancelInvoke("spawnPlane");
         CancelInvoke("updateZone");
+        CancelInvoke("beatBest");
 
         diePos = new Vector3(0, Util.wm.rocket.transform.position.y, 0);
         Debug.Log("Checking if new best" + distance + " " + Util.wm.best);
         if (distance >= Util.wm.best) {
-            
             Util.wm.best = distance;
             WorldManager.updateBest();
             newBest();
-
         }
+        if (!Util.wm.hasCheated) Social.ReportScore((long)Util.wm.attempts, "CgkI-bbVjLkNEAIQAQ", success => {
+            Debug.Log(success ? "Reported score successfully" : "Failed to report score");
+        });
 
         Util.saveManager.save();
 
@@ -346,7 +355,7 @@ public class GameManager : MonoBehaviour {
         //YAY! NEW BEST!
         Debug.Log("NEW BEST");
         Util.menuManager.score.GetComponent<Animator>().SetTrigger("flash");
-        Social.ReportScore((long)distance, "CgkI-bbVjLkNEAIQAA", success => {
+        if (!Util.wm.hasCheated) Social.ReportScore((long)distance, "CgkI-bbVjLkNEAIQAA", success => {
             Debug.Log(success ? "Reported score successfully" : "Failed to report score");
         });
         
@@ -397,6 +406,8 @@ public class GameManager : MonoBehaviour {
         Util.menuManager.showReplayMenu();
 
         Util.wind.windPrefix = "WIND ";
+
+        Util.menuManager.score.GetComponent<Animator>().SetTrigger("idle");
 
     }
 
