@@ -37,6 +37,15 @@ public class RocketHolder : MonoBehaviour {
     public Sprite r29;
     public Sprite r30;
     public Sprite r31;
+    public Sprite r32;
+    public Sprite r33;
+    public Sprite r34;
+    public Sprite r35;
+    public Sprite r36;
+    public Sprite r37;
+    public Sprite r38;
+    public Sprite r39;
+    public Sprite r40;
 
     public Sprite crayon1;
     public Sprite crayon2;

@@ -86,6 +86,8 @@ public class GameManager : MonoBehaviour {
         invincible = false;
         firstTry = true;
 
+        Util.menuManager.score.GetComponent<Animator>().SetTrigger("idle");
+
         Util.rocket.tipRateActual = Util.rocket.tipRate;
         Util.rocket.engineForceActual = Util.rocket.engineForce;
 
@@ -406,8 +408,6 @@ public class GameManager : MonoBehaviour {
         Util.menuManager.showReplayMenu();
 
         Util.wind.windPrefix = "WIND ";
-
-        Util.menuManager.score.GetComponent<Animator>().SetTrigger("idle");
 
     }
 
