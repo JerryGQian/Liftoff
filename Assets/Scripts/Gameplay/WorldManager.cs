@@ -120,8 +120,9 @@ public class WorldManager : MonoBehaviour {
                 if (best > 25f) Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);
                 lastLaunched = ScrollManager.selectedRocket;
                 Util.gm.play();
+                if (attempts <= 1) Util.achievementManager.firstLaunch();
                 if (settings != null) settings.GetComponent<SettingsManager>().close();
-                if (IAP != null) IAP.GetComponent<SettingsManager>().close();
+                if (IAP != null) IAP.GetComponent<IAP>().close();
             }
             else {
                 CancelInvoke("play");
@@ -216,6 +217,7 @@ public class WorldManager : MonoBehaviour {
                 Util.rocketHolder.purchased[ScrollManager.selectedRocket] = true;
                 Util.saveManager.save();
                 WorldManager.updateCoinCount();
+                Util.achievementManager.buyRocketAchievement();
             }
             else {
 

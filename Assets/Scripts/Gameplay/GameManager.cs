@@ -420,7 +420,7 @@ public class GameManager : MonoBehaviour {
         string prevZoneName = zoneName;
         zoneID = 1 + (int)(distance / zoneSize);
         zoneName = getZoneName();
-
+        Util.achievementManager.checkAchievementsDistance();
         if (!prevZoneName.Equals(zoneName)) {
             if (zoneText != null) {
                 zoneText.GetComponent<ZoneText>().remove();
