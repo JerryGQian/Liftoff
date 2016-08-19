@@ -51,6 +51,9 @@ public class GameManager : MonoBehaviour {
     public GameObject countdownPrefab;
     GameObject countdown;
 
+    public GameObject newBestPrefab;
+    GameObject newBestObj;
+
 	// Use this for initialization
 	void Start () {
         Util.gm = this;
@@ -360,7 +363,9 @@ public class GameManager : MonoBehaviour {
         if (!Util.wm.hasCheated) Social.ReportScore((long)distance, "CgkI-bbVjLkNEAIQAA", success => {
             Debug.Log(success ? "Reported score successfully" : "Failed to report score");
         });
-        
+        newBestObj = Instantiate(newBestPrefab);
+        newBestObj.transform.SetParent(Util.canvas.transform);
+        newBestObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -242f, 0);
     }
 
     public void resetRocket() {

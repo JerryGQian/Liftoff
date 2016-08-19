@@ -39,4 +39,13 @@ public class AchievementManager : MonoBehaviour {
             Debug.LogError("ERROR AUTHENTICATION: " + e.Message);
         }
     }
+
+    public void checkAchievementsDistance() {
+        if (Util.gm.distance > 110f) {
+            Social.ReportProgress("CgkI-bbVjLkNEAIQBA", 100f, (bool success) => { });
+        }
+        /*if () {
+
+        }*/
+    }
 }
