@@ -303,6 +303,10 @@ public class GameManager : MonoBehaviour {
         }
         else {
             Util.wm.totalDistance += distance;
+            if (!Util.wm.hasCheated)
+                Social.ReportScore((long)Util.wm.totalDistance, "CgkI-bbVjLkNEAIQCA", success => {
+                    Debug.Log(success ? "Reported score successfully" : "Failed to report score");
+                });
         }
 
         Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Animator>().SetTrigger("stop");
