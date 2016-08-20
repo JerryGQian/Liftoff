@@ -109,6 +109,10 @@ public class WorldManager : MonoBehaviour {
         if (adWatchTimeCoins < 0) {
             adWatchTimeCoins = 0;
         }
+
+        if (gameActive) {
+            Util.achievementManager.checkAchievementsDistance();
+        }
     }
 
     public void play() {

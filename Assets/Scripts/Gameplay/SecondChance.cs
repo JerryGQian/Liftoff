@@ -6,6 +6,7 @@ public class SecondChance : MonoBehaviour {
     float time;
     float life = 3.5f;
     bool adwatch = false;
+    bool ended = false;
 
     public GameObject bar;
 
@@ -14,7 +15,7 @@ public class SecondChance : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         time = life;
-
+        ended = false;
         transform.SetParent(Util.canvas.transform);
         transform.localScale = new Vector3(1f, 1f, 1f);
         GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 1000f, 0);
@@ -32,7 +33,7 @@ public class SecondChance : MonoBehaviour {
 	}
 
     public void watchAd() {
-        if (Advertisement.IsReady()) {
+        if (Advertisement.IsReady() && !ended) {
             adwatch = true;
             ShowOptions options = new ShowOptions();
             options.resultCallback = HandleShowResultCoins;
@@ -63,6 +64,9 @@ public class SecondChance : MonoBehaviour {
     }
 
     public void close() {
+        ended = true;
+        Util.wm.totalDistance += Util.gm.distance;
+        Util.saveManager.save();
         s2.startPos = new Vector3(0, 0, 0);
         s2.begin();
     }

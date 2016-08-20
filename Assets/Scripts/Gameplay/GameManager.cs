@@ -298,8 +298,11 @@ public class GameManager : MonoBehaviour {
     //Death
 
     public void die(string reason) {
-        if (Util.wm.godmode || (distance > 300f && (Util.wm.adWatchTimeLife <= 0 && Util.wm.gamesSinceAdWatch > Util.adLifeMinGames) && Random.Range(0, 100f) < 35f && firstTry)) {
+        if (Util.wm.godmode || (distance > 200f && (Util.wm.adWatchTimeLife <= 0 && Util.wm.gamesSinceAdWatch > Util.adLifeMinGames) && Random.Range(0, 100f) < 35f && firstTry)) {
             Util.wm.showSecondChance();
+        }
+        else {
+            Util.wm.totalDistance += distance;
         }
 
         Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Animator>().SetTrigger("stop");
@@ -420,7 +423,6 @@ public class GameManager : MonoBehaviour {
         string prevZoneName = zoneName;
         zoneID = 1 + (int)(distance / zoneSize);
         zoneName = getZoneName();
-        Util.achievementManager.checkAchievementsDistance();
         if (!prevZoneName.Equals(zoneName)) {
             if (zoneText != null) {
                 zoneText.GetComponent<ZoneText>().remove();
