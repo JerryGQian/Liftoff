@@ -46,6 +46,25 @@ public class RocketHolder : MonoBehaviour {
     public Sprite r38;
     public Sprite r39;
     public Sprite r40;
+    public Sprite r41;
+    public Sprite r42;
+    public Sprite r43;
+    public Sprite r44;
+    public Sprite r45;
+    public Sprite r46;
+    public Sprite r47;
+    public Sprite r48;
+    public Sprite r49;
+    public Sprite r50;
+    public Sprite r51;
+    public Sprite r52;
+    public Sprite r53;
+    public Sprite r54;
+    public Sprite r55;
+    public Sprite r56;
+    public Sprite r57;
+    public Sprite r58;
+    public Sprite r59;
 
     public Sprite crayon1;
     public Sprite crayon2;
@@ -114,7 +133,35 @@ public class RocketHolder : MonoBehaviour {
             case 29: return new RocketInfo(r29, purchased[i], r29.name, 0);
             case 30: return new RocketInfo(r30, purchased[i], r30.name, 0);
             case 31: return new RocketInfo(r31, purchased[i], r31.name, 0);
-            //RocketInfo(Sprite spr, bool p, string n, int c, bool noz, bool f)
+            case 32: return new RocketInfo(r32, purchased[i], r32.name, 0);
+            case 33: return new RocketInfo(r33, purchased[i], r33.name, 0);
+            case 34: return new RocketInfo(r34, purchased[i], r34.name, 0);
+            case 35: return new RocketInfo(r35, purchased[i], r35.name, 0);
+            case 36: return new RocketInfo(r36, purchased[i], r36.name, 0);
+            case 37: return new RocketInfo(r37, purchased[i], r37.name, 0);
+            case 38: return new RocketInfo(r38, purchased[i], r38.name, 0);
+            case 39: return new RocketInfo(r39, purchased[i], r39.name, 0);
+            case 40: return new RocketInfo(r40, purchased[i], r40.name, 0);
+            case 41: return new RocketInfo(r41, purchased[i], r41.name, 0);
+            case 42: return new RocketInfo(r42, purchased[i], r42.name, 0);
+            case 43: return new RocketInfo(r43, purchased[i], r43.name, 0);
+            case 44: return new RocketInfo(r44, purchased[i], r44.name, 0);
+            case 45: return new RocketInfo(r45, purchased[i], r45.name, 0);
+            case 46: return new RocketInfo(r46, purchased[i], r46.name, 0);
+            case 47: return new RocketInfo(r47, purchased[i], r47.name, 0);
+            case 48: return new RocketInfo(r48, purchased[i], r48.name, 0);
+            case 49: return new RocketInfo(r49, purchased[i], r49.name, 0);
+            case 50: return new RocketInfo(r50, purchased[i], r50.name, 0);
+            case 51: return new RocketInfo(r51, purchased[i], r51.name, 0);
+            case 52: return new RocketInfo(r52, purchased[i], r52.name, 0);
+            case 53: return new RocketInfo(r53, purchased[i], r53.name, 0);
+            case 54: return new RocketInfo(r54, purchased[i], r54.name, 0);
+            case 55: return new RocketInfo(r55, purchased[i], r55.name, 0);
+            case 56: return new RocketInfo(r56, purchased[i], r56.name, 0);
+            case 57: return new RocketInfo(r57, purchased[i], r57.name, 0);
+            case 58: return new RocketInfo(r58, purchased[i], r58.name, 0);
+            case 59: return new RocketInfo(r59, purchased[i], r59.name, 0);
+                //RocketInfo(Sprite spr, bool p, string n, int c, bool noz, bool f)
         }
         return null;
     }
