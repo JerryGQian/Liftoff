@@ -298,7 +298,7 @@ public class GameManager : MonoBehaviour {
     //Death
 
     public void die(string reason) {
-        if (Util.wm.godmode || (distance > 200f && (Util.wm.adWatchTimeLife <= 0 && Util.wm.gamesSinceAdWatch > Util.adLifeMinGames) && Random.Range(0, 100f) < 35f && firstTry)) {
+        if (Util.wm.godmode || (distance > Util.adLifeMinDist && (Util.wm.adWatchTimeLife <= 0 && Util.wm.gamesSinceAdWatch > Util.adLifeMinGames) && Random.Range(0, 100f) < 35f && firstTry)) {
             Util.wm.showSecondChance();
         }
         else {
