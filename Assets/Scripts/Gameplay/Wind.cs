@@ -7,7 +7,7 @@ public class Wind : MonoBehaviour {
     public string windPrefix;
 
     public static float wind = 0;
-    static float maxWind = .03f;
+    public static float maxWind = .03f;
     static float juice = 0.5f;
     static float windChangeDelay = 6f;
     static float targetWind;
