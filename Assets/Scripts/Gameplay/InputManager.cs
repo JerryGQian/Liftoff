@@ -3,7 +3,7 @@ using System.Collections;
 using System;
 
 [Serializable]
-public enum ControlScheme { tilt, touch, touchInvert, tilt2, other };
+public enum ControlScheme { tilt, tiltInvert, touch, touchInvert, tilt2, other };
 
 public class InputManager : MonoBehaviour {
     public float angleRatio = 0;
@@ -32,12 +32,25 @@ public class InputManager : MonoBehaviour {
                         }
                         break;
                     }
+                case ControlScheme.touchInvert:
+                    {
+                        if (Input.touchCount >= 1) {
+                            processScreenPos(Input.GetTouch(0).position);
+                            angleRatio *= -1f;
+                        }
+                        break;
+                    }
                 case ControlScheme.tilt: processAccelerometer(); break;
+                case ControlScheme.tiltInvert: processAccelerometer(); angleRatio *= -1f; break;
             }
             
         }
         else {
             processScreenPos(Input.mousePosition);
+            angleRatio *= 0.5f;
+            if (Util.wm.controlScheme == ControlScheme.touchInvert || Util.wm.controlScheme == ControlScheme.tiltInvert) {
+                angleRatio *= -1f;
+            }
         }
 	}
 

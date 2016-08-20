@@ -40,9 +40,19 @@ public class SettingsManager : MonoBehaviour {
                     controlButtonText.text = "TILT";
                     break;
                 }
+            case ControlScheme.tiltInvert:
+                {
+                    controlButtonText.text = "TILT INV";
+                    break;
+                }
             case ControlScheme.touch:
                 {
                     controlButtonText.text = "TOUCH";
+                    break;
+                }
+            case ControlScheme.touchInvert:
+                {
+                    controlButtonText.text = "TOUCH INV";
                     break;
                 }
         }
@@ -83,11 +93,23 @@ public class SettingsManager : MonoBehaviour {
         switch (Util.wm.controlScheme) {
             case ControlScheme.tilt:
                 {
+                    Util.wm.controlScheme = ControlScheme.tiltInvert;
+                    controlButtonText.text = "TILT INV";
+                    break;
+                }
+            case ControlScheme.tiltInvert:
+                {
                     Util.wm.controlScheme = ControlScheme.touch;
                     controlButtonText.text = "TOUCH";
                     break;
                 }
             case ControlScheme.touch:
+                {
+                    Util.wm.controlScheme = ControlScheme.touchInvert;
+                    controlButtonText.text = "TOUCH INV";
+                    break;
+                }
+            case ControlScheme.touchInvert:
                 {
                     Util.wm.controlScheme = ControlScheme.tilt;
                     controlButtonText.text = "TILT";
