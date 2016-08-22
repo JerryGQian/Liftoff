@@ -127,13 +127,13 @@ public class RocketHolder : MonoBehaviour {
             case 23: return new RocketInfo(r23, purchased[i], r23.name, 650); //delta IV heavy
             case 24: return new RocketInfo(r24, purchased[i], r24.name, 800); //Eiffel rocket
             case 25: return new RocketInfo(r25, purchased[i], r25.name, 1200, false, false); //myphone
-            case 26: return new RocketInfo(r26, purchased[i], r26.name, 0);
-            case 27: return new RocketInfo(r27, purchased[i], r27.name, 0);
-            case 28: return new RocketInfo(r28, purchased[i], r28.name, 0);
-            case 29: return new RocketInfo(r29, purchased[i], r29.name, 0);
-            case 30: return new RocketInfo(r30, purchased[i], r30.name, 0);
-            case 31: return new RocketInfo(r31, purchased[i], r31.name, 0);
-            case 32: return new RocketInfo(r32, purchased[i], r32.name, 0);
+            case 26: return new RocketInfo(r26, purchased[i], r26.name, 600); //titan
+            case 27: return new RocketInfo(r27, purchased[i], r27.name, 1000); //empire state
+            case 28: return new RocketInfo(r28, purchased[i], r28.name, 1000); //Rocket Ben
+            case 29: return new RocketInfo(r29, purchased[i], r29.name, 1000); //Oriental Pearl
+            case 30: return new RocketInfo(r30, purchased[i], r30.name, 1300); //rocket khalifa
+            case 31: return new RocketInfo(r31, purchased[i], r31.name, 900, false, false); //rocket n roll
+            case 32: return new RocketInfo(r32, purchased[i], r32.name, 800); //keyrocket
             case 33: return new RocketInfo(r33, purchased[i], r33.name, 0);
             case 34: return new RocketInfo(r34, purchased[i], r34.name, 0);
             case 35: return new RocketInfo(r35, purchased[i], r35.name, 0);
