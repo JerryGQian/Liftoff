@@ -103,30 +103,30 @@ public class RocketHolder : MonoBehaviour {
                 }
             // RocketInfo(Sprite spr, bool p, string n, int c, bool noz, bool fire)
             case 1:  return new RocketInfo(r1,  purchased[i], r1.name, 0); //rocket
-            case 2:  return new RocketInfo(r2,  purchased[i], r2.name, 50); //f9
-            case 3:  return new RocketInfo(r3,  purchased[i], r3.name, 50); //soyuz
-            case 4:  return new RocketInfo(r4,  purchased[i], r4.name, 100); //proton
-            case 5:  return new RocketInfo(r5,  purchased[i], r5.name, 100); //atlas 4
-            case 6:  return new RocketInfo(r6,  purchased[i], r6.name, 100); //atlas 5
-            case 7:  return new RocketInfo(r7,  purchased[i], r7.name, 150); //ariane 5
-            case 8:  return new RocketInfo(r8,  purchased[i], r8.name, 175); //shuttle
-            case 9:  return new RocketInfo(r9,  purchased[i], r9.name, 200); //v2
-            case 10: return new RocketInfo(r10, purchased[i], r10.name, 200); //n1
-            case 11: return new RocketInfo(r11, purchased[i], r11.name, 300); //SaturnV
-            case 12: return new RocketInfo(r12, purchased[i], r12.name, 200); //Apollo
-            case 13: return new RocketInfo(r13, purchased[i], r13.name, 200, false, true); //Blackbird
-            case 14: return new RocketInfo(r14, purchased[i], r14.name, 200); //tomahawk
-            case 15: return new RocketInfo(r15, purchased[i], r15.name, 0, false, true); //fighter jet
-            case 16: return new RocketInfo(r16, purchased[i], r16.name, 0, false, true); //star destroyer
-            case 17: return new RocketInfo(r17, purchased[i], r17.name, 0, false, true); //bottle
-            case 18: return new RocketInfo(r18, purchased[i], r18.name, 0, false, false); //crayon
-            case 19: return new RocketInfo(r19, purchased[i], r19.name, 0, false, false); //paper
-            case 20: return new RocketInfo(r20, purchased[i], r20.name, 0, false, true); ///machine gun
-            case 21: return new RocketInfo(r21, purchased[i], r21.name, 0, false, true);  //steel man
-            case 22: return new RocketInfo(r22, purchased[i], r22.name, 0); //SLS
-            case 23: return new RocketInfo(r23, purchased[i], r23.name, 0); //delta IV heavy
-            case 24: return new RocketInfo(r24, purchased[i], r24.name, 0); //Eiffel rocket
-            case 25: return new RocketInfo(r25, purchased[i], r25.name, 0, false, false); //myphone
+            case 2:  return new RocketInfo(r2,  purchased[i], r2.name, 100); //f9
+            case 3:  return new RocketInfo(r3,  purchased[i], r3.name, 100); //soyuz
+            case 4:  return new RocketInfo(r4,  purchased[i], r4.name, 200); //proton
+            case 5:  return new RocketInfo(r5,  purchased[i], r5.name, 200); //atlas 4
+            case 6:  return new RocketInfo(r6,  purchased[i], r6.name, 300); //atlas 5
+            case 7:  return new RocketInfo(r7,  purchased[i], r7.name, 300); //ariane 5
+            case 8:  return new RocketInfo(r8,  purchased[i], r8.name, 350); //shuttle
+            case 9:  return new RocketInfo(r9,  purchased[i], r9.name, 350); //v2
+            case 10: return new RocketInfo(r10, purchased[i], r10.name, 400); //n1
+            case 11: return new RocketInfo(r11, purchased[i], r11.name, 500); //SaturnV
+            case 12: return new RocketInfo(r12, purchased[i], r12.name, 600); //Apollo
+            case 13: return new RocketInfo(r13, purchased[i], r13.name, 500, false, true); //Blackbird
+            case 14: return new RocketInfo(r14, purchased[i], r14.name, 500); //tomahawk
+            case 15: return new RocketInfo(r15, purchased[i], r15.name, 450, false, true); //fighter jet
+            case 16: return new RocketInfo(r16, purchased[i], r16.name, 400, false, true); //star destroyer
+            case 17: return new RocketInfo(r17, purchased[i], r17.name, 300, false, true); //bottle
+            case 18: return new RocketInfo(r18, purchased[i], r18.name, 650, false, false); //crayon
+            case 19: return new RocketInfo(r19, purchased[i], r19.name, 650, false, false); //paper
+            case 20: return new RocketInfo(r20, purchased[i], r20.name, 600, false, true); ///machine gun
+            case 21: return new RocketInfo(r21, purchased[i], r21.name, 1000, false, true);  //steel man
+            case 22: return new RocketInfo(r22, purchased[i], r22.name, 700); //SLS
+            case 23: return new RocketInfo(r23, purchased[i], r23.name, 650); //delta IV heavy
+            case 24: return new RocketInfo(r24, purchased[i], r24.name, 800); //Eiffel rocket
+            case 25: return new RocketInfo(r25, purchased[i], r25.name, 1200, false, false); //myphone
             case 26: return new RocketInfo(r26, purchased[i], r26.name, 0);
             case 27: return new RocketInfo(r27, purchased[i], r27.name, 0);
             case 28: return new RocketInfo(r28, purchased[i], r28.name, 0);

@@ -119,7 +119,7 @@ public class WorldManager : MonoBehaviour {
     public void collectDailyReward() {
         collectTime = UnbiasedTime.Instance.Now();
         coins += Util.dailyReward;
-
+        WorldManager.updateCoinCount();
         Util.saveManager.save();
     }
 
