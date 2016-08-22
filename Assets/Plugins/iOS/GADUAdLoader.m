@@ -61,11 +61,11 @@
     didReceiveNativeCustomTemplateAd:(GADNativeCustomTemplateAd *)nativeCustomTemplateAd {
   if (self.adReceivedCallback) {
     GADUObjectCache *cache = [GADUObjectCache sharedInstance];
-    GADUNativeCustomTemplateAd *internalNativeAd =
-        [[GADUNativeCustomTemplateAd alloc] initWithAd:nativeCustomTemplateAd];
-    [cache.references setObject:internalNativeAd forKey:[internalNativeAd gadu_referenceKey]];
+    [cache.references setObject:self forKey:[self gadu_referenceKey]];
     self.adReceivedCallback(
-        self.adLoaderClient, (__bridge GADUTypeNativeCustomTemplateAdRef)internalNativeAd,
+        self.adLoaderClient,
+        (__bridge GADUTypeNativeCustomTemplateAdRef)
+            [[GADUNativeCustomTemplateAd alloc] initWithAd:nativeCustomTemplateAd],
         [nativeCustomTemplateAd.templateID cStringUsingEncoding:NSUTF8StringEncoding]);
   }
 }

@@ -187,11 +187,7 @@ namespace GoogleMobileAds.iOS
             IntPtr nativeCustomTemplateAd, string assetName, bool customClickAction);
 
         [DllImport("__Internal")]
-        internal static extern IntPtr GADUNativeCustomTemplateAdAvailableAssetKeys(
-            IntPtr nativeCustomTemplateAd);
-
-        [DllImport("__Internal")]
-        internal static extern int GADUNativeCustomTemplateAdNumberOfAvailableAssetKeys(
+        internal static extern string GADUNativeCustomTemplateAdAvailableAssetKeys(
             IntPtr nativeCustomTemplateAd);
 
         [DllImport("__Internal")]

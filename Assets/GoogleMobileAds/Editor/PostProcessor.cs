@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using UnityEditor;
 using UnityEditor.Callbacks;
+using UnityEditor;
 
 #if (UNITY_5 && UNITY_IOS)
     using UnityEditor.iOS.Xcode;
@@ -22,33 +22,21 @@ namespace GoogleMobileAds
                 iOSBuildTarget = BuildTarget.iPhone;
             #endif
 
-            if (target == iOSBuildTarget)
+            if(target == iOSBuildTarget)
             {
-                RunPodUpdate(pathToBuiltProject);
+                runPodUpdate(pathToBuiltProject);
             }
         }
 
-        public static void RunPodUpdate(string path)
+        static void runPodUpdate(string path)
         {
             #if !UNITY_CLOUD_BUILD
                 // Copy the podfile into the project.
                 string podfile = "Assets/GoogleMobileAds/Editor/Podfile";
-                string destPodfile = path + "/Podfile";
-
-                if (!System.IO.File.Exists(podfile))
+                string destpodfile = path + "/Podfile";
+                if(!System.IO.File.Exists(destpodfile))
                 {
-                    UnityEngine.Debug.LogWarning(@"Could not locate Podfile in
-                            Assets/GoogleMobileAds/Editor/");
-                    return;
-                }
-
-                if (!System.IO.File.Exists(destPodfile))
-                {
-                    FileUtil.CopyFileOrDirectory(podfile, destPodfile);
-                }
-                else
-                {
-                    FileUtil.ReplaceFile(podfile, destPodfile);
+                    FileUtil.CopyFileOrDirectory(podfile, destpodfile);
                 }
 
                 try
@@ -57,8 +45,8 @@ namespace GoogleMobileAds
                 }
                 catch (Exception e)
                 {
-                    UnityEngine.Debug.LogWarning("Could not create a new Xcode project with " +
-                            "CocoaPods: " + e.Message);
+                    UnityEngine.Debug.Log("Could not create a new Xcode project with CocoaPods: " +
+                            e.Message);
                 }
             #endif
 

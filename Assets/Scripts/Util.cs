@@ -31,6 +31,8 @@ public class Util {
     public static float adLifeProbability = 35f;
     public static int coinReward = 200;
 
+    public static int dailyReward = 500;
+
     public static bool even;
     public static bool even2;
     public static bool even3;

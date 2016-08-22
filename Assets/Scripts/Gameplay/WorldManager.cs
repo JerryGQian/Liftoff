@@ -48,6 +48,9 @@ public class WorldManager : MonoBehaviour {
     public GameObject secondChancePrefab;
     GameObject secondChance;
 
+    public GameObject dailyRewardPrefab;
+    GameObject dailyRewardPanel;
+
     public bool alternate = true;
 
     void Awake() {
@@ -108,6 +111,7 @@ public class WorldManager : MonoBehaviour {
             double timeElapsed = dt.Subtract(collectTime).TotalSeconds;
             if (timeElapsed > 79200f) {
                 //spawn collection panel :)
+                dailyRewardPanel = Instantiate(dailyRewardPrefab);
             }
         }
     }

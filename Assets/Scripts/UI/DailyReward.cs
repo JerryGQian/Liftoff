@@ -20,6 +20,8 @@ public class DailyReward : MonoBehaviour {
     }
 
     public void close() {
+        Util.wm.collectDailyReward();
+
         sm2.startPos = GetComponent<RectTransform>().anchoredPosition;
         sm2.begin();
     }
