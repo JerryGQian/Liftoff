@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
 
@@ -28,6 +29,7 @@ public class WorldManager : MonoBehaviour {
     public float adWatchTimeCoins = 0;
     public float adWatchTimeLife = 0;
     public int gamesSinceAdWatch = 6;
+    public DateTime collectTime;
 
     public bool musicMuted = false;
     public bool soundMuted = false;
@@ -66,6 +68,7 @@ public class WorldManager : MonoBehaviour {
         gameTime = 0;
         Util.cm.cameraTargetSize = cameraSizeMenu;
         Camera.main.transform.position = cameraMenuPosition;
+        collectTime = new DateTime();
         Util.saveManager.load();
         updateCoinCount();
         updateBest();
@@ -76,6 +79,8 @@ public class WorldManager : MonoBehaviour {
         Util.even10 = true;
 
         //Advertisement.Initialize();
+
+        checkDailyReward(); 
 
         InvokeRepeating("toggleEven", 0.25f, 0.25f);
         InvokeRepeating("everySecond", 1f, 1f);
@@ -96,6 +101,23 @@ public class WorldManager : MonoBehaviour {
             }*/
         }
 	}
+
+    void checkDailyReward() {
+        DateTime dt = UnbiasedTime.Instance.Now();
+        if (dt != null) {
+            double timeElapsed = dt.Subtract(collectTime).TotalSeconds;
+            if (timeElapsed > 79200f) {
+                //spawn collection panel :)
+            }
+        }
+    }
+
+    public void collectDailyReward() {
+        collectTime = UnbiasedTime.Instance.Now();
+        coins += Util.dailyReward;
+
+        Util.saveManager.save();
+    }
 
     void toggleEven() {
         Util.even10 = !Util.even10;
