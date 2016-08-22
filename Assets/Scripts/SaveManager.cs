@@ -37,6 +37,7 @@ public class SaveManager : MonoBehaviour {
             Util.wm.adWatchTimeCoins = data.adWatchTimeCoins;
             Util.wm.adWatchTimeLife = data.adWatchTimeLife;
             Util.wm.gamesSinceAdWatch = data.gamesSinceAdWatch;
+            Util.wm.collectTime = data.collectTime;
         }
 
         if (File.Exists(Application.persistentDataPath + "/settings.dat")) {
@@ -91,6 +92,7 @@ public class SaveManager : MonoBehaviour {
         data.adWatchTimeCoins = Util.wm.adWatchTimeCoins;
         data.adWatchTimeLife = Util.wm.adWatchTimeLife;
         data.gamesSinceAdWatch = Util.wm.gamesSinceAdWatch;
+        data.collectTime = Util.wm.collectTime;
 
         bf.Serialize(file, data);
         file.Close();
@@ -147,6 +149,7 @@ public class GameData {
     public float adWatchTimeCoins;
     public float adWatchTimeLife;
     public int gamesSinceAdWatch;
+    public DateTime collectTime;
 }
 
 [Serializable]
