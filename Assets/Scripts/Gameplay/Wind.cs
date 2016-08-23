@@ -26,9 +26,19 @@ public class Wind : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        wind += (targetWind - wind) * Time.deltaTime * juice;
-        windText.text = windPrefix + " " + (int)(wind * 500f);
-        if (Util.wm.godmode) wind = 0;
+        if (Util.wm.gameActive) {
+            wind += (targetWind - wind) * Time.deltaTime * juice;
+            if (maxWind != 0) {
+                windText.text = "" + (int)(wind * 500f);
+            }
+            else {
+                windText.text = "";
+            }
+            if (Util.wm.godmode) wind = 0;
+        }
+        else {
+            windText.text = "";
+        }
 	}
 
     public static void setMaxWind(float m) {

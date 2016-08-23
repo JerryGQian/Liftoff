@@ -38,7 +38,7 @@ public class MenuManager : MonoBehaviour {
         float ratio = Screen.height / 1920f;
 
         best.GetComponent<RectTransform>().anchoredPosition = new Vector3(Screen.width / -ratio * 0.5f * 0.9f, best.GetComponent<RectTransform>().anchoredPosition.y);
-        wind.GetComponent<RectTransform>().anchoredPosition = new Vector3(Screen.width / -ratio * 0.5f * 0.9f, wind.GetComponent<RectTransform>().anchoredPosition.y);
+        //wind.GetComponent<RectTransform>().anchoredPosition = new Vector3(Screen.width / -ratio * 0.5f * 0.9f, wind.GetComponent<RectTransform>().anchoredPosition.y);
 
         coins.GetComponent<RectTransform>().anchoredPosition = new Vector3(Screen.width / ratio * 0.5f * 0.85f, coins.GetComponent<RectTransform>().anchoredPosition.y);
         coins.GetComponent<SmoothMotion>().endPos = new Vector3(coins.GetComponent<RectTransform>().anchoredPosition.x, 1920f * 0.46f);
