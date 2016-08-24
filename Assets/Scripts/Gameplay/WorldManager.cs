@@ -51,6 +51,8 @@ public class WorldManager : MonoBehaviour {
     public GameObject dailyRewardPrefab;
     GameObject dailyRewardPanel;
 
+    public GameObject coinCanvasPrefab;
+
     public bool alternate = true;
 
     void Awake() {
@@ -121,6 +123,7 @@ public class WorldManager : MonoBehaviour {
         coins += Util.dailyReward;
         WorldManager.updateCoinCount();
         Util.saveManager.save();
+        spawnCoinPile();
     }
 
     void toggleEven() {
@@ -252,6 +255,19 @@ public class WorldManager : MonoBehaviour {
 
             }
         }
+    }
+
+    public void spawnCoinPile(int amount) {
+        for (int i = 0; i < amount; i++) {
+            Invoke("spawnSingleCoin", 1f / amount * i);
+        }
+    }
+    public void spawnCoinPile() {
+        spawnCoinPile(30);
+    }
+    void spawnSingleCoin() {
+        GameObject obj = Instantiate(coinCanvasPrefab);
+        obj.GetComponent<CoinCanvas>().randomize(new Vector2(540f, 1100f), 600f, 1000f);
     }
 
     void OnApplicationQuit() {
