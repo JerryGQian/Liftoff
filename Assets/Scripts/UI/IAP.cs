@@ -16,6 +16,8 @@ public class IAP : MonoBehaviour, IStoreListener {
     public static int IAP2 = 8000;
     public static int IAP3 = 35000;
 
+    public GameObject restorePurchases;
+
     /// <summary>
     /// Purchasing
     /// </summary>
@@ -39,10 +41,24 @@ public class IAP : MonoBehaviour, IStoreListener {
             // Begin to configure our connection to Purchasing
             InitializePurchasing();
         }
+
+#if UNITY_ANDROID
+        Destroy(restorePurchases);
+#endif
     }
 
     void Update() {
-        timer.text = Util.encodeTimeColon(Util.wm.adWatchTimeCoins);
+        if (Advertisement.IsReady()) {
+            if (Util.wm.adWatchTimeCoins > 0) {
+                timer.text = Util.encodeTimeColon(Util.wm.adWatchTimeCoins);
+            }
+            else {
+                timer.text = "READY";
+            }
+        }
+        else {
+            timer.text = "LOADING";
+        }
     }
 
     public void close() {
