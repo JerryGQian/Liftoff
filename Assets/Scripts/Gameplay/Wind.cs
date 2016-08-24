@@ -29,7 +29,7 @@ public class Wind : MonoBehaviour {
         if (Util.wm.gameActive) {
             wind += (targetWind - wind) * Time.deltaTime * juice;
             if (maxWind != 0) {
-                windText.text = "" + (int)(wind * 500f);
+                windText.text = windPrefix + (int)(wind * 500f);
             }
             else {
                 windText.text = "";
