@@ -12,6 +12,10 @@ public class IAP : MonoBehaviour, IStoreListener {
     public SmoothMotion sm1;
     public SmoothMotion sm2;
 
+    public static int IAP1 = 2000;
+    public static int IAP2 = 8000;
+    public static int IAP3 = 35000;
+
     /// <summary>
     /// Purchasing
     /// </summary>
@@ -215,21 +219,21 @@ public class IAP : MonoBehaviour, IStoreListener {
         if (String.Equals(args.purchasedProduct.definition.id, buy1ID, StringComparison.Ordinal)) {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-            Util.wm.coins += 1500;
+            Util.wm.coins += IAP1;// 2000;
             Util.saveManager.save();
         }
         // Or ... a non-consumable product has been purchased by this user.
         else if (String.Equals(args.purchasedProduct.definition.id, buy2ID, StringComparison.Ordinal)) {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-            Util.wm.coins += 5000;
+            Util.wm.coins += IAP2;// ;
             Util.saveManager.save();
         }
         // Or ... a subscription product has been purchased by this user.
         else if (String.Equals(args.purchasedProduct.definition.id, buy3ID, StringComparison.Ordinal)) {
             Debug.Log(string.Format("ProcessPurchase: PASS. Product: '{0}'", args.purchasedProduct.definition.id));
             // The consumable item has been successfully purchased, add 100 coins to the player's in-game score.
-            Util.wm.coins += 20000;
+            Util.wm.coins += IAP3;// ;
             Util.saveManager.save();
         }
         // Or ... an unknown product has been purchased by this user. Fill in additional products here....

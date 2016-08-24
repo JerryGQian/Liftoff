@@ -28,8 +28,8 @@ public class Util {
     public static float adLifeCooldown = 180f;
     public static int adLifeMinGames = 4;
     public static float adLifeMinDist = 200f;
-    public static float adLifeProbability = 35f;
-    public static int coinReward = 200;
+    public static float adLifeProbability = 40f;
+    public static int coinReward = 350;
 
     public static int dailyReward = 500;
 
