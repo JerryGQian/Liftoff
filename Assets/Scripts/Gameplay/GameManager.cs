@@ -127,7 +127,10 @@ public class GameManager : MonoBehaviour {
         InvokeRepeating("spawnCoins", 1f, zoneTime);
         InvokeRepeating("updateZone", 0.05f, zoneTime);
         Invoke("spawnObstacle", zoneTime * 1.7f);
-        if (Util.wm.best > 25f) Invoke("beatBest", Util.wm.best / scoreSpeed);
+        if (Util.wm.best > 25f) {
+            Invoke("beatBest", Util.wm.best / scoreSpeed);
+            Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / scoreSpeed * rocketSpeed - 5f, 0);
+        }
 
         Invoke("spawnPlane", Random.Range(1f, 2.5f));
         Invoke("spawnPlane", Random.Range(zoneTime + 0.5f, zoneTime + 1.3f));
@@ -175,6 +178,8 @@ public class GameManager : MonoBehaviour {
         Invoke("spawnObstacle", invincibleTime - 0.3f);
         Invoke("uninvincible", invincibleTime);
         Invoke("beatBest", Util.wm.best / scoreSpeed - distance / scoreSpeed + invincibleTime);
+        Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / scoreSpeed * rocketSpeed - 5f, 0);
+        if (distance < Util.wm.best) Invoke("beatBest", (Util.wm.best - distance) / scoreSpeed);
 
         CancelInvoke("showFailScreen");
         CancelInvoke("resetRocket");

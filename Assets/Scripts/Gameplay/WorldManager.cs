@@ -150,7 +150,7 @@ public class WorldManager : MonoBehaviour {
                 if (secondChance != null) secondChance.GetComponent<SecondChance>().close();
                 gamesSinceAdWatch++;
                 attempts++;
-                if (best > 25f) Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);
+                //if (best > 25f) Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);
                 lastLaunched = ScrollManager.selectedRocket;
                 Util.gm.play();
                 if (attempts <= 1) Util.achievementManager.firstLaunch();
