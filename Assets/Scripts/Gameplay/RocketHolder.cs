@@ -139,10 +139,10 @@ public class RocketHolder : MonoBehaviour {
             case 35: return new RocketInfo(r35, purchased[i], r35.name, 1200); //THE MARTIAN
             case 36: return new RocketInfo(r36, purchased[i], r36.name, 1000); //apollo27
             case 37: return new RocketInfo(r37, purchased[i], r37.name, 1750, false, false); //pelican
-            case 38: return new RocketInfo(r38, purchased[i], r38.name, 0);
-            case 39: return new RocketInfo(r39, purchased[i], r39.name, 0);
-            case 40: return new RocketInfo(r40, purchased[i], r40.name, 0);
-            case 41: return new RocketInfo(r41, purchased[i], r41.name, 0);
+            case 38: return new RocketInfo(r38, purchased[i], r38.name, 0, false, false); //hot docket
+            case 39: return new RocketInfo(r39, purchased[i], r39.name, 0); //raygun gothic
+            case 40: return new RocketInfo(r40, purchased[i], r40.name, 0, false, false); //F1
+            case 41: return new RocketInfo(r41, purchased[i], r41.name, 0, false, false); //magic school bus
             case 42: return new RocketInfo(r42, purchased[i], r42.name, 0);
             case 43: return new RocketInfo(r43, purchased[i], r43.name, 0);
             case 44: return new RocketInfo(r44, purchased[i], r44.name, 0);
