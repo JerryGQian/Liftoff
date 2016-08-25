@@ -12,6 +12,15 @@ public class Nozzle : MonoBehaviour {
 
     public Sprite f1;
     public Sprite f2;
+
+    public Sprite scifiFlame;
+
+    public Sprite bullet1;
+    public Sprite bullet2;
+    public Sprite bullet3;
+
+    public Sprite smoke1;
+    public Sprite smoke2;
     //public Sprite f3;
     void Awake() {
         Util.nozzle = this;
@@ -28,7 +37,7 @@ public class Nozzle : MonoBehaviour {
     }
 
     public void spew() {
-        if (Util.rocket.ri.fire) {
+        if (Util.rocket.ri.fire != FlameType.none) {
             flame = Instantiate(flamePrefab);
             flame.transform.position = transform.position - new Vector3(0, -0.4f);
             flame.transform.SetParent(transform);

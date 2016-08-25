@@ -114,35 +114,35 @@ public class RocketHolder : MonoBehaviour {
             case 10: return new RocketInfo(r10, purchased[i], r10.name, 400); //n1
             case 11: return new RocketInfo(r11, purchased[i], r11.name, 500); //SaturnV
             case 12: return new RocketInfo(r12, purchased[i], r12.name, 1000); //Apollo
-            case 13: return new RocketInfo(r13, purchased[i], r13.name, 500, false, true); //Blackbird
+            case 13: return new RocketInfo(r13, purchased[i], r13.name, 500, false, FlameType.flame); //Blackbird
             case 14: return new RocketInfo(r14, purchased[i], r14.name, 500); //tomahawk
-            case 15: return new RocketInfo(r15, purchased[i], r15.name, 450, false, true); //fighter jet
-            case 16: return new RocketInfo(r16, purchased[i], r16.name, 400, false, true); //star destroyer
-            case 17: return new RocketInfo(r17, purchased[i], r17.name, 300, false, true); //bottle
-            case 18: return new RocketInfo(r18, purchased[i], r18.name, 650, false, false); //crayon
-            case 19: return new RocketInfo(r19, purchased[i], r19.name, 650, false, false); //paper
-            case 20: return new RocketInfo(r20, purchased[i], r20.name, 600, false, true); ///machine gun
-            case 21: return new RocketInfo(r21, purchased[i], r21.name, 1000, false, true);  //steel man
+            case 15: return new RocketInfo(r15, purchased[i], r15.name, 450, false, FlameType.flame); //fighter jet
+            case 16: return new RocketInfo(r16, purchased[i], r16.name, 400, false, FlameType.scifi); //star destroyer
+            case 17: return new RocketInfo(r17, purchased[i], r17.name, 300, false, FlameType.flame); //bottle
+            case 18: return new RocketInfo(r18, purchased[i], r18.name, 650, false, FlameType.none); //crayon
+            case 19: return new RocketInfo(r19, purchased[i], r19.name, 650, false, FlameType.none); //paper
+            case 20: return new RocketInfo(r20, purchased[i], r20.name, 600, false, FlameType.bullet); ///machine gun
+            case 21: return new RocketInfo(r21, purchased[i], r21.name, 1000, false, FlameType.smoke);  //steel man
             case 22: return new RocketInfo(r22, purchased[i], r22.name, 700); //SLS
             case 23: return new RocketInfo(r23, purchased[i], r23.name, 650); //delta IV heavy
             case 24: return new RocketInfo(r24, purchased[i], r24.name, 800); //Eiffel rocket
-            case 25: return new RocketInfo(r25, purchased[i], r25.name, 1200, false, false); //myphone
+            case 25: return new RocketInfo(r25, purchased[i], r25.name, 1200, false, FlameType.none); //myphone
             case 26: return new RocketInfo(r26, purchased[i], r26.name, 600); //titan
             case 27: return new RocketInfo(r27, purchased[i], r27.name, 1000); //empire state
             case 28: return new RocketInfo(r28, purchased[i], r28.name, 1000); //Rocket Ben
             case 29: return new RocketInfo(r29, purchased[i], r29.name, 1000); //Oriental Pearl
             case 30: return new RocketInfo(r30, purchased[i], r30.name, 1300); //rocket khalifa
-            case 31: return new RocketInfo(r31, purchased[i], r31.name, 950, false, false); //rocket n roll
+            case 31: return new RocketInfo(r31, purchased[i], r31.name, 950, false, FlameType.none); //rocket n roll
             case 32: return new RocketInfo(r32, purchased[i], r32.name, 800); //keyrocket
-            case 33: return new RocketInfo(r33, purchased[i], r33.name, 1750, false, false); //UP
-            case 34: return new RocketInfo(r34, purchased[i], r34.name, 1500, false, false); //TITANIC
+            case 33: return new RocketInfo(r33, purchased[i], r33.name, 1750, false, FlameType.none); //UP
+            case 34: return new RocketInfo(r34, purchased[i], r34.name, 1500, false, FlameType.none); //TITANIC
             case 35: return new RocketInfo(r35, purchased[i], r35.name, 1200); //THE MARTIAN
             case 36: return new RocketInfo(r36, purchased[i], r36.name, 1000); //apollo27
-            case 37: return new RocketInfo(r37, purchased[i], r37.name, 1750, false, false); //pelican
-            case 38: return new RocketInfo(r38, purchased[i], r38.name, 0, false, false); //hot docket
+            case 37: return new RocketInfo(r37, purchased[i], r37.name, 1750, false, FlameType.smoke); //pelican
+            case 38: return new RocketInfo(r38, purchased[i], r38.name, 0, false, FlameType.none); //hot docket
             case 39: return new RocketInfo(r39, purchased[i], r39.name, 0); //raygun gothic
-            case 40: return new RocketInfo(r40, purchased[i], r40.name, 0, false, false); //F1
-            case 41: return new RocketInfo(r41, purchased[i], r41.name, 0, false, false); //magic school bus
+            case 40: return new RocketInfo(r40, purchased[i], r40.name, 0, false, FlameType.none); //F1
+            case 41: return new RocketInfo(r41, purchased[i], r41.name, 0, true, FlameType.scifi); //magic school bus
             case 42: return new RocketInfo(r42, purchased[i], r42.name, 0);
             case 43: return new RocketInfo(r43, purchased[i], r43.name, 0);
             case 44: return new RocketInfo(r44, purchased[i], r44.name, 0);
@@ -171,22 +171,22 @@ public class RocketInfo {
     public Sprite sprite;
     public string name;
     public bool nozzle;
-    public bool fire;
+    public FlameType fire;
     public int cost;
     public bool purchased;
     
 
     public RocketInfo(Sprite spr, bool p, string n, int c) {
-        setup(spr, p, n, c, true, true);
+        setup(spr, p, n, c, true, FlameType.flame);
     }
 
-    public RocketInfo(Sprite spr, bool p, string n, int c, bool noz, bool f) {
+    public RocketInfo(Sprite spr, bool p, string n, int c, bool noz, FlameType f) {
         setup(spr, p, n, c, noz, f);
     }
 
 
 
-    public void setup(Sprite spr, bool p, string n, int c, bool noz, bool f) {
+    public void setup(Sprite spr, bool p, string n, int c, bool noz, FlameType f) {
         sprite = spr;
         purchased = p;
         name = n;

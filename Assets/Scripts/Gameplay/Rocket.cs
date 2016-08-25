@@ -69,7 +69,7 @@ public class Rocket : MonoBehaviour {
             nozzleRenderer.color = new Color(1f, 1f, 1f, 0);
         }
 
-        if (ri.fire) {
+        if (ri.fire == FlameType.flame) {
             shockDiamondRenderer.color = new Color(1f, 1f, 1f, 0.4f);
         }
         else {
