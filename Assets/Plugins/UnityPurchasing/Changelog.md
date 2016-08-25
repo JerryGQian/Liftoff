@@ -1,3 +1,12 @@
+## [1.8.0] - 2016-08-23
+### Added
+- Tizen Store support. Preliminary documentation is available [here](https://docs.google.com/document/d/1A2TidgeV4lY16IcjdU7lX4EIvx6NNfONaph12iT8KyY).
+
+### Fixed
+- Google Play - Promo code redemptions not being detected whilst the App is running.
+- Google Play - Guard against spurious SecurityException (additional details [here](https://github.com/googlesamples/android-play-billing/issues/26).)
+
+
 ## [1.7.0] - 2016-08-07
 ### Added
 - Samsung Galaxy store support. Preliminary documentation is available [here](https://docs.google.com/document/d/1kUq-AHKyJftUA68xr44mrp7gs_MNxNiQ693s0b7qDdM).

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e5e9c24cb734746698ea48d100e0448b
+guid: 3cd1702e2438549ad8b2b92d061ec940
 timeCreated: 1471989866
 licenseType: Pro
 PluginImporter:
@@ -8,11 +8,8 @@ PluginImporter:
   executionOrder: {}
   isPreloaded: 0
   platformData:
-    Android:
-      enabled: 1
-      settings: {}
     Any:
-      enabled: 0
+      enabled: 1
       settings: {}
     Editor:
       enabled: 0
