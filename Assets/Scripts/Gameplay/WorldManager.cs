@@ -156,6 +156,7 @@ public class WorldManager : MonoBehaviour {
                 if (attempts <= 1) Util.achievementManager.firstLaunch();
                 if (settings != null) settings.GetComponent<SettingsManager>().close();
                 if (IAP != null) IAP.GetComponent<IAP>().close();
+                if (dailyRewardPanel != null) dailyRewardPanel.GetComponent<DailyReward>().close();
             }
             else {
                 CancelInvoke("play");
