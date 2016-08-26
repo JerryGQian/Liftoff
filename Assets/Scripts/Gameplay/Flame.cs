@@ -16,7 +16,7 @@ public class Flame : MonoBehaviour {
             case FlameType.flame: setFlame(); break;
             case FlameType.scifi: GetComponent<SpriteRenderer>().sprite = Util.nozzle.scifiFlame; break;
             case FlameType.bullet: setBullet(); break;
-            case FlameType.smoke: setFlame(); break;
+            case FlameType.smoke: setSmoke(); break;
         }
         
         //transform.localScale = new Vector3(1f, 1f, 1f) * Random.Range(0.8f, 1.2f);
@@ -53,5 +53,6 @@ public class Flame : MonoBehaviour {
             case 0: GetComponent<SpriteRenderer>().sprite = Util.nozzle.smoke1; break;
             case 1: GetComponent<SpriteRenderer>().sprite = Util.nozzle.smoke2; break;
         }
+        GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.5f);
     }
 }
