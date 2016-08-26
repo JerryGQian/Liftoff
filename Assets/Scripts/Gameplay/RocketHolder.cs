@@ -118,7 +118,7 @@ public class RocketHolder : MonoBehaviour {
             case 14: return new RocketInfo(r14, purchased[i], r14.name, 500); //tomahawk
             case 15: return new RocketInfo(r15, purchased[i], r15.name, 450, false, FlameType.flame); //fighter jet
             case 16: return new RocketInfo(r16, purchased[i], r16.name, 400, false, FlameType.scifi); //star destroyer
-            case 17: return new RocketInfo(r17, purchased[i], r17.name, 300, false, FlameType.flame); //bottle
+            case 17: return new RocketInfo(r17, purchased[i], r17.name, 300, false, FlameType.scifi); //bottle
             case 18: return new RocketInfo(r18, purchased[i], r18.name, 650, false, FlameType.none); //crayon
             case 19: return new RocketInfo(r19, purchased[i], r19.name, 650, false, FlameType.none); //paper
             case 20: return new RocketInfo(r20, purchased[i], r20.name, 600, false, FlameType.bullet); ///machine gun
@@ -140,10 +140,10 @@ public class RocketHolder : MonoBehaviour {
             case 36: return new RocketInfo(r36, purchased[i], r36.name, 1000); //apollo27
             case 37: return new RocketInfo(r37, purchased[i], r37.name, 1750, false, FlameType.scifi); //pelican
             case 38: return new RocketInfo(r38, purchased[i], r38.name, 1200, false, FlameType.none); //hot docket
-            case 39: return new RocketInfo(r39, purchased[i], r39.name, 1000); //raygun gothic
+            case 39: return new RocketInfo(r39, purchased[i], r39.name, 1000, false, FlameType.flame); //raygun gothic
             case 40: return new RocketInfo(r40, purchased[i], r40.name, 1500, false, FlameType.none); //F1
             case 41: return new RocketInfo(r41, purchased[i], r41.name, 1200, true, FlameType.scifi); //magic school bus
-            case 42: return new RocketInfo(r42, purchased[i], r42.name, 0);
+            case 42: return new RocketInfo(r42, purchased[i], r42.name, 1100, false, FlameType.none); //chitty
             case 43: return new RocketInfo(r43, purchased[i], r43.name, 0);
             case 44: return new RocketInfo(r44, purchased[i], r44.name, 0);
             case 45: return new RocketInfo(r45, purchased[i], r45.name, 0);
