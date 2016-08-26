@@ -31,6 +31,9 @@ public class WorldManager : MonoBehaviour {
     public int gamesSinceAdWatch = 6;
     public DateTime collectTime;
 
+    public int controlsChanged = 5;
+    bool firstGame = true;
+
     public bool musicMuted = false;
     public bool soundMuted = false;
     public bool scienceMode = false;
@@ -52,6 +55,8 @@ public class WorldManager : MonoBehaviour {
     GameObject dailyRewardPanel;
 
     public GameObject coinCanvasPrefab;
+
+    public GameObject controlTextPrefab;
 
     public bool alternate = true;
 
@@ -157,6 +162,21 @@ public class WorldManager : MonoBehaviour {
                 if (settings != null) settings.GetComponent<SettingsManager>().close();
                 if (IAP != null) IAP.GetComponent<IAP>().close();
                 if (dailyRewardPanel != null) dailyRewardPanel.GetComponent<DailyReward>().close();
+
+                if (attempts < 10 || firstGame || controlsChanged > 0) {
+                    GameObject obj = Instantiate(controlTextPrefab);
+                    obj.transform.SetParent(Util.canvas.transform);
+                    obj.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 100f);
+                    obj.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
+                    if (controlScheme == ControlScheme.tilt || controlScheme == ControlScheme.tilt2 || controlScheme == ControlScheme.tiltInvert) {
+                        obj.GetComponent<Text>().text = "TILT";
+                    }
+                    else {
+                        obj.GetComponent<Text>().text = "TOUCH";
+                    }
+                }
+                firstGame = false;
+                controlsChanged--;
             }
             else {
                 CancelInvoke("play");

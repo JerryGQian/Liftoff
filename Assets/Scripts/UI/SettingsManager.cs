@@ -90,6 +90,7 @@ public class SettingsManager : MonoBehaviour {
     }
 
     public void nextControl() {
+        Util.wm.controlsChanged = 3;
         switch (Util.wm.controlScheme) {
             case ControlScheme.tilt:
                 {
