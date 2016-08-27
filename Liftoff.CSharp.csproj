@@ -326,6 +326,7 @@
     <Compile Include="Assets\Scripts\Gameplay\AchievementManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Airplane.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Asteroid.cs" />
+    <Compile Include="Assets\Scripts\Gameplay\AudioManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\CameraManager.cs" />
     <Compile Include="Assets\Scripts\Gameplay\Coin.cs" />
     <Compile Include="Assets\Scripts\Gameplay\CoinPatternHolder.cs" />

@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviour {
 
         Util.wm.rocket.transform.position = diePos - new Vector3(0, rocketSpeed * invincibleTime, 0);
         Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
+        Util.rocket.setup(Util.rocketHolder.getRocket(ScrollManager.selectedRocket));
 
         invincibleCountdown = (int)(invincibleTime + 0.0001f) + 1;
         setCountdown();
@@ -315,6 +316,9 @@ public class GameManager : MonoBehaviour {
         }
 
         Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Animator>().SetTrigger("stop");
+        Util.wm.rocket.GetComponent<Rocket>().rocketBGSource.Pause();
+
+        Util.audioManager.explosionSource.Play();
 
         Util.wm.gameActive = false;
         Util.wm.dieScreen = true;

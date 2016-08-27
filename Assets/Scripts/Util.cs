@@ -16,6 +16,7 @@ public class Util {
     public static ObstacleHolder obstacleHolder;
     public static CoinPatternHolder coinPatternHolder;
     public static AchievementManager achievementManager;
+    public static AudioManager audioManager;
 
     public static Nozzle nozzle;
     public static Wind wind;

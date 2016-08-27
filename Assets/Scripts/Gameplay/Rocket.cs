@@ -25,6 +25,8 @@ public class Rocket : MonoBehaviour {
 
     public AudioClip rocketBG;
 
+    public AudioSource rocketBGSource;
+
     void Awake() {
         Util.rocket = this;
     }
@@ -76,6 +78,10 @@ public class Rocket : MonoBehaviour {
         }
         else {
             shockDiamondRenderer.color = new Color(1f, 1f, 1f, 0);
+        }
+
+        if (true) {
+            rocketBGSource.Play();
         }
     }
 }
