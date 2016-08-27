@@ -23,6 +23,8 @@ public class Rocket : MonoBehaviour {
 
     public RocketInfo ri;
 
+    public AudioClip rocketBG;
+
     void Awake() {
         Util.rocket = this;
     }
