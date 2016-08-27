@@ -144,9 +144,9 @@ public class RocketHolder : MonoBehaviour {
             case 40: return new RocketInfo(r40, purchased[i], r40.name, 1500, false, FlameType.none); //F1
             case 41: return new RocketInfo(r41, purchased[i], r41.name, 1200, true, FlameType.scifi); //magic school bus
             case 42: return new RocketInfo(r42, purchased[i], r42.name, 1100, false, FlameType.none); //chitty
-            case 43: return new RocketInfo(r43, purchased[i], r43.name, 0);
-            case 44: return new RocketInfo(r44, purchased[i], r44.name, 0);
-            case 45: return new RocketInfo(r45, purchased[i], r45.name, 0);
+            case 43: return new RocketInfo(r43, purchased[i], r43.name, 1000, false, FlameType.none); //drone
+            case 44: return new RocketInfo(r44, purchased[i], r44.name, 1500, false, FlameType.scifi); //hogwarts
+            case 45: return new RocketInfo(r45, purchased[i], r45.name, 1500, false, FlameType.none); //mary poppins
             case 46: return new RocketInfo(r46, purchased[i], r46.name, 0);
             case 47: return new RocketInfo(r47, purchased[i], r47.name, 0);
             case 48: return new RocketInfo(r48, purchased[i], r48.name, 0);
