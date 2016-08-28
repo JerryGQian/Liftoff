@@ -26,6 +26,7 @@ public class Rocket : MonoBehaviour {
     public AudioClip rocketBG;
 
     public AudioSource rocketBGSource;
+    public AudioSource rocketStartSource;
 
     void Awake() {
         Util.rocket = this;
@@ -82,6 +83,11 @@ public class Rocket : MonoBehaviour {
 
         if (true && !Util.wm.soundMuted) {
             rocketBGSource.Play();
+            rocketStartSource.Play();
+        }
+        else {
+            rocketBGSource.Stop();
+            rocketStartSource.Stop();
         }
     }
 }

@@ -319,7 +319,7 @@ public class GameManager : MonoBehaviour {
         Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Animator>().SetTrigger("stop");
         Util.wm.rocket.GetComponent<Rocket>().rocketBGSource.Pause();
 
-        Util.audioManager.explosionSource.Play();
+        if (!Util.wm.soundMuted) Util.audioManager.explosionSource.Play();
 
         Util.wm.gameActive = false;
         Util.wm.dieScreen = true;

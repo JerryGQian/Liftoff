@@ -4,6 +4,8 @@ using System.Collections;
 public class CoinCanvas : MonoBehaviour {
     Vector2 targetPos;
     bool randomized = false;
+
+    public AudioSource pingSource;
     // Use this for initialization
     void Awake() {
         float scale = 1.125f * (Screen.height / 1920f);
@@ -18,6 +20,7 @@ public class CoinCanvas : MonoBehaviour {
         GetComponent<SmoothMotion>().duration = 0.8f;
         GetComponent<SmoothMotion>().begin();
         if (!randomized) Invoke("incrementCoin", 0.7f);
+        if (Util.wm.soundMuted) pingSource.Stop();
     }
 
     public void randomize(Vector2 pos, float w, float h) {
