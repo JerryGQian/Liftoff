@@ -37,8 +37,8 @@ public class Obstacle : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
-	}
+        swooshSource.volume = 1f - Mathf.Abs(transform.position.x - Util.wm.rocket.transform.position.x) / 2f;
+    }
 
     void OnTriggerEnter2D(Collider2D coll) {
         if (Util.wm.gameActive && coll.gameObject.name.Equals("Rocket") && !Util.wm.godmode && !Util.gm.invincible) {
