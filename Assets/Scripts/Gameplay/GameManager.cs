@@ -225,6 +225,7 @@ public class GameManager : MonoBehaviour {
     void beatBest() {
         Debug.Log("BEAT BEST");
         Util.menuManager.score.GetComponent<Animator>().SetTrigger("flash");
+        Util.audioManager.playNewBest1();
     }
 
     void spawnClouds() {
@@ -382,6 +383,7 @@ public class GameManager : MonoBehaviour {
         newBestObj = Instantiate(newBestPrefab);
         newBestObj.transform.SetParent(Util.canvas.transform);
         newBestObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -242f, 0);
+        Util.audioManager.playNewBest2();
     }
 
     public void resetRocket() {

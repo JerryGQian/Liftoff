@@ -80,7 +80,7 @@ public class Rocket : MonoBehaviour {
             shockDiamondRenderer.color = new Color(1f, 1f, 1f, 0);
         }
 
-        if (true) {
+        if (true && !Util.wm.soundMuted) {
             rocketBGSource.Play();
         }
     }
