@@ -13,6 +13,7 @@ public class AudioManager : MonoBehaviour {
     public AudioClip newBest2;
     public AudioClip puff;
     public AudioClip lose;
+    public AudioClip alertBeep;
 
     void Awake() {
         Util.audioManager = this;
@@ -45,5 +46,9 @@ public class AudioManager : MonoBehaviour {
 
     public void playLose() {
         if (!Util.wm.soundMuted) generalSource.PlayOneShot(lose);
+    }
+
+    public void playAlertBeep() {
+        if (!Util.wm.soundMuted) generalSource.PlayOneShot(alertBeep);
     }
 }

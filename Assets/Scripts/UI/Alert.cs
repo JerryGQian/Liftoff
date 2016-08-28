@@ -8,6 +8,7 @@ public class Alert : MonoBehaviour {
     Vector3 finalPos;
     float targetScale = 1f;
     float juice = 3f;
+
 	// Use this for initialization
 	void Start () {
         transform.SetParent(Util.canvas.transform);
@@ -29,5 +30,6 @@ public class Alert : MonoBehaviour {
     void changeSprite() {
         GetComponent<Image>().sprite = urgentSprite;
         rect.localScale = new Vector3(1f, 1f, 1f) * targetScale * 2f;
+        Util.audioManager.playAlertBeep();
     }
 }
