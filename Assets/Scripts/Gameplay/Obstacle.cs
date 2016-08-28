@@ -33,11 +33,13 @@ public class Obstacle : MonoBehaviour {
         GetComponent<Motion>().begin();
 
         Invoke("playSwoosh", 1.5f);
+
+        swooshSource.pitch = Random.Range(0.85f, 1.25f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        swooshSource.volume = 1f - Mathf.Abs(transform.position.x - Util.wm.rocket.transform.position.x) / 2f;
+        swooshSource.volume = 1f - (Mathf.Abs(transform.position.x - Util.wm.rocket.transform.position.x) - 1f) / 3f;
     }
 
     void OnTriggerEnter2D(Collider2D coll) {

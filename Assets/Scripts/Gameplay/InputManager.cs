@@ -47,7 +47,7 @@ public class InputManager : MonoBehaviour {
         }
         else {
             processScreenPos(Input.mousePosition);
-            angleRatio *= 0.5f;
+            angleRatio *= 0.3f;
             if (Util.wm.controlScheme == ControlScheme.touchInvert || Util.wm.controlScheme == ControlScheme.tiltInvert) {
                 angleRatio *= -1f;
             }

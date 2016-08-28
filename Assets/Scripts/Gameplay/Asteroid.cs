@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Asteroid : MonoBehaviour {
     public GameObject alertPrefab;
+    public AudioSource swooshSource;
     GameObject alert;
     // Use this for initialization
     void Start() {
@@ -22,6 +23,14 @@ public class Asteroid : MonoBehaviour {
 
         GetComponent<Motion>().endPos = new Vector3(transform.position.x, Camera.main.transform.position.y, 0);
         GetComponent<Motion>().begin();
+
+        Invoke("playSwoosh", 1.5f);
+
+        swooshSource.pitch = Random.Range(1.4f, 2f);
+    }
+
+    void Update() {
+        swooshSource.volume = 1f - (Mathf.Abs(transform.position.x - Util.wm.rocket.transform.position.x) - 2.5f) / 3f;
     }
 
     void OnTriggerEnter2D(Collider2D coll) {
@@ -29,5 +38,9 @@ public class Asteroid : MonoBehaviour {
             Util.gm.die();
             //GetComponent<Motion>().end();
         }
+    }
+
+    void playSwoosh() {
+        swooshSource.Play();
     }
 }
