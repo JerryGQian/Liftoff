@@ -6,16 +6,20 @@ public class AudioManager : MonoBehaviour {
     public AudioSource explosionSource;
     public AudioSource musicSource;
 
+    public AudioClip music;
+    public AudioClip birds;
+
     public AudioClip newBest1;
     public AudioClip newBest2;
     public AudioClip puff;
+    public AudioClip lose;
 
     void Awake() {
         Util.audioManager = this;
     }
 
     void Start() {
-        
+        musicSource.clip = birds;
     }
 
     public void setMute() {
@@ -37,5 +41,9 @@ public class AudioManager : MonoBehaviour {
 
     public void playPuff() {
         if (!Util.wm.soundMuted) generalSource.PlayOneShot(puff);
+    }
+
+    public void playLose() {
+        if (!Util.wm.soundMuted) generalSource.PlayOneShot(lose);
     }
 }

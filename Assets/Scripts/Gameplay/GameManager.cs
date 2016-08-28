@@ -137,6 +137,9 @@ public class GameManager : MonoBehaviour {
         Invoke("spawnPlane", Random.Range(zoneTime + 0.5f, zoneTime + 1.3f));
         Invoke("spawnPlane", Random.Range(zoneTime + 1.5f, zoneTime + 4f));
         Invoke("spawnPlane", Random.Range(zoneTime + 3.5f, zoneTime + 8f));
+
+        Util.audioManager.musicSource.clip = Util.audioManager.music;
+        if (!Util.wm.musicMuted) Util.audioManager.musicSource.Play();
     }
 
     public void restart() {
@@ -187,6 +190,9 @@ public class GameManager : MonoBehaviour {
         CancelInvoke("resetRocket");
 
         Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Animator>().SetTrigger("pulse");
+
+        Util.audioManager.musicSource.clip = Util.audioManager.music;
+        if (!Util.wm.musicMuted) Util.audioManager.musicSource.Play();
     }
 
     void setCountdown() {
@@ -354,6 +360,7 @@ public class GameManager : MonoBehaviour {
         CancelInvoke("spawnPlane");
         CancelInvoke("updateZone");
         CancelInvoke("beatBest");
+        CancelInvoke("playPuff");
 
         diePos = new Vector3(0, Util.wm.rocket.transform.position.y, 0);
         Debug.Log("Checking if new best" + distance + " " + Util.wm.best);
@@ -362,13 +369,18 @@ public class GameManager : MonoBehaviour {
             WorldManager.updateBest();
             newBest();
         }
+        else Util.audioManager.playLose();
+
         if (!Util.wm.hasCheated) Social.ReportScore((long)Util.wm.attempts, "CgkI-bbVjLkNEAIQAQ", success => {
             Debug.Log(success ? "Reported score successfully" : "Failed to report score");
         });
 
         Util.saveManager.save();
 
-        //Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Explodable>().explode();
+        Util.audioManager.musicSource.clip = Util.audioManager.birds;
+        Util.audioManager.musicSource.time = Random.Range(0, 20f);
+        if (!Util.wm.musicMuted) Util.audioManager.musicSource.Play();
+
     }
 
     public void die() {
