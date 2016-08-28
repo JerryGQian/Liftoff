@@ -8,6 +8,7 @@ public class AudioManager : MonoBehaviour {
 
     public AudioClip newBest1;
     public AudioClip newBest2;
+    public AudioClip puff;
 
     void Awake() {
         Util.audioManager = this;
@@ -32,5 +33,9 @@ public class AudioManager : MonoBehaviour {
 
     public void playNewBest2() {
         if (!Util.wm.soundMuted) generalSource.PlayOneShot(newBest2);
+    }
+
+    public void playPuff() {
+        if (!Util.wm.soundMuted) generalSource.PlayOneShot(puff);
     }
 }

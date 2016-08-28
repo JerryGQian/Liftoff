@@ -113,6 +113,7 @@ public class GameManager : MonoBehaviour {
         plume.transform.position = new Vector3(0, 3.62f, 0);
 
         spawnClouds();
+        Invoke("playPuff", 100f / scoreSpeed + 0.25f);
 
         distance = 0;
         zoneID = 0;
@@ -210,9 +211,6 @@ public class GameManager : MonoBehaviour {
         invincible = false;
         Util.rocket.tipRateActual = Util.rocket.tipRate;
         Util.rocket.engineForceActual = Util.rocket.engineForce;
-
-        //Util.wm.rocket.transform.position = diePos;
-        //Util.wm.rocket.transform.eulerAngles = new Vector3(0, 0, 90f);
     }
 
     void increaseWind0() {
@@ -226,6 +224,10 @@ public class GameManager : MonoBehaviour {
         Debug.Log("BEAT BEST");
         Util.menuManager.score.GetComponent<Animator>().SetTrigger("flash");
         Util.audioManager.playNewBest1();
+    }
+
+    void playPuff() {
+        Util.audioManager.playPuff();
     }
 
     void spawnClouds() {
