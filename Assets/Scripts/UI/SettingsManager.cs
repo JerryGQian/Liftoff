@@ -129,6 +129,7 @@ public class SettingsManager : MonoBehaviour {
             setOn(musicButtonText, musicButton);
             Util.wm.musicMuted = false;
         }
+        Util.audioManager.setMute();
     }
 
     public void toggleSound() {

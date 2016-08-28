@@ -82,6 +82,7 @@ public class WorldManager : MonoBehaviour {
         Util.saveManager.load();
         updateCoinCount();
         updateBest();
+        Util.audioManager.setMute();
         //Util.scrollManager.spawnShowcase();
         Util.scrollManager.setRocket();
         //Util.rocket.transform.position = new Vector3(0, -100f, 0);
