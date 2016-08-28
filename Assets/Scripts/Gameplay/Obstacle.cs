@@ -4,6 +4,7 @@ public enum ObstacleType { meteor, asteroid, satellite, other }
 
 public class Obstacle : MonoBehaviour {
     public ObstacleType type;
+    public AudioSource swooshSource;
 
     public GameObject alertPrefab;
     GameObject alert;
@@ -30,6 +31,8 @@ public class Obstacle : MonoBehaviour {
 
         GetComponent<Motion>().endPos = new Vector3(transform.position.x, Camera.main.transform.position.y, 0);
         GetComponent<Motion>().begin();
+
+        Invoke("playSwoosh", 1.5f);
 	}
 	
 	// Update is called once per frame
@@ -42,5 +45,9 @@ public class Obstacle : MonoBehaviour {
             Util.gm.die();
             GetComponent<Motion>().end();
         }
+    }
+
+    void playSwoosh() {
+        swooshSource.Play();
     }
 }
