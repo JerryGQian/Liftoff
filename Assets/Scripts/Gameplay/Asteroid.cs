@@ -24,13 +24,13 @@ public class Asteroid : MonoBehaviour {
         GetComponent<Motion>().endPos = new Vector3(transform.position.x, Camera.main.transform.position.y, 0);
         GetComponent<Motion>().begin();
 
-        Invoke("playSwoosh", 1.5f);
+        Invoke("playSwoosh", 1f);
 
-        swooshSource.pitch = Random.Range(1.4f, 2f);
+        swooshSource.pitch = Random.Range(0.5f, .65f);
     }
 
     void Update() {
-        swooshSource.volume = 1f - (Mathf.Abs(transform.position.x - Util.wm.rocket.transform.position.x) - 2.5f) / 3f;
+        if (swooshSource.isPlaying) swooshSource.volume = 1f - (Mathf.Abs(transform.position.x - Util.wm.rocket.transform.position.x) - 2.5f) / 4f;
     }
 
     void OnTriggerEnter2D(Collider2D coll) {
@@ -41,6 +41,6 @@ public class Asteroid : MonoBehaviour {
     }
 
     void playSwoosh() {
-        swooshSource.Play();
+        if (!Util.wm.soundMuted) swooshSource.Play();
     }
 }

@@ -34,12 +34,12 @@ public class Obstacle : MonoBehaviour {
 
         Invoke("playSwoosh", 1.5f);
 
-        swooshSource.pitch = Random.Range(0.85f, 1.25f);
+        swooshSource.pitch = Random.Range(0.9f, 1.25f);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        swooshSource.volume = 1f - (Mathf.Abs(transform.position.x - Util.wm.rocket.transform.position.x) - 1f) / 3f;
+        if (swooshSource.isPlaying) swooshSource.volume = 1f - (Mathf.Abs(transform.position.x - Util.wm.rocket.transform.position.x) - 1f) / 4f;
     }
 
     void OnTriggerEnter2D(Collider2D coll) {
@@ -50,6 +50,6 @@ public class Obstacle : MonoBehaviour {
     }
 
     void playSwoosh() {
-        swooshSource.Play();
+        if (!Util.wm.soundMuted) swooshSource.Play();
     }
 }
