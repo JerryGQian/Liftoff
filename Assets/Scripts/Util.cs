@@ -25,7 +25,7 @@ public class Util {
 
     public static float width;
 
-    public static float adCoinsCooldown = 1200f;
+    public static float adCoinsCooldown = 600f;
     public static float adLifeCooldown = 180f;
     public static int adLifeMinGames = 4;
     public static float adLifeMinDist = 200f;

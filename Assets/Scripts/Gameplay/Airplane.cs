@@ -19,6 +19,11 @@ public class Airplane : MonoBehaviour {
     public Sprite ufo6;
 
     Motion motion;
+
+    public AudioSource planeSource;
+
+    public AudioClip planeSound;
+    public AudioClip ufoSound;
 	// Use this for initialization
 	void Start () {
         if (Util.gm.zoneID > 3) {
@@ -30,6 +35,7 @@ public class Airplane : MonoBehaviour {
                 case 4: GetComponent<SpriteRenderer>().sprite = ufo5; break;
                 case 5: GetComponent<SpriteRenderer>().sprite = ufo6; break;
             }
+            planeSource.clip = ufoSound;
         }
         else {
             switch ((int)Random.Range(0, 2.99f)) {
@@ -37,6 +43,7 @@ public class Airplane : MonoBehaviour {
                 case 1: GetComponent<SpriteRenderer>().sprite = p2; break;
                 case 2: GetComponent<SpriteRenderer>().sprite = p3; break;
             }
+            planeSource.clip = planeSound;
         }
 
 
@@ -56,6 +63,14 @@ public class Airplane : MonoBehaviour {
         motion.endPos = new Vector3(transform.position.x * -1f, transform.position.y, 0);
         motion.startPos = transform.position;
         motion.begin();
+
+        if (direction < 0) {
+            Invoke("playSound", impactPoint);
+        }
+        else {
+            Invoke("playSound", 1f - impactPoint);
+        }
+        
 	}
 
     void OnTriggerEnter2D(Collider2D coll) {
@@ -63,5 +78,9 @@ public class Airplane : MonoBehaviour {
             Util.gm.die();
             //motion.end();
         }
+    }
+
+    void playSound() {
+        if (!Util.wm.soundMuted) planeSource.Play();
     }
 }

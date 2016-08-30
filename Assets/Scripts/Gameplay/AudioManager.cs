@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum SoundType { rocket, none, jet, drone, car }
+
 public class AudioManager : MonoBehaviour {
     public AudioSource generalSource;
     public AudioSource explosionSource;
@@ -14,6 +16,7 @@ public class AudioManager : MonoBehaviour {
     public AudioClip puff;
     public AudioClip lose;
     public AudioClip alertBeep;
+    public AudioClip menuSwoosh;
 
     void Awake() {
         Util.audioManager = this;
@@ -45,10 +48,13 @@ public class AudioManager : MonoBehaviour {
     }
 
     public void playLose() {
-        if (!Util.wm.soundMuted) generalSource.PlayOneShot(lose);
+        if (!Util.wm.musicMuted) generalSource.PlayOneShot(lose);
     }
 
     public void playAlertBeep() {
         if (!Util.wm.soundMuted) generalSource.PlayOneShot(alertBeep);
+    }
+    public void playMenuSwoosh() {
+        if (!Util.wm.soundMuted) generalSource.PlayOneShot(menuSwoosh);
     }
 }

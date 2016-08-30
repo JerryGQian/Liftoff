@@ -40,6 +40,7 @@ public class Obstacle : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (swooshSource.isPlaying) swooshSource.volume = 1f - (Mathf.Abs(transform.position.x - Util.wm.rocket.transform.position.x) - 1f) / 4f;
+        if (!Util.wm.gameActive) swooshSource.volume = 0;
     }
 
     void OnTriggerEnter2D(Collider2D coll) {

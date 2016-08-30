@@ -81,7 +81,14 @@ public class Rocket : MonoBehaviour {
             shockDiamondRenderer.color = new Color(1f, 1f, 1f, 0);
         }
 
-        if (true && !Util.wm.soundMuted) {
+        if (!Util.wm.soundMuted) {
+            switch (ri.sound) {
+                case SoundType.rocket: break;
+                case SoundType.none: break;
+                case SoundType.jet: break;
+                case SoundType.drone: break;
+                case SoundType.car: break;
+            }
             rocketBGSource.Play();
             rocketStartSource.Play();
         }

@@ -30,6 +30,7 @@ public class SettingsManager : MonoBehaviour {
         GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 1500f, 0f);
 
         sm1.begin();
+        Util.audioManager.playMenuSwoosh();
 
         onColor = closeButton.color;
         offColor = smButton.color;
@@ -166,5 +167,6 @@ public class SettingsManager : MonoBehaviour {
     public void close() {
         sm2.startPos = GetComponent<RectTransform>().anchoredPosition;
         sm2.begin();
+        Util.audioManager.playMenuSwoosh();
     }
 }

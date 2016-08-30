@@ -15,6 +15,7 @@ public class DailyReward : MonoBehaviour {
         GetComponent<RectTransform>().anchoredPosition = new Vector3(1500f, 208f, 0);
 
         sm1.begin();
+        Util.audioManager.playMenuSwoosh();
 
         ready = false;
 
@@ -35,6 +36,7 @@ public class DailyReward : MonoBehaviour {
 
             sm2.startPos = GetComponent<RectTransform>().anchoredPosition;
             sm2.begin();
+            Util.audioManager.playMenuSwoosh();
         }
     }
 }

@@ -21,7 +21,8 @@ public class SecondChance : MonoBehaviour {
         GetComponent<RectTransform>().anchoredPosition = new Vector3(0, 1000f, 0);
 
         s1.begin();
-	}
+        Util.audioManager.playMenuSwoosh();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -69,5 +70,6 @@ public class SecondChance : MonoBehaviour {
         Util.saveManager.save();
         s2.startPos = new Vector3(0, 0, 0);
         s2.begin();
+        Util.audioManager.playMenuSwoosh();
     }
 }

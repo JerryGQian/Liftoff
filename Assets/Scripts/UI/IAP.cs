@@ -12,9 +12,9 @@ public class IAP : MonoBehaviour, IStoreListener {
     public SmoothMotion sm1;
     public SmoothMotion sm2;
 
-    public static int IAP1 = 2000;
-    public static int IAP2 = 8000;
-    public static int IAP3 = 35000;
+    public static int IAP1 = 5000;
+    public static int IAP2 = 20000;
+    public static int IAP3 = 80000;
 
     public GameObject restorePurchases;
 
@@ -35,6 +35,7 @@ public class IAP : MonoBehaviour, IStoreListener {
         GetComponent<RectTransform>().anchoredPosition = new Vector3(1500f, 0, 0);
 
         sm1.begin();
+        Util.audioManager.playMenuSwoosh();
 
         // If we haven't set up the Unity Purchasing reference
         if (m_StoreController == null) {
@@ -64,6 +65,7 @@ public class IAP : MonoBehaviour, IStoreListener {
     public void close() {
         sm2.startPos = GetComponent<RectTransform>().anchoredPosition;
         sm2.begin();
+        Util.audioManager.playMenuSwoosh();
     }
 
     public void watchAd() {
