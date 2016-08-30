@@ -57,9 +57,11 @@ public class SecondChance : MonoBehaviour {
                 break;
             case ShowResult.Skipped:
                 Debug.LogWarning("Video was skipped.");
+                if (s2 != null) close();
                 break;
             case ShowResult.Failed:
                 Debug.LogError("Video failed to show.");
+                if (s2 != null) close();
                 break;
         }
     }
