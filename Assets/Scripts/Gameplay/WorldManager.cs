@@ -259,10 +259,9 @@ public class WorldManager : MonoBehaviour {
     }
 
     public void freeMoney() {
-        if (true || Application.platform == RuntimePlatform.WindowsEditor) {
-            coins += 100;
+        if (godmode || Application.platform == RuntimePlatform.WindowsEditor) {
+            coins += 500;
             WorldManager.updateCoinCount();
-            //Util.saveManager.save();
         }
     }
 

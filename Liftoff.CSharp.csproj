@@ -356,6 +356,7 @@
     <Compile Include="Assets\Scripts\UI\ColorSwitcher.cs" />
     <Compile Include="Assets\Scripts\UI\DailyReward.cs" />
     <Compile Include="Assets\Scripts\UI\FPSDisplay.cs" />
+    <Compile Include="Assets\Scripts\UI\Godmode.cs" />
     <Compile Include="Assets\Scripts\UI\IAP.cs" />
     <Compile Include="Assets\Scripts\UI\MenuManager.cs" />
     <Compile Include="Assets\Scripts\UI\PlanetBG.cs" />
