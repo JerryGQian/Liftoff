@@ -231,6 +231,7 @@ public class WorldManager : MonoBehaviour {
         Util.scrollManager.setClosestRocket();
         ScrollManager.selector = ScrollManager.selectedRocket;
         Util.scrollManager.moveBG();
+        Util.audioManager.playSelectorClick();
     }
 
     public void rightArrow() {
@@ -238,6 +239,7 @@ public class WorldManager : MonoBehaviour {
         Util.scrollManager.setClosestRocket();
         ScrollManager.selector = ScrollManager.selectedRocket;
         Util.scrollManager.moveBG();
+        Util.audioManager.playSelectorClick();
     }
 
     public static void updateCoinCount() {
