@@ -78,6 +78,7 @@ public class WorldManager : MonoBehaviour {
         gameTime = 0;
         Util.cm.cameraTargetSize = cameraSizeMenu;
         Camera.main.transform.position = cameraMenuPosition;
+        Util.rocketHolder.crayonColor = CrayonColor.one;
         collectTime = new DateTime();
         Util.saveManager.load();
         updateCoinCount();
@@ -159,6 +160,7 @@ public class WorldManager : MonoBehaviour {
                 //if (best > 25f) Util.wm.bestBar.transform.position = new Vector3(0, Util.wm.best / GameManager.scoreSpeed * GameManager.rocketSpeed - 5f, 0);
                 lastLaunched = ScrollManager.selectedRocket;
                 Util.gm.play();
+                Destroy(Util.scrollManager.colorSwitcher);
                 if (attempts <= 1) Util.achievementManager.firstLaunch();
                 if (settings != null) settings.GetComponent<SettingsManager>().close();
                 if (IAP != null) IAP.GetComponent<IAP>().close();

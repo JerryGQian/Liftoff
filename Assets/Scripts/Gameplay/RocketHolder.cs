@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum CrayonColor { one, two, three, four }
+
 public class RocketHolder : MonoBehaviour {
     public bool[] purchased;
 
@@ -71,6 +73,8 @@ public class RocketHolder : MonoBehaviour {
     public Sprite crayon3;
     public Sprite crayon4;
 
+    public CrayonColor crayonColor;
+
     public RocketInfo ri;
     void Awake() {
         Util.rocketHolder = this;
@@ -132,7 +136,7 @@ public class RocketHolder : MonoBehaviour {
             case 27: return new RocketInfo(r27, purchased[i], r27.name, 1200, false, FlameType.none, SoundType.none); //hot docket
             case 28: return new RocketInfo(r28, purchased[i], r28.name, 650, false, FlameType.none, SoundType.none); //paper
             case 29: return new RocketInfo(r29, purchased[i], r29.name, 1200, false, FlameType.none, SoundType.none); //myphone
-            case 30: return new RocketInfo(r30, purchased[i], r30.name, 650, false, FlameType.none, SoundType.none); //crayon
+            case 30: return getCrayon(i); //crayon
             case 31: return new RocketInfo(r31, purchased[i], r31.name, 300, false, FlameType.scifi, SoundType.none); //bottle
             case 32: return new RocketInfo(r32, purchased[i], r32.name, 600, false, FlameType.bullet, SoundType.gun); ///machine gun
             case 33: return new RocketInfo(r33, purchased[i], r33.name, 1000); //empire state
@@ -163,6 +167,16 @@ public class RocketHolder : MonoBehaviour {
             case 58: return new RocketInfo(r58, purchased[i], r58.name, 0);
             case 59: return new RocketInfo(r59, purchased[i], r59.name, 0);
                 //RocketInfo(Sprite spr, bool p, string n, int c, bool noz, bool f)
+        }
+        return null;
+    }
+
+    public RocketInfo getCrayon(int i) {
+        switch (crayonColor) {
+            case CrayonColor.one: return new RocketInfo(crayon1, purchased[i], crayon1.name, 650, false, FlameType.none, SoundType.none);
+            case CrayonColor.two: return new RocketInfo(crayon2, purchased[i], crayon2.name, 650, false, FlameType.none, SoundType.none);
+            case CrayonColor.three: return new RocketInfo(crayon3, purchased[i], crayon3.name, 650, false, FlameType.none, SoundType.none);
+            case CrayonColor.four: return new RocketInfo(crayon4, purchased[i], crayon4.name, 650, false, FlameType.none, SoundType.none);
         }
         return null;
     }

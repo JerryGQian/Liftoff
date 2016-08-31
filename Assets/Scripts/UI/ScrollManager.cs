@@ -29,6 +29,9 @@ public class ScrollManager : MonoBehaviour {
     public GameObject owned;
     public Text cost;
 
+    public GameObject colorSwitcherPrefab;
+    public GameObject colorSwitcher;
+
     public RocketInfo ri;
 
     void Awake() {
@@ -145,6 +148,15 @@ public class ScrollManager : MonoBehaviour {
         }
         else {
             rocket3.SetActive(false);
+        }
+
+        if (!dragging && selectedRocket == 30) {
+            if (colorSwitcher == null && !Util.wm.gameActive && !Util.wm.dieScreen) {
+                colorSwitcher = Instantiate(colorSwitcherPrefab);
+            }
+        }
+        else {
+            if (colorSwitcher != null) Destroy(colorSwitcher);
         }
     }
 

@@ -38,6 +38,7 @@ public class SaveManager : MonoBehaviour {
             Util.wm.adWatchTimeLife = data.adWatchTimeLife;
             Util.wm.gamesSinceAdWatch = data.gamesSinceAdWatch;
             Util.wm.collectTime = data.collectTime;
+            Util.rocketHolder.crayonColor = data.crayonColor;
         }
 
         if (File.Exists(Application.persistentDataPath + "/settings.dat")) {
@@ -93,6 +94,7 @@ public class SaveManager : MonoBehaviour {
         data.adWatchTimeLife = Util.wm.adWatchTimeLife;
         data.gamesSinceAdWatch = Util.wm.gamesSinceAdWatch;
         data.collectTime = Util.wm.collectTime;
+        data.crayonColor = Util.rocketHolder.crayonColor;
 
         bf.Serialize(file, data);
         file.Close();
@@ -150,6 +152,7 @@ public class GameData {
     public float adWatchTimeLife;
     public int gamesSinceAdWatch;
     public DateTime collectTime;
+    public CrayonColor crayonColor;
 }
 
 [Serializable]
