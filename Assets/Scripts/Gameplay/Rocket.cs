@@ -24,6 +24,10 @@ public class Rocket : MonoBehaviour {
     public RocketInfo ri;
 
     public AudioClip rocketBG;
+    public AudioClip car;
+    public AudioClip drone;
+    public AudioClip jet;
+    public AudioClip gun;
 
     public AudioSource rocketBGSource;
     public AudioSource rocketStartSource;
@@ -83,11 +87,12 @@ public class Rocket : MonoBehaviour {
 
         if (!Util.wm.soundMuted) {
             switch (ri.sound) {
-                case SoundType.rocket: break;
-                case SoundType.none: break;
-                case SoundType.jet: break;
-                case SoundType.drone: break;
-                case SoundType.car: break;
+                case SoundType.rocket: rocketBGSource.clip = rocketBG;  break;
+                case SoundType.none: rocketBGSource.clip = new AudioClip(); break;
+                case SoundType.jet: rocketBGSource.clip = jet; break;
+                case SoundType.drone: rocketBGSource.clip = drone; break;
+                case SoundType.car: rocketBGSource.clip = car; break;
+                case SoundType.gun: rocketBGSource.clip = gun; break;
             }
             rocketBGSource.Play();
             rocketStartSource.Play();

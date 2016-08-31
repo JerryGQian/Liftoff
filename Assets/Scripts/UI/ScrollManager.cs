@@ -66,6 +66,7 @@ public class ScrollManager : MonoBehaviour {
 
     public void OnDrag() {
         if (!Util.wm.gameActive) {
+            int prevSelected = (int)(selector + 0.5f);
             selector = selectorInitial + dragOffset() * scrollSpeed;
             if (selector > rocketCount + 1.5f) {
                 selector = rocketCount + 1.5f;
@@ -75,6 +76,7 @@ public class ScrollManager : MonoBehaviour {
             }
             scrollParent.transform.position = new Vector3((selector - 1f) * -rocketSep, 0);
             moveBG();
+            if ((int)(selector + 0.5f) != prevSelected) Util.audioManager.playSelectorClick();
         }
     }
 

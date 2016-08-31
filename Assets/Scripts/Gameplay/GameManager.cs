@@ -278,11 +278,11 @@ public class GameManager : MonoBehaviour {
 
     void spawnObstacle() {
         float difficulty = 1f;
-        if (zoneID <= 12) {
+        if (zoneID <= 13) {
             difficulty = 4f / zoneID;
         }
         else {
-            difficulty = 4f / 12f;
+            difficulty = 4f / 13f;
         }
         if (Random.Range(0, 100f) < zoneID * 1.5f + 10f) {
             spawnAsteroid();
