@@ -18,6 +18,7 @@ public class AudioManager : MonoBehaviour {
     public AudioClip alertBeep;
     public AudioClip menuSwoosh;
     public AudioClip selectorClick;
+    public AudioClip kaching;
 
     void Awake() {
         Util.audioManager = this;
@@ -60,5 +61,9 @@ public class AudioManager : MonoBehaviour {
     }
     public void playSelectorClick() {
         if (!Util.wm.soundMuted) generalSource.PlayOneShot(selectorClick);
+    }
+
+    public void playKaching() {
+        if (!Util.wm.soundMuted) generalSource.PlayOneShot(kaching);
     }
 }

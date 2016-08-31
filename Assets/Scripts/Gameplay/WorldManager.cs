@@ -272,6 +272,7 @@ public class WorldManager : MonoBehaviour {
                 Util.saveManager.save();
                 WorldManager.updateCoinCount();
                 Util.achievementManager.buyRocketAchievement();
+                Util.audioManager.playKaching();
             }
             else {
 
