@@ -28,14 +28,15 @@ public class IAP : MonoBehaviour, IStoreListener {
     public static string buy2ID = "liftoffbuycoins2";
     public static string buy3ID = "liftoffbuycoins3";
 
+
+
+    // Use this for initialization
+    void Start () {
 #if UNITY_IOS
     buy1ID = "liftoffbuycoins1iOS";
     buy2ID = "liftoffbuycoins2iOS";
     buy3ID = "liftoffbuycoins3iOS";
 #endif
-
-    // Use this for initialization
-    void Start () {
         transform.SetParent(Util.canvas.transform);
         transform.localScale = new Vector3(1f, 1f, 1f);
         GetComponent<RectTransform>().anchoredPosition = new Vector3(1500f, 0, 0);
