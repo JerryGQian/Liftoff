@@ -28,6 +28,12 @@ public class IAP : MonoBehaviour, IStoreListener {
     public static string buy2ID = "liftoffbuycoins2";
     public static string buy3ID = "liftoffbuycoins3";
 
+#if UNITY_IOS
+    buy1ID = "liftoffbuycoins1iOS";
+    buy2ID = "liftoffbuycoins2iOS";
+    buy3ID = "liftoffbuycoins3iOS";
+#endif
+
     // Use this for initialization
     void Start () {
         transform.SetParent(Util.canvas.transform);
