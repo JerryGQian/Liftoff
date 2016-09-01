@@ -318,10 +318,15 @@ public class GameManager : MonoBehaviour {
         }
         else {
             Util.wm.totalDistance += distance;
-            if (!Util.wm.hasCheated)
-                Social.ReportScore((long)Util.wm.totalDistance, "CgkI-bbVjLkNEAIQCA", success => {
-                    Debug.Log(success ? "Reported score successfully" : "Failed to report score");
-                });
+#if UNITY_ANDROID
+            if (!Util.wm.hasCheated) Social.ReportScore((long)Util.wm.totalDistance, "CgkI-bbVjLkNEAIQCA", success => {
+                Debug.Log(success ? "Reported score successfully" : "Failed to report score");
+            });
+#elif UNITY_IOS
+            if (!Util.wm.hasCheated) Social.ReportScore((long)Util.wm.totalDistance, "liftofftotaldistance", success => {
+                Debug.Log(success ? "Reported score successfully" : "Failed to report score");
+            });
+#endif
         }
 
         Util.wm.rocket.transform.FindChild("Rocket").gameObject.GetComponent<Animator>().SetTrigger("stop");
@@ -370,11 +375,15 @@ public class GameManager : MonoBehaviour {
             newBest();
         }
         else Util.audioManager.playLose();
-
+#if UNITY_ANDROID
         if (!Util.wm.hasCheated) Social.ReportScore((long)Util.wm.attempts, "CgkI-bbVjLkNEAIQAQ", success => {
             Debug.Log(success ? "Reported score successfully" : "Failed to report score");
         });
-
+#elif UNITY_IOS
+        if (!Util.wm.hasCheated) Social.ReportScore((long)Util.wm.attempts, "liftofflaunches", success => {
+            Debug.Log(success ? "Reported score successfully" : "Failed to report score");
+        });
+#endif
         Util.saveManager.save();
 
         Util.audioManager.musicSource.clip = Util.audioManager.birds;
@@ -391,9 +400,15 @@ public class GameManager : MonoBehaviour {
         //YAY! NEW BEST!
         Debug.Log("NEW BEST");
         Util.menuManager.score.GetComponent<Animator>().SetTrigger("flash");
+#if UNITY_ANDROID
         if (!Util.wm.hasCheated) Social.ReportScore((long)distance, "CgkI-bbVjLkNEAIQAA", success => {
             Debug.Log(success ? "Reported score successfully" : "Failed to report score");
         });
+#elif UNITY_IOS
+        if (!Util.wm.hasCheated) Social.ReportScore((long)distance, "liftoffbestdistance", success => {
+            Debug.Log(success ? "Reported score successfully" : "Failed to report score");
+        });
+#endif
         newBestObj = Instantiate(newBestPrefab);
         newBestObj.transform.SetParent(Util.canvas.transform);
         newBestObj.GetComponent<RectTransform>().anchoredPosition = new Vector3(0, -242f, 0);
