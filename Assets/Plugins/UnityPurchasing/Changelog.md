@@ -1,3 +1,8 @@
+## [1.8.1] - 2016-08-30
+### Fixed
+- Windows Store - Windows App Compatibility Kit Supported API failure with exposure of Tizen API.
+- Tizen Store - Added sample products and GroupId to `IAPDemo.cs`
+
 ## [1.8.0] - 2016-08-23
 ### Added
 - Tizen Store support. Preliminary documentation is available [here](https://docs.google.com/document/d/1A2TidgeV4lY16IcjdU7lX4EIvx6NNfONaph12iT8KyY).

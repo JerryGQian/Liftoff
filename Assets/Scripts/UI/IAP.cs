@@ -24,18 +24,22 @@ public class IAP : MonoBehaviour, IStoreListener {
     private static IStoreController m_StoreController;          // The Unity Purchasing system.
     private static IExtensionProvider m_StoreExtensionProvider; // The store-specific Purchasing subsystems.
 
-    public static string buy1ID = "liftoffbuycoins1";
-    public static string buy2ID = "liftoffbuycoins2";
-    public static string buy3ID = "liftoffbuycoins3";
+    public string buy1ID;
+    public string buy2ID;
+    public string buy3ID;
 
 
 
     // Use this for initialization
     void Start () {
-#if UNITY_IOS
-    buy1ID = "liftoffbuycoins1iOS";
-    buy2ID = "liftoffbuycoins2iOS";
-    buy3ID = "liftoffbuycoins3iOS";
+#if UNITY_ANDROID
+        buy1ID = "liftoffbuycoins1";
+        buy2ID = "liftoffbuycoins2";
+        buy3ID = "liftoffbuycoins3";
+#else
+        buy1ID = "liftoffbuycoins1iOS";
+        buy2ID = "liftoffbuycoins2iOS";
+        buy3ID = "liftoffbuycoins3iOS";
 #endif
         transform.SetParent(Util.canvas.transform);
         transform.localScale = new Vector3(1f, 1f, 1f);
@@ -50,9 +54,9 @@ public class IAP : MonoBehaviour, IStoreListener {
             InitializePurchasing();
         }
 
-#if UNITY_ANDROID
+//#if UNITY_ANDROID
         Destroy(restorePurchases);
-#endif
+//#endif
     }
 
     void Update() {
