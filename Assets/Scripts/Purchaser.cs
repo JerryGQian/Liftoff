@@ -203,6 +203,7 @@ public class Purchaser : MonoBehaviour, IStoreListener {
             Util.wm.coins += IAP1;// 2000;
             Util.saveManager.save();
             Util.wm.spawnCoinPile();
+            WorldManager.updateCoinCount();
         }
         // Or ... a non-consumable product has been purchased by this user.
         else if (String.Equals(args.purchasedProduct.definition.id, buy2ID, StringComparison.Ordinal)) {
@@ -211,6 +212,7 @@ public class Purchaser : MonoBehaviour, IStoreListener {
             Util.wm.coins += IAP2;// ;
             Util.saveManager.save();
             Util.wm.spawnCoinPile();
+            WorldManager.updateCoinCount();
         }
         // Or ... a subscription product has been purchased by this user.
         else if (String.Equals(args.purchasedProduct.definition.id, buy3ID, StringComparison.Ordinal)) {
@@ -219,6 +221,7 @@ public class Purchaser : MonoBehaviour, IStoreListener {
             Util.wm.coins += IAP3;// ;
             Util.saveManager.save();
             Util.wm.spawnCoinPile();
+            WorldManager.updateCoinCount();
         }
         // Or ... an unknown product has been purchased by this user. Fill in additional products here....
         else {
